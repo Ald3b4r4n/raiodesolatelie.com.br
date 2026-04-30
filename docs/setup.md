@@ -1,8 +1,8 @@
 # Setup Local
 
 Este documento descreve o setup local do MVP `001-mvp-ecommerce`.
-Na Fase 1 o bootstrap tecnico foi criado, mas ainda nao ha funcionalidades de
-catalogo, carrinho, checkout, login ou admin.
+Na Fase 1 o bootstrap técnico foi criado, mas ainda não há funcionalidades de
+catálogo, carrinho, checkout, login ou admin.
 
 ## Pre-requisitos
 
@@ -17,9 +17,9 @@ catalogo, carrinho, checkout, login ou admin.
 
 - `package.json` e `pnpm-lock.yaml` existem.
 - Next.js App Router foi inicializado com TypeScript strict.
-- Firebase ainda nao foi configurado por CLI.
-- Existem apenas placeholders seguros em `firebase/` para manter deny-all ate a
-  fase propria de Firebase.
+- Firebase ainda não foi configurado por CLI.
+- Existem apenas placeholders seguros em `firebase/` para manter deny-all até a
+  fase própria de Firebase.
 
 ## Fluxo Local
 
@@ -34,24 +34,25 @@ Checks planejados:
 ```bash
 pnpm lint
 pnpm typecheck
+pnpm test
+pnpm test:unit
+pnpm test:integration
+pnpm test:rules
+pnpm test:e2e
+pnpm test:a11y
+pnpm test:coverage
+pnpm test:smoke
 pnpm format:check
 pnpm build
 ```
 
-Teste unitario de schema de ambiente, ate a Fase 2 criar scripts de teste
-consolidados:
+## Variáveis de Ambiente
 
-```bash
-pnpm exec vitest run tests/unit/security/env.test.ts
-```
+`.env.example` foi criado sem valores reais. Variáveis públicas podem usar
+`NEXT_PUBLIC_` quando forem realmente necessárias no cliente. Secrets
+server-side não podem ser expostas no frontend.
 
-## Variaveis de Ambiente
-
-`.env.example` foi criado sem valores reais. Variaveis publicas podem usar
-`NEXT_PUBLIC_` quando forem realmente necessarias no cliente. Secrets
-server-side nao podem ser expostas no frontend.
-
-Variaveis planejadas:
+Variáveis planejadas:
 
 - `NEXT_PUBLIC_FIREBASE_API_KEY`
 - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
@@ -69,11 +70,12 @@ Variaveis planejadas:
 
 ## Firebase CLI
 
-Firebase deve ser configurado por CLI e arquivos versionaveis. Qualquer etapa
+Firebase deve ser configurado por CLI e arquivos versionáveis. Qualquer etapa
 que exija Console Web precisa ser documentada com motivo, passo a passo e risco.
 
-Na Fase 1 nao foi executado `firebase init`, nao foi criado `firebase.json` e
-nao foram configurados emuladores.
+Na Fase 2 foi criado `firebase.json` para emuladores locais de teste. Ainda não
+foi executado `firebase init`, não existe `.firebaserc` e nenhum projeto
+Firebase foi selecionado.
 
 Fluxo planejado:
 
@@ -82,19 +84,20 @@ firebase login
 firebase use --add
 firebase init
 firebase emulators:start
+pnpm firebase:emulators
 ```
 
-## Dados Necessarios da Cliente
+## Dados Necessários da Cliente
 
-- Numero oficial do WhatsApp.
+- Número oficial do WhatsApp.
 - Links oficiais de Instagram e TikTok.
 - Fotos e dados iniciais dos produtos.
-- Preferencias de retirada local.
-- Identidade visual basica quando disponivel.
-- Decisao futura sobre provedor real de pagamento e frete.
+- Preferências de retirada local.
+- Identidade visual básica quando disponível.
+- Decisão futura sobre provedor real de pagamento e frete.
 
 ## Controle de Escopo
 
-O projeto deve permanecer um e-commerce/catalogo de produtos proprios. Nao
-devem ser adicionados fluxo multi-vendedor, comissao por lojista, painel de
-terceiros ou app mobile nativo sem aprovacao explicita.
+O projeto deve permanecer um e-commerce/catálogo de produtos próprios. Não
+devem ser adicionados fluxo multi-vendedor, comissão por lojista, painel de
+terceiros ou app mobile nativo sem aprovação explícita.

@@ -2,17 +2,17 @@
 
 ## Plataforma
 
-O deploy planejado e na Vercel, com previews por branch/PR e producao apos CI,
-variaveis e Firebase estarem configurados.
+O deploy planejado e na Vercel, com previews por branch/PR e produção após CI,
+variáveis e Firebase estarem configurados.
 
 ## Estado Atual
 
 - App Next.js inicial foi criado.
 - Nenhum projeto Vercel foi linkado.
 - Nenhum deploy foi executado.
-- Nenhum `vercel.json` foi criado na Fase 1 porque o baseline padrao da Vercel
+- Nenhum `vercel.json` foi criado na Fase 1 porque o baseline padrão da Vercel
   para Next.js e suficiente neste momento. Criar `vercel.json` apenas quando
-  houver configuracao real de rotas, headers, cron, regions ou build custom.
+  houver configuração real de rotas, headers, cron, regions ou build custom.
 
 ## Fluxo Planejado
 
@@ -24,7 +24,7 @@ vercel build
 vercel deploy --prebuilt
 ```
 
-Deploy real so deve ocorrer depois de:
+Deploy real só deve ocorrer depois de:
 
 - README e docs atualizados;
 - secrets configuradas no ambiente correto;
@@ -33,10 +33,10 @@ Deploy real so deve ocorrer depois de:
 - CI completo passando;
 - pagamento/frete mockados claramente documentados ou providers reais definidos.
 
-## Variaveis
+## Variáveis
 
-Variaveis publicas podem ir para o cliente somente quando forem realmente
-necessarias. Secrets server-side devem ficar no ambiente seguro da Vercel e
+Variáveis públicas podem ir para o cliente somente quando forem realmente
+necessárias. Secrets server-side devem ficar no ambiente seguro da Vercel e
 nunca no bundle.
 
 Ambientes planejados:
@@ -47,24 +47,28 @@ Ambientes planejados:
 
 ## CI
 
-- Fase 2: workflow basico/smoke para validar bootstrap e scripts minimos.
+- Fase 2: workflow básico/smoke para validar bootstrap e scripts mínimos.
 - Fase 14: workflow completo com install limpo, lint, typecheck, unit tests,
   integration tests, Firebase rules tests, E2E, build e audit.
 
+O workflow atual em `.github/workflows/ci.yml` executa instalação limpa, lint,
+typecheck e `pnpm test:smoke`. Ele não substitui o CI completo exigido antes da
+conclusão da feature.
+
 ## Git
 
-Configuracao esperada quando o usuario autorizar:
+Configuracao esperada quando o usuário autorizar:
 
 ```bash
-git remote add origin https://github.com/Ald3b4r4n/raiodesolatelie.com.br.git
+git remote add origin https://github.com/Ald3b4r4n/raiodesolatélie.com.br.git
 git branch -M main
 git push -u origin main
 ```
 
-Commit, push e deploy dependem de autorizacao explicita do usuario.
+Commit, push e deploy dependem de autorização explícita do usuário.
 
 ## Rollback
 
 Rollback deve usar historico de deployments da Vercel e commits identificaveis.
-Antes de promover producao, registrar o build, ambiente, variaveis relevantes e
+Antes de promover produção, registrar o build, ambiente, variáveis relevantes e
 checks executados.

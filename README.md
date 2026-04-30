@@ -1,17 +1,17 @@
-# Raio de Sol Atelie
+# Raio de Sol Ateliê
 
-Site mostruario/e-commerce simples, rapido e mobile-first para venda de
-produtos proprios da marca Raio de Sol Atelie. O MVP deve permitir que clientes
-encontrem produtos, escolham variacoes, adicionem ao carrinho e iniciem pedido
+Site mostruário/e-commerce simples, rápido e mobile-first para venda de
+produtos próprios da marca Raio de Sol Ateliê. O MVP deve permitir que clientes
+encontrem produtos, escolham variações, adicionem ao carrinho e iniciem pedido
 pelo checkout ou WhatsApp, enquanto a administradora gerencia produtos e
 visualiza pedidos.
 
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 1 concluida como bootstrap tecnico do app.
+- Etapa atual: Fase 2 concluída como infraestrutura de testes.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
-- Firebase ainda nao foi configurado.
+- Firebase ainda não foi configurado.
 - Existem placeholders seguros de rules/indexes, mas sem Firebase CLI,
   emuladores, `.firebaserc` ou `firebase.json`.
 
@@ -21,41 +21,41 @@ visualiza pedidos.
 - TypeScript em modo `strict`.
 - Firebase Authentication para login.
 - Cloud Firestore como banco principal.
-- Firebase Storage somente se a decisao do MVP confirmar necessidade para
+- Firebase Storage somente se a decisão do MVP confirmar necessidade para
   imagens de produtos.
-- Firebase Security Rules e Emulator Suite obrigatorios.
-- Vercel para preview e producao.
+- Firebase Security Rules e Emulator Suite obrigatórios.
+- Vercel para preview e produção.
 - pnpm como package manager recomendado.
 - Vitest, Testing Library, Playwright, axe-core e Firebase Emulator Suite para
   testes.
 
 ## Escopo do MVP
 
-- Home simples com marca, chamada, produtos em destaque, catalogo, WhatsApp,
+- Home simples com marca, chamada, produtos em destaque, catálogo, WhatsApp,
   Instagram e TikTok.
-- Catalogo com busca, filtros por categoria/preco/disponibilidade e listagem
+- Catálogo com busca, filtros por categoria/preço/disponibilidade e listagem
   mobile-first.
-- Pagina de produto com fotos, descricao, preco, categoria, variacoes de
+- Página de produto com fotos, descrição, preço, categoria, variações de
   tamanho/cor, disponibilidade e CTAs.
-- Carrinho com persistencia local, subtotal e validacao de variacoes.
-- Checkout inicial com dados minimos, retirada local ou entrega, Pix/cartao por
+- Carrinho com persistência local, subtotal e validação de variações.
+- Checkout inicial com dados mínimos, retirada local ou entrega, Pix/cartão por
   camada mockada.
-- WhatsApp com mensagem automatica para produto ou carrinho.
+- WhatsApp com mensagem automática para produto ou carrinho.
 - Login com Firebase Authentication e perfis `customer` e `admin`.
 - Painel admin simples para produtos e pedidos.
-- Suporte inicial para cupons e avaliacoes moderadas.
-- SEO, acessibilidade, seguranca e documentacao como parte da entrega.
+- Suporte inicial para cupons e avaliações moderadas.
+- SEO, acessibilidade, segurança e documentação como parte da entrega.
 
 ## Fora do Escopo do MVP
 
 - Marketplace multi-vendedor.
 - Painel para lojistas terceiros.
-- Comissao por vendedor.
+- Comissão por vendedor.
 - App mobile nativo.
 - Blog completo.
-- Emissao automatica de nota fiscal.
-- Integracao real de pagamento ou frete sem credenciais/provedor definido.
-- Automacoes avancadas de marketing ou CRM complexo.
+- Emissão automática de nota fiscal.
+- Integração real de pagamento ou frete sem credenciais/provedor definido.
+- Automações avançadas de marketing ou CRM complexo.
 
 ## Requisitos de Ambiente
 
@@ -65,7 +65,7 @@ visualiza pedidos.
 - Vercel CLI opcional para deploy local/prebuilt.
 - Git.
 
-## Comandos Disponiveis
+## Comandos Disponíveis
 
 Comandos reais habilitados pela Fase 1:
 
@@ -74,29 +74,31 @@ pnpm install
 pnpm dev
 pnpm lint
 pnpm typecheck
+pnpm test
+pnpm test:unit
+pnpm test:integration
+pnpm test:rules
+pnpm test:e2e
+pnpm test:a11y
+pnpm test:coverage
+pnpm test:smoke
 pnpm format
 pnpm format:check
 pnpm build
 ```
 
-Teste unitario de env executado diretamente ate a Fase 2 consolidar scripts de
-teste:
-
-```bash
-pnpm exec vitest run tests/unit/security/env.test.ts
-```
-
 Comandos Firebase planejados:
 
 ```bash
+pnpm firebase:emulators
 firebase init
 firebase emulators:start
 firebase emulators:exec "pnpm test:integration && pnpm test:rules"
 ```
 
-## Variaveis de Ambiente Planejadas
+## Variáveis de Ambiente Planejadas
 
-Valores reais nao devem ser commitados. Secrets server-side nunca devem usar
+Valores reais não devem ser commitados. Secrets server-side nunca devem usar
 prefixo `NEXT_PUBLIC_`.
 
 ```bash
@@ -118,34 +120,33 @@ PAYMENT_PROVIDER=mock
 SHIPPING_PROVIDER=mock
 ```
 
-## Documentacao
+## Documentação
 
 - [Setup local](docs/setup.md)
 - [Arquitetura](docs/architecture.md)
-- [Seguranca e privacidade](docs/security.md)
+- [Segurança e privacidade](docs/security.md)
 - [Testes](docs/testing.md)
 - [Firebase](docs/firebase.md)
 - [Deploy](docs/deployment.md)
 - [Skills do projeto](docs/skills.md)
-- [Decisoes tecnicas](docs/decisions/)
+- [Decisões técnicas](docs/decisions/)
 
-## Politica de Desenvolvimento
+## Política de Desenvolvimento
 
-- TDD obrigatorio: Red -> Green -> Refactor.
+- TDD obrigatório: Red -> Green -> Refactor.
 - README e `docs/` devem ser revisados em toda feature.
-- Operacoes sensiveis devem ser validadas no backend e protegidas por roles,
+- Operações sensíveis devem ser validadas no backend e protegidas por roles,
   rate limit e Firebase Security Rules.
-- Pagamento e frete devem passar por servicos isolados e mockados ate existirem
+- Pagamento e frete devem passar por serviços isolados e mockados até existirem
   credenciais reais.
-- Commit e push so podem ocorrer apos autorizacao explicita do usuario.
+- Commit e push só podem ocorrer após autorização explícita do usuário.
 
-## Limitacoes Conhecidas
+## Limitações Conhecidas
 
-- Numero oficial de WhatsApp ainda nao foi informado.
-- Identidade visual e fotos reais de produtos ainda nao foram fornecidas.
-- Provedor real de pagamento e frete ainda nao foi definido.
-- Processo do primeiro admin sera criado em fase posterior, sem endpoint publico
+- Número oficial de WhatsApp ainda não foi informado.
+- Identidade visual e fotos reais de produtos ainda não foram fornecidas.
+- Provedor real de pagamento e frete ainda não foi definido.
+- Processo do primeiro admin será criado em fase posterior, sem endpoint público
   permanente.
-- Firebase Storage permanece condicional ate a decisao da fase de Firebase.
-- CI, Testing Library, Playwright, axe-core e emuladores serao configurados nas
-  proximas fases.
+- Firebase Storage permanece condicional até a decisão da fase de Firebase.
+- O CI atual é básico/smoke; o CI completo será consolidado nas fases finais.

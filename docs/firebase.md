@@ -2,16 +2,17 @@
 
 ## Estado Atual
 
-Firebase ainda nao foi configurado por CLI. Na Fase 1 foram criados apenas
-placeholders seguros:
+Firebase ainda não foi inicializado por CLI. Na Fase 1 foram criados
+placeholders seguros e, na Fase 2, foi adicionado `firebase.json` apenas para
+configuração local de emuladores de teste:
 
 - `firebase/firestore.rules` com deny-all;
 - `firebase/storage.rules` com deny-all;
 - `firebase/firestore.indexes.json` vazio;
 - `firebase/seed/`.
+- `firebase.json` com emuladores de Auth, Firestore, Storage e UI.
 
-Ainda nao existem `.firebaserc`, `firebase.json`, emuladores ou projeto
-selecionado.
+Ainda não existe `.firebaserc` e nenhum projeto Firebase foi selecionado.
 
 ## Componentes Planejados
 
@@ -19,7 +20,7 @@ selecionado.
 - Cloud Firestore como banco principal.
 - Firebase Security Rules versionadas e testadas.
 - Firebase Emulator Suite para testes locais.
-- Firebase Storage somente se a decisao do MVP confirmar necessidade.
+- Firebase Storage somente se a decisão do MVP confirmar necessidade.
 
 ## Configuracao por CLI
 
@@ -30,9 +31,10 @@ firebase login
 firebase use --add
 firebase init
 firebase emulators:start
+pnpm firebase:emulators
 ```
 
-Arquivos esperados apos configuracao:
+Arquivos esperados após configuração:
 
 - `.firebaserc`
 - `firebase.json`
@@ -62,7 +64,7 @@ firebase emulators:exec "pnpm test:rules && pnpm test:integration"
 
 - `products`
 - `productVariants`
-- `categories`
+- `catégories`
 - `orders`
 - `customerProfiles`
 - `userRoles` ou custom claims
@@ -74,7 +76,7 @@ Pedidos devem ser criados por backend validado e guardar snapshots de itens.
 
 ## Storage Condicional
 
-Storage nao e obrigatorio por padrao. A decisao documentada em
+Storage não é obrigatório por padrão. A decisão documentada em
 `docs/decisions/0004-firebase-storage-decision.md` deve ser confirmada antes de
 qualquer rule ou upload.
 
@@ -87,7 +89,7 @@ Se Storage for usado:
 - escrita bloqueada para public/customer;
 - testes de rules para permitido e bloqueado.
 
-Se Storage nao for usado:
+Se Storage não for usado:
 
 - rules deny-all para leitura e escrita;
 - alternativa temporaria ou fase futura documentada;
@@ -96,16 +98,16 @@ Se Storage nao for usado:
 ## Primeiro Admin
 
 Preferencia: custom claim aplicada por procedimento seguro com Firebase Admin
-SDK em ambiente controlado. Nao deve existir endpoint publico permanente para
+SDK em ambiente controlado. Não deve existir endpoint público permanente para
 promover admin.
 
 ## Indices Iniciais Provaveis
 
-- `products`: `status + categoryId + availability`
+- `products`: `status + catégoryId + availability`
 - `products`: `status + featured + sortOrder`
 - `products`: `status + basePrice`
 - `productVariants`: `productId + status`
-- `orders`: `customerId + createdAt`
-- `orders`: `orderStatus + createdAt`
+- `orders`: `customerId + creatédAt`
+- `orders`: `orderStatus + creatédAt`
 - `coupons`: `code + status`
-- `reviews`: `productId + status + createdAt`
+- `reviews`: `productId + status + creatédAt`

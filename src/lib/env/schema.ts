@@ -21,7 +21,10 @@ export function readRequiredEnv(input: EnvironmentInput, key: string): string {
   return value;
 }
 
-export function readOptionalEnv(input: EnvironmentInput, key: string): string | undefined {
+export function readOptionalEnv(
+  input: EnvironmentInput,
+  key: string
+): string | undefined {
   const value = input[key]?.trim();
   return value ? value : undefined;
 }

@@ -73,16 +73,16 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Purpose**: configurar ferramentas de TDD antes das features.
 
-- [ ] T032 Configurar Vitest em `vitest.config.ts` e scripts `test`, `test:unit`, `test:integration` em `package.json` (Type: config; Dependencies: T031; Skills: lambdatest-agent-skills; Done: Vitest executa teste vazio/smoke)
-- [ ] T033 Configurar Testing Library e setup de DOM em `src/test/setup.ts` (Type: config; Dependencies: T032; Skills: lambdatest-agent-skills; Done: render de componente smoke funciona)
-- [ ] T034 Configurar Playwright em `playwright.config.ts` e script `test:e2e` em `package.json` (Type: config; Dependencies: T031; Skills: lambdatest-agent-skills; Done: Playwright instalado e configurado)
-- [ ] T035 Configurar axe-core ou equivalente para acessibilidade em `tests/accessibility/a11y-smoke.spec.ts` e script `test:a11y` (Type: config; Dependencies: T034; Skills: lambdatest-agent-skills, design-taste-frontend; Done: smoke a11y planejado executa)
-- [ ] T036 Configurar Firebase Emulator Suite para testes em `firebase.json` e scripts `firebase:emulators`, `test:rules` (Type: config; Dependencies: T023, T032; Skills: development; Done: emuladores configurados)
-- [ ] T037 Criar helpers de teste em `src/test/factories`, `src/test/fixtures` e `src/test/utils` para produtos, variantes, pedidos, cupons, reviews e usuários (Type: implementation; Dependencies: T032; Skills: lambdatest-agent-skills; Done: factories importáveis em testes)
-- [ ] T038 [P] Criar teste smoke unitário em `tests/unit/smoke.test.ts` que falha primeiro por falta de implementação de helper mínimo (Type: test; Dependencies: T032; Skills: lambdatest-agent-skills; Done: estado Red registrado)
-- [ ] T039 Implementar helper mínimo em `src/test/utils/smoke.ts` para passar `tests/unit/smoke.test.ts` (Type: implementation; Dependencies: T038; Skills: development; Done: smoke unitário Green)
-- [ ] T040 Configurar cobertura em `vitest.config.ts` e script `test:coverage` em `package.json` (Type: config; Dependencies: T032; Skills: lambdatest-agent-skills; Done: coverage gera relatório)
-- [ ] T041 Criar workflow CI básico/smoke em `.github/workflows/ci.yml` com install limpo e comandos disponíveis de lint/typecheck/test smoke, e atualizar `docs/testing.md` e `README.md` com testes, coverage, E2E, a11y, emuladores e CI básico (Type: ci; Dependencies: T032-T040; Skills: documentation, agentic-actions-auditor, lambdatest-agent-skills; Done: CI básico prepara expansão da Fase 14 e documentação de testes atualizada)
+- [X] T032 Configurar Vitest em `vitest.config.ts` e scripts `test`, `test:unit`, `test:integration` em `package.json` (Type: config; Dependencies: T031; Skills: lambdatest-agent-skills; Done: Vitest executa teste vazio/smoke)
+- [X] T033 Configurar Testing Library e setup de DOM em `src/test/setup.ts` (Type: config; Dependencies: T032; Skills: lambdatest-agent-skills; Done: render de componente smoke funciona)
+- [X] T034 Configurar Playwright em `playwright.config.ts` e script `test:e2e` em `package.json` (Type: config; Dependencies: T031; Skills: lambdatest-agent-skills; Done: Playwright instalado e configurado)
+- [X] T035 Configurar axe-core ou equivalente para acessibilidade em `tests/accessibility/a11y-smoke.spec.ts` e script `test:a11y` (Type: config; Dependencies: T034; Skills: lambdatest-agent-skills, design-taste-frontend; Done: smoke a11y planejado executa)
+- [X] T036 Configurar Firebase Emulator Suite para testes em `firebase.json` e scripts `firebase:emulators`, `test:rules` (Type: config; Dependencies: T023, T032; Skills: development; Done: emuladores configurados)
+- [X] T037 Criar helpers de teste em `src/test/factories`, `src/test/fixtures` e `src/test/utils` para produtos, variantes, pedidos, cupons, reviews e usuários (Type: implementation; Dependencies: T032; Skills: lambdatest-agent-skills; Done: factories importáveis em testes)
+- [X] T038 [P] Criar teste smoke unitário em `tests/unit/smoke.test.ts` que falha primeiro por falta de implementação de helper mínimo (Type: test; Dependencies: T032; Skills: lambdatest-agent-skills; Done: estado Red registrado)
+- [X] T039 Implementar helper mínimo em `src/test/utils/smoke.ts` para passar `tests/unit/smoke.test.ts` (Type: implementation; Dependencies: T038; Skills: development; Done: smoke unitário Green)
+- [X] T040 Configurar cobertura em `vitest.config.ts` e script `test:coverage` em `package.json` (Type: config; Dependencies: T032; Skills: lambdatest-agent-skills; Done: coverage gera relatório)
+- [X] T041 Criar workflow CI básico/smoke em `.github/workflows/ci.yml` com install limpo e comandos disponíveis de lint/typecheck/test smoke, e atualizar `docs/testing.md` e `README.md` com testes, coverage, E2E, a11y, emuladores e CI básico (Type: ci; Dependencies: T032-T040; Skills: documentation, agentic-actions-auditor, lambdatest-agent-skills; Done: CI básico prepara expansão da Fase 14 e documentação de testes atualizada)
 
 ---
 
