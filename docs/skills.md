@@ -102,7 +102,7 @@ Diretorios instalados em `.agents/skills/`:
 - `vercel-deployment`
 - `verification-before-completion`
 
-## Checkpoint T017
+## Checkpoint T017 (Fase 0)
 
 - `docs/skills.md`: criado.
 - `README.md`: criado.
@@ -113,6 +113,20 @@ Diretorios instalados em `.agents/skills/`:
 - `docs/firebase.md`: criado.
 - `docs/deployment.md`: criado.
 - `docs/decisions/`: criado com ADRs obrigatorias.
-- Bootstrap de app: nao iniciado.
-- Firebase: nao configurado.
-- `package.json`: nao criado.
+- Bootstrap de app naquele momento: nao iniciado.
+- Firebase naquele momento: nao configurado.
+- `package.json` naquele momento: nao criado.
+
+## Uso Registrado: Fase 1 Bootstrap
+
+| Skill | Evidencia de uso | Impacto |
+| --- | --- | --- |
+| `speckit-implement` | Execucao limitada a T018-T031. | Manteve escopo da Fase 1 sem features de negocio. |
+| `development` | Bootstrap Next.js, pnpm, estrutura de pastas e scripts. | Base tecnica inicial criada. |
+| `nextjs-app-router-patterns` | App Router em `src/app/layout.tsx` e `src/app/page.tsx`. | Estrutura compativel com a stack definida. |
+| `test-driven-development` | Teste Red de env antes de implementar `src/lib/env/*`. | Fluxo Red -> Green aplicado na seguranca de env. |
+| `varlock` | `.env.example` sem valores reais e separacao public/server env. | Reduz risco de secrets no frontend. |
+| `lambdatest-agent-skills` | Teste unitario de env com Vitest. | Verificacao automatizada inicial antes da Fase 2. |
+| `documentation` | README, setup, deploy, Firebase, testing e skills atualizados. | Documentacao acompanha o bootstrap. |
+| `agentic-actions-auditor` | Decisao de nao criar `vercel.json` sem necessidade real. | Evita configuracao de deploy/CI prematura. |
+| `verification-before-completion` | Lint, typecheck, teste de env e `git diff --check`. | Evidencia antes de declarar a fase pronta. |

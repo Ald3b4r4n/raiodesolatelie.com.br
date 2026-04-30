@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Placeholder seguro da Fase 1. Firebase CLI, emuladores e rules reais
+    // serao configurados na Fase 3 com testes Red de Security Rules.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

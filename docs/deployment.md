@@ -7,13 +7,17 @@ variaveis e Firebase estarem configurados.
 
 ## Estado Atual
 
-- Nenhum app foi criado.
+- App Next.js inicial foi criado.
 - Nenhum projeto Vercel foi linkado.
 - Nenhum deploy foi executado.
+- Nenhum `vercel.json` foi criado na Fase 1 porque o baseline padrao da Vercel
+  para Next.js e suficiente neste momento. Criar `vercel.json` apenas quando
+  houver configuracao real de rotas, headers, cron, regions ou build custom.
 
 ## Fluxo Planejado
 
 ```bash
+pnpm install
 pnpm build
 vercel pull
 vercel build

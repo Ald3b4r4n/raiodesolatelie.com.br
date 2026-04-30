@@ -1,13 +1,13 @@
 # Setup Local
 
-Este documento descreve o setup planejado para o MVP `001-mvp-ecommerce`.
-Nesta Fase 0 o app ainda nao foi criado; os comandos de desenvolvimento serao
-ativados nas fases de bootstrap e infraestrutura de testes.
+Este documento descreve o setup local do MVP `001-mvp-ecommerce`.
+Na Fase 1 o bootstrap tecnico foi criado, mas ainda nao ha funcionalidades de
+catalogo, carrinho, checkout, login ou admin.
 
-## Pre-requisitos Planejados
+## Pre-requisitos
 
-- Node.js LTS.
-- pnpm.
+- Node.js `v22.17.0` validado localmente.
+- pnpm `10.30.3`.
 - Firebase CLI instalado e autenticado.
 - Conta/projeto Firebase definido.
 - Vercel CLI opcional.
@@ -15,13 +15,13 @@ ativados nas fases de bootstrap e infraestrutura de testes.
 
 ## Estado Atual
 
-- Nao existe `package.json`.
-- Next.js ainda nao foi inicializado.
-- Firebase ainda nao foi inicializado.
-- A documentacao base e as skills obrigatorias foram preparadas antes do
-  bootstrap, conforme a constitution v1.0.0.
+- `package.json` e `pnpm-lock.yaml` existem.
+- Next.js App Router foi inicializado com TypeScript strict.
+- Firebase ainda nao foi configurado por CLI.
+- Existem apenas placeholders seguros em `firebase/` para manter deny-all ate a
+  fase propria de Firebase.
 
-## Fluxo Planejado Apos Bootstrap
+## Fluxo Local
 
 ```bash
 pnpm install
@@ -34,20 +34,22 @@ Checks planejados:
 ```bash
 pnpm lint
 pnpm typecheck
-pnpm test
-pnpm test:unit
-pnpm test:integration
-pnpm test:rules
-pnpm test:e2e
-pnpm test:a11y
+pnpm format:check
 pnpm build
+```
+
+Teste unitario de schema de ambiente, ate a Fase 2 criar scripts de teste
+consolidados:
+
+```bash
+pnpm exec vitest run tests/unit/security/env.test.ts
 ```
 
 ## Variaveis de Ambiente
 
-A fase de bootstrap deve criar `.env.example` sem valores reais. Variaveis
-publicas podem usar `NEXT_PUBLIC_` quando forem realmente necessarias no
-cliente. Secrets server-side nao podem ser expostas no frontend.
+`.env.example` foi criado sem valores reais. Variaveis publicas podem usar
+`NEXT_PUBLIC_` quando forem realmente necessarias no cliente. Secrets
+server-side nao podem ser expostas no frontend.
 
 Variaveis planejadas:
 
@@ -69,6 +71,9 @@ Variaveis planejadas:
 
 Firebase deve ser configurado por CLI e arquivos versionaveis. Qualquer etapa
 que exija Console Web precisa ser documentada com motivo, passo a passo e risco.
+
+Na Fase 1 nao foi executado `firebase init`, nao foi criado `firebase.json` e
+nao foram configurados emuladores.
 
 Fluxo planejado:
 

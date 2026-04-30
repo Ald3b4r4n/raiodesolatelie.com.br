@@ -9,10 +9,11 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 0 concluida como documentacao base e skills obrigatorias.
-- App Next.js ainda nao foi inicializado.
+- Etapa atual: Fase 1 concluida como bootstrap tecnico do app.
+- App Next.js inicializado com App Router, TypeScript strict e pnpm.
 - Firebase ainda nao foi configurado.
-- `package.json` ainda nao existe nesta fase.
+- Existem placeholders seguros de rules/indexes, mas sem Firebase CLI,
+  emuladores, `.firebaserc` ou `firebase.json`.
 
 ## Stack Planejada
 
@@ -58,30 +59,31 @@ visualiza pedidos.
 
 ## Requisitos de Ambiente
 
-Planejados para a fase de bootstrap:
-
-- Node.js LTS.
-- pnpm.
+- Node.js `v22.17.0` validado localmente.
+- pnpm `10.30.3` definido em `packageManager`.
 - Firebase CLI instalado e autenticado.
 - Vercel CLI opcional para deploy local/prebuilt.
 - Git.
 
-## Comandos Planejados
+## Comandos Disponiveis
 
-Estes comandos serao habilitados apos a criacao do app e do `package.json`:
+Comandos reais habilitados pela Fase 1:
 
 ```bash
 pnpm install
 pnpm dev
 pnpm lint
 pnpm typecheck
-pnpm test
-pnpm test:unit
-pnpm test:integration
-pnpm test:rules
-pnpm test:e2e
-pnpm test:a11y
+pnpm format
+pnpm format:check
 pnpm build
+```
+
+Teste unitario de env executado diretamente ate a Fase 2 consolidar scripts de
+teste:
+
+```bash
+pnpm exec vitest run tests/unit/security/env.test.ts
 ```
 
 Comandos Firebase planejados:
@@ -145,3 +147,5 @@ SHIPPING_PROVIDER=mock
 - Processo do primeiro admin sera criado em fase posterior, sem endpoint publico
   permanente.
 - Firebase Storage permanece condicional ate a decisao da fase de Firebase.
+- CI, Testing Library, Playwright, axe-core e emuladores serao configurados nas
+  proximas fases.

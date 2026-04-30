@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Placeholder seguro da Fase 1. Storage permanece condicional e deve ficar
+    // deny-all ate a decisao T047/T052.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

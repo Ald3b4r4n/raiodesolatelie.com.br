@@ -2,8 +2,16 @@
 
 ## Estado Atual
 
-Firebase ainda nao foi configurado nesta Fase 0. Este documento registra o
-plano reproduzivel para as proximas fases.
+Firebase ainda nao foi configurado por CLI. Na Fase 1 foram criados apenas
+placeholders seguros:
+
+- `firebase/firestore.rules` com deny-all;
+- `firebase/storage.rules` com deny-all;
+- `firebase/firestore.indexes.json` vazio;
+- `firebase/seed/`.
+
+Ainda nao existem `.firebaserc`, `firebase.json`, emuladores ou projeto
+selecionado.
 
 ## Componentes Planejados
 

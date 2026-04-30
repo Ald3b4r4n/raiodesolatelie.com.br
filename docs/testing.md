@@ -30,22 +30,32 @@ Todo desenvolvimento deve seguir TDD:
   filtros.
 - Acessibilidade: fluxos principais com teclado, foco, labels e contraste.
 
-## Comandos Planejados
+## Comandos Disponiveis na Fase 1
 
 ```bash
 pnpm lint
 pnpm typecheck
-pnpm test
-pnpm test:unit
-pnpm test:integration
-pnpm test:rules
-pnpm test:e2e
-pnpm test:a11y
-pnpm test:coverage
+pnpm format:check
 pnpm build
 ```
 
-Esses comandos ainda nao existem na Fase 0 porque o app nao foi inicializado.
+Teste unitario de env usado na Fase 1:
+
+```bash
+pnpm exec vitest run tests/unit/security/env.test.ts
+```
+
+Scripts `test`, `test:unit`, `test:integration`, `test:rules`, `test:e2e`,
+`test:a11y` e coverage serao consolidados na Fase 2.
+
+## Registro de Validacao da Fase 1
+
+- Red: `pnpm exec vitest run tests/unit/security/env.test.ts` falhou antes de
+  existir `src/lib/env/public.ts` e `src/lib/env/server.ts`.
+- Green: o mesmo comando passou com 1 arquivo e 4 testes.
+- `pnpm lint`: passou.
+- `pnpm typecheck`: passou.
+- `pnpm build`: passou com Next.js 16.2.4.
 
 ## CI
 

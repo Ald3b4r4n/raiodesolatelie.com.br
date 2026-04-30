@@ -52,20 +52,20 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Purpose**: criar base Next.js App Router + TypeScript strict + pnpm sem features de negócio.
 
-- [ ] T018 Inicializar projeto Next.js App Router com TypeScript em `package.json`, `src/app/layout.tsx`, `src/app/page.tsx` e `tsconfig.json` (Type: config; Dependencies: T017; Skills: development, context7-auto-research; Done: app inicial sobe localmente)
-- [ ] T019 Configurar pnpm e lockfile em `package.json` e `pnpm-lock.yaml` (Type: config; Dependencies: T018; Skills: development; Done: instalação reprodutível por `pnpm install`)
-- [ ] T020 Configurar TypeScript strict e aliases `@/*` em `tsconfig.json` (Type: config; Dependencies: T018; Skills: development; Done: `strict` habilitado e aliases resolvem)
-- [ ] T021 [P] Criar estrutura de pastas `src/app`, `src/components`, `src/features`, `src/domain`, `src/services`, `src/lib`, `src/validators`, `src/test` (Type: config; Dependencies: T018; Skills: development; Done: estrutura criada conforme plan.md)
-- [ ] T022 [P] Criar estrutura de testes `tests/unit`, `tests/integration`, `tests/e2e`, `tests/accessibility` (Type: config; Dependencies: T018; Skills: lambdatest-agent-skills; Done: diretórios de testes criados)
-- [ ] T023 [P] Criar estrutura Firebase `firebase/firestore.rules`, `firebase/firestore.indexes.json`, `firebase/storage.rules`, `firebase/seed` com placeholders seguros (Type: config; Dependencies: T018; Skills: development; Done: arquivos Firebase versionáveis existem)
-- [ ] T024 Configurar ESLint do Next.js em `eslint.config.*` ou `.eslintrc.*` e script `pnpm lint` em `package.json` (Type: config; Dependencies: T018; Skills: development; Done: `pnpm lint` executa)
-- [ ] T025 Configurar formatter Prettier ou Biome em arquivo dedicado e scripts em `package.json` (Type: config; Dependencies: T018; Skills: development; Done: comando de format documentado)
-- [ ] T026 Criar `.env.example` com variáveis públicas Firebase, secrets server-side, WhatsApp, redes sociais, `PAYMENT_PROVIDER=mock` e `SHIPPING_PROVIDER=mock` (Type: security; Dependencies: T018; Skills: varlock, documentation; Done: exemplo não contém secret real)
-- [ ] T027 Criar testes Red de env schema e bloqueio de secrets públicas em `tests/unit/security/env.test.ts` (Type: test; Dependencies: T020, T026; Skills: varlock, lambdatest-agent-skills; Done: teste falha antes do schema existir)
-- [ ] T028 Implementar `src/lib/env/schema.ts`, `src/lib/env/server.ts` e `src/lib/env/public.ts` para validar env vars públicas/privadas sem expor secrets (Type: security; Dependencies: T027; Skills: varlock, development; Done: testes de env ficam Green)
-- [ ] T029 Configurar baseline Vercel em `vercel.json` somente se necessário e documentar ausência se não for necessário (Type: config; Dependencies: T018; Skills: agentic-actions-auditor; Done: baseline de deploy claro)
-- [ ] T030 Atualizar `README.md`, `docs/setup.md` e `docs/deployment.md` com comandos reais do bootstrap (Type: docs; Dependencies: T018-T029; Skills: documentation; Done: docs refletem comandos criados)
-- [ ] T031 Rodar `pnpm install`, `pnpm lint` e `pnpm typecheck` quando scripts existirem e registrar resultado em `docs/testing.md` (Type: validation; Dependencies: T018-T030; Skills: verification-before-completion; Done: resultado documentado ou bloqueio explícito)
+- [X] T018 Inicializar projeto Next.js App Router com TypeScript em `package.json`, `src/app/layout.tsx`, `src/app/page.tsx` e `tsconfig.json` (Type: config; Dependencies: T017; Skills: development, context7-auto-research; Done: app inicial sobe localmente)
+- [X] T019 Configurar pnpm e lockfile em `package.json` e `pnpm-lock.yaml` (Type: config; Dependencies: T018; Skills: development; Done: instalação reprodutível por `pnpm install`)
+- [X] T020 Configurar TypeScript strict e aliases `@/*` em `tsconfig.json` (Type: config; Dependencies: T018; Skills: development; Done: `strict` habilitado e aliases resolvem)
+- [X] T021 [P] Criar estrutura de pastas `src/app`, `src/components`, `src/features`, `src/domain`, `src/services`, `src/lib`, `src/validators`, `src/test` (Type: config; Dependencies: T018; Skills: development; Done: estrutura criada conforme plan.md)
+- [X] T022 [P] Criar estrutura de testes `tests/unit`, `tests/integration`, `tests/e2e`, `tests/accessibility` (Type: config; Dependencies: T018; Skills: lambdatest-agent-skills; Done: diretórios de testes criados)
+- [X] T023 [P] Criar estrutura Firebase `firebase/firestore.rules`, `firebase/firestore.indexes.json`, `firebase/storage.rules`, `firebase/seed` com placeholders seguros (Type: config; Dependencies: T018; Skills: development; Done: arquivos Firebase versionáveis existem)
+- [X] T024 Configurar ESLint do Next.js em `eslint.config.*` ou `.eslintrc.*` e script `pnpm lint` em `package.json` (Type: config; Dependencies: T018; Skills: development; Done: `pnpm lint` executa)
+- [X] T025 Configurar formatter Prettier ou Biome em arquivo dedicado e scripts em `package.json` (Type: config; Dependencies: T018; Skills: development; Done: comando de format documentado)
+- [X] T026 Criar `.env.example` com variáveis públicas Firebase, secrets server-side, WhatsApp, redes sociais, `PAYMENT_PROVIDER=mock` e `SHIPPING_PROVIDER=mock` (Type: security; Dependencies: T018; Skills: varlock, documentation; Done: exemplo não contém secret real)
+- [X] T027 Criar testes Red de env schema e bloqueio de secrets públicas em `tests/unit/security/env.test.ts` (Type: test; Dependencies: T020, T026; Skills: varlock, lambdatest-agent-skills; Done: teste falha antes do schema existir)
+- [X] T028 Implementar `src/lib/env/schema.ts`, `src/lib/env/server.ts` e `src/lib/env/public.ts` para validar env vars públicas/privadas sem expor secrets (Type: security; Dependencies: T027; Skills: varlock, development; Done: testes de env ficam Green)
+- [X] T029 Configurar baseline Vercel em `vercel.json` somente se necessário e documentar ausência se não for necessário (Type: config; Dependencies: T018; Skills: agentic-actions-auditor; Done: baseline de deploy claro)
+- [X] T030 Atualizar `README.md`, `docs/setup.md` e `docs/deployment.md` com comandos reais do bootstrap (Type: docs; Dependencies: T018-T029; Skills: documentation; Done: docs refletem comandos criados)
+- [X] T031 Rodar `pnpm install`, `pnpm lint` e `pnpm typecheck` quando scripts existirem e registrar resultado em `docs/testing.md` (Type: validation; Dependencies: T018-T030; Skills: verification-before-completion; Done: resultado documentado ou bloqueio explícito)
 
 ---
 
