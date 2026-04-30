@@ -32,7 +32,7 @@ multi-vendedor.
 **Firebase Tooling**: Firebase CLI, Firebase Emulator Suite, Firestore rules, Storage rules e indexes versionados.
 **Testing**: Vitest para unit/integration, Testing Library para componentes, Playwright para E2E, axe-core ou equivalente para acessibilidade, Firebase Emulator Suite e `@firebase/rules-unit-testing` para regras.
 **Lint/Format**: ESLint com configuração do Next.js e Prettier ou Biome definido no bootstrap. Escolha final deve priorizar baixa configuração e CI simples.
-**CI**: GitHub Actions planejado com install limpo, lint, typecheck, testes unitários, integração, regras Firebase, build, auditoria e E2E quando aplicável.
+**CI**: GitHub Actions planejado em duas etapas: CI básico/smoke na Fase 2 para validar bootstrap, scripts mínimos e execução inicial; CI completo consolidado na fase final de qualidade/deploy, com install limpo, lint, typecheck, testes unitários, integração, regras Firebase, build, auditoria e E2E quando aplicável.
 **Target Platform**: Web mobile-first, com desktop responsivo.
 **Performance Goals**: páginas públicas rápidas em rede móvel, imagens otimizadas, metadados, Open Graph, sitemap, robots.txt e Core Web Vitals acompanhados por Lighthouse.
 **Constraints**: segurança backend/frontend, privacidade, minimização de dados, acessibilidade, UX simples, checkout curto e WhatsApp acessível.
@@ -56,7 +56,7 @@ multi-vendedor.
 - **UX simples**: PASS. Fases priorizam fluxos curtos, linguagem simples e painel admin pragmático.
 - **Arquitetura modular**: PASS. Estrutura separa UI, features, domínio, validações, Firebase, serviços externos, segurança e testes.
 - **Firebase via CLI**: PASS COMO GATE. Configuração CLI, emuladores, rules e indexes são entregáveis antes de recursos dependentes.
-- **CI**: PASS COMO GATE. Pipeline é planejado na Fase 2; só será executável após bootstrap do projeto.
+- **CI**: PASS COMO GATE. A Fase 2 cria CI básico/smoke para validar bootstrap e scripts mínimos após o projeto existir; o CI completo com todos os gates obrigatórios é consolidado antes da conclusão da feature, na fase final de qualidade/deploy.
 - **Performance/SEO**: PASS. Metadados, Open Graph, sitemap, robots.txt, imagens otimizadas e Lighthouse entram em fases específicas.
 - **Acessibilidade**: PASS. HTML semântico, labels, foco, contraste, teclado, alt text e axe/Playwright são planejados.
 - **MVP**: PASS. Fases preservam home, catálogo, produto, carrinho, checkout, WhatsApp, admin, pedidos, cupons e avaliações sem expandir para marketplace.
@@ -209,12 +209,13 @@ versionados; `tests/` separa unit, integration, rules, E2E e acessibilidade.
 - Criar README inicial e docs de setup.
 - Nenhuma feature funcional deve ser entregue sem testes planejados.
 
-### Fase 2: Qualidade, Testes e CI
+### Fase 2: Qualidade, Testes e CI Básico/Smoke
 
 - Configurar lint, format, typecheck e scripts.
 - Configurar Vitest, Testing Library, Playwright e axe-core.
 - Configurar utilitários de teste, factories e fixtures.
-- Criar CI com install limpo, lint, typecheck, unit, integration, rules, build, audit e E2E quando aplicável.
+- Criar CI básico/smoke com install limpo e comandos disponíveis de lint, typecheck e teste smoke para validar bootstrap inicial e scripts mínimos.
+- Registrar que o CI completo será expandido na fase final de qualidade/deploy, quando as suítes unit, integration, rules, E2E, build e audit existirem.
 - Registrar comandos em README.md e `docs/testing.md`.
 
 ### Fase 3: Firebase CLI, Emuladores, Auth, Firestore, Rules e Indexes
@@ -290,8 +291,10 @@ versionados; `tests/` separa unit, integration, rules, E2E e acessibilidade.
 - Atualizar README.md, setup, Firebase, testing, security, architecture, deployment e ADRs.
 - Registrar ameaças, mitigação e dados pessoais mínimos.
 
-### Fase 12: Preparação para Deploy Vercel
+### Fase 12: Preparação para Deploy Vercel e CI Completo
 
+- Alinhamento com `tasks.md`: esta consolidação corresponde à Phase 14 - Qualidade Final, CI e Deploy.
+- Consolidar CI completo com install limpo, lint, typecheck, unit tests, integration tests, Firebase rules tests, E2E quando aplicável, build e auditoria de dependências.
 - Documentar variáveis de ambiente e ambientes preview/production.
 - Configurar deploy preview.
 - Validar build.
@@ -442,7 +445,10 @@ firebase emulators:exec "pnpm test:integration && pnpm test:rules"
 firebase deploy --only firestore:rules,firestore:indexes,storage
 ```
 
-CI deve executar pelo menos:
+O CI completo deve ser obrigatório antes da conclusão da feature. A Fase 2
+mantém apenas CI básico/smoke para validar bootstrap inicial e scripts mínimos;
+a fase final de qualidade/deploy expande esse workflow para executar pelo
+menos:
 
 1. install limpo;
 2. lint;
@@ -468,7 +474,7 @@ CI deve executar pelo menos:
 | Cliente não quer guardar dados | Conflito com login/pedidos | Coletar mínimo necessário e documentar finalidade/retenção |
 | Escopo virar marketplace | Aumento grande de complexidade | Bloquear multi-vendedor no plano e tasks, exigir aprovação explícita |
 | Firebase rules permissivas | Vazamento/alteração indevida | Escrever rules tests antes dos recursos dependentes |
-| CI tardia | Regressão acumulada | Criar CI na Fase 2 antes das features principais |
+| CI tardia | Regressão acumulada | Criar CI básico/smoke na Fase 2 e expandir para CI completo antes da conclusão da feature |
 
 ## Complexity Tracking
 

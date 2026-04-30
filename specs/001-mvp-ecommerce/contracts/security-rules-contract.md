@@ -25,7 +25,32 @@
 | Reviews approved | Read | Read | Read/write | Read/write |
 | Reviews pending/rejected | No access | Read own if applicable | Read/write | Read/write |
 | Payment sessions | No access | Read own safe status | Read status | Read/write |
-| Storage product images | Read public product images | Read public product images | Upload/manage | Manage |
+| Storage product images | Conditional: read public product images only if Storage is enabled for MVP | Conditional: read public product images only if Storage is enabled for MVP | Conditional: upload/manage only if Storage is enabled for MVP | Conditional: manage only if Storage is enabled for MVP |
+
+## Conditional Storage Contract
+
+Firebase Storage MUST NOT be treated as automatically enabled. The implementation
+must follow the explicit MVP decision recorded before Storage rules work starts.
+
+If Firebase Storage is enabled for product images in the MVP:
+
+- Product image reads may be public only for approved product image paths.
+- Upload/write/delete must require authenticated and authorized admin access.
+- Rules must validate allowed path patterns.
+- Rules must validate accepted image content types.
+- Rules must validate maximum file size.
+- Customer and public writes must be denied.
+- Rule tests must cover allowed admin upload and blocked public/customer upload.
+- Rule tests must cover invalid path, content-type and size rejection.
+
+If Firebase Storage is not enabled for product images in the MVP:
+
+- Storage rules must use deny-all for reads and writes.
+- Product images must use a documented temporary alternative or be deferred to a
+  future phase.
+- Rule tests must confirm deny-all behavior for public, customer and admin
+  client SDK access.
+- Documentation must state why Storage is disabled and what will enable it later.
 
 ## Required Rule Tests
 
@@ -43,8 +68,9 @@
 - Público lê somente avaliações aprovadas.
 - Admin consegue aprovar/rejeitar avaliação.
 - Cupom não pode ser alterado por cliente.
-- Upload de imagem de produto exige admin.
-- Upload rejeita tipo/tamanho/path inválido quando aplicável.
+- Quando Storage estiver ativo, upload de imagem de produto exige admin.
+- Quando Storage estiver ativo, upload rejeita tipo/tamanho/path inválido.
+- Quando Storage não estiver ativo, Storage Rules aplicam deny-all e testes confirmam bloqueio total.
 
 ## Admin Bootstrap Contract
 

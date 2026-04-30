@@ -5,7 +5,7 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 # Tasks: MVP Inicial Raio de Sol Ateliê
 
 **Input**: Design documents from `/specs/001-mvp-ecommerce/`
-**Prerequisites**: [plan.md](./plan.md), [spec.md](./spec.md), [research.md](./research.md), [data-model.md](./data-model.md), [quickstart.md](./quickstart.md), [service-contracts.md](./service-contracts.md), [routes-and-actions.md](./routes-and-actions.md), [security-rules-contract.md](./security-rules-contract.md), [AGENTS.md](../../AGENTS.md)
+**Prerequisites**: [plan.md](./plan.md), [spec.md](./spec.md), [research.md](./research.md), [data-model.md](./data-model.md), [quickstart.md](./quickstart.md), [service-contracts.md](./contracts/service-contracts.md), [routes-and-actions.md](./contracts/routes-and-actions.md), [security-rules-contract.md](./contracts/security-rules-contract.md), [AGENTS.md](../../AGENTS.md)
 
 **Tests**: Obrigatórios pela constitution v1.0.0. Toda implementação funcional começa por teste em estado Red, depois Green, depois Refactor.
 
@@ -26,23 +26,23 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Purpose**: bloquear implementação até skills, documentação inicial e governança mínima existirem.
 
-- [ ] T001 Consultar o catálogo `https://github.com/sickn33/antigravity-awesome-skills` e registrar candidatos em `docs/skills.md` (Type: docs; Dependencies: none; Skills: context7-auto-research, skill-scanner; Done: catálogo consultado e candidatos listados)
-- [ ] T002 Avaliar segurança e escopo das skills candidatas em `docs/skills.md` (Type: security; Dependencies: T001; Skills: skill-scanner, logic-lens; Done: riscos e limitações documentados)
-- [ ] T003 Instalar as skills aprovadas no projeto conforme documentação do catálogo em `.agents/skills/` ou local definido pelo catálogo (Type: config; Dependencies: T002; Skills: development, documentation, design-taste-frontend; Done: skills instaladas e verificáveis localmente)
-- [ ] T004 Documentar em `docs/skills.md` nome, origem, motivo, ativação, data, limitações e tipos de feature de cada skill (Type: docs; Dependencies: T003; Skills: documentation; Done: matriz de skills completa)
-- [ ] T005 Definir em `docs/skills.md` quais skills serão usadas por catálogo, produto, carrinho, checkout, Firebase, admin, cupons, avaliações, CI e deploy (Type: docs; Dependencies: T004; Skills: documentation, verification-before-completion; Done: uso por tipo de feature documentado)
-- [ ] T006 Criar `README.md` inicial com visão geral, stack, status, comandos planejados, env vars planejadas, limitações e política de commit com autorização (Type: docs; Dependencies: T004; Skills: documentation; Done: README cobre seções mínimas da constitution)
-- [ ] T007 Criar `docs/setup.md` com pré-requisitos, Node/pnpm, Firebase CLI, Vercel CLI opcional e setup local planejado (Type: docs; Dependencies: T004; Skills: documentation, development; Done: setup local reproduzível documentado)
-- [ ] T008 Criar `docs/architecture.md` com estrutura planejada `src/app`, `components`, `features`, `domain`, `services`, `lib`, `validators`, `tests`, `firebase`, `docs` (Type: docs; Dependencies: T004; Skills: documentation, development; Done: responsabilidades por pasta documentadas)
-- [ ] T009 Criar `docs/security.md` inicial com ameaças, mitigação, roles, secrets, minimização de dados, rate limit e primeiro admin (Type: docs; Dependencies: T004; Skills: documentation, logic-lens, varlock; Done: segurança base documentada)
-- [ ] T010 Criar `docs/testing.md` com TDD Red -> Green -> Refactor, Vitest, Testing Library, Playwright, axe-core e Firebase rules tests planejados (Type: docs; Dependencies: T004; Skills: documentation, lambdatest-agent-skills; Done: estratégia de testes documentada)
-- [ ] T011 Criar `docs/firebase.md` com Firebase CLI, emuladores, Auth, Firestore, Storage condicional, rules, indexes e console steps permitidos (Type: docs; Dependencies: T004; Skills: documentation, context7-auto-research; Done: fluxo Firebase reproduzível documentado)
-- [ ] T012 Criar `docs/deployment.md` com Vercel preview/produção, variáveis, build, rollback e bloqueios por credenciais mockadas (Type: docs; Dependencies: T004; Skills: documentation, agentic-actions-auditor; Done: deploy planejado documentado)
-- [ ] T013 Criar ADR `docs/decisions/0001-stack-next-firebase-vercel.md` com contexto, decisão, alternativas e consequências da stack (Type: docs; Dependencies: T006-T012; Skills: documentation, context7-auto-research; Done: ADR da stack criado)
-- [ ] T014 Criar ADR `docs/decisions/0002-auth-roles-first-admin.md` com estratégia de Auth, roles, primeiro admin e alternativas (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: ADR de auth/roles criado)
-- [ ] T015 Criar ADR `docs/decisions/0003-payment-shipping-mocks.md` com mocks de pagamento/frete e limites sem credenciais (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: ADR de mocks criado)
-- [ ] T016 Criar ADR `docs/decisions/0004-firebase-storage-decision.md` decidindo uso de Storage no MVP ou rules deny-all até fase futura (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: decisão Storage documentada)
-- [ ] T017 Validar que `docs/skills.md`, `README.md`, `docs/setup.md`, `docs/architecture.md`, `docs/security.md`, `docs/testing.md`, `docs/firebase.md`, `docs/deployment.md` e `docs/decisions/` existem (Type: validation; Dependencies: T001-T012, T013-T016; Skills: verification-before-completion; Done: checklist inicial marcado em `docs/skills.md`)
+- [X] T001 Consultar o catálogo `https://github.com/sickn33/antigravity-awesome-skills` e registrar candidatos em `docs/skills.md` (Type: docs; Dependencies: none; Skills: context7-auto-research, skill-scanner; Done: catálogo consultado e candidatos listados)
+- [X] T002 Avaliar segurança e escopo das skills candidatas em `docs/skills.md` (Type: security; Dependencies: T001; Skills: skill-scanner, logic-lens; Done: riscos e limitações documentados)
+- [X] T003 Instalar as skills aprovadas no projeto conforme documentação do catálogo em `.agents/skills/` ou local definido pelo catálogo (Type: config; Dependencies: T002; Skills: development, documentation, design-taste-frontend; Done: skills instaladas e verificáveis localmente)
+- [X] T004 Documentar em `docs/skills.md` nome, origem, motivo, ativação, data, limitações e tipos de feature de cada skill (Type: docs; Dependencies: T003; Skills: documentation; Done: matriz de skills completa)
+- [X] T005 Definir em `docs/skills.md` quais skills serão usadas por catálogo, produto, carrinho, checkout, Firebase, admin, cupons, avaliações, CI e deploy (Type: docs; Dependencies: T004; Skills: documentation, verification-before-completion; Done: uso por tipo de feature documentado)
+- [X] T006 Criar `README.md` inicial com visão geral, stack, status, comandos planejados, env vars planejadas, limitações e política de commit com autorização (Type: docs; Dependencies: T004; Skills: documentation; Done: README cobre seções mínimas da constitution)
+- [X] T007 Criar `docs/setup.md` com pré-requisitos, Node/pnpm, Firebase CLI, Vercel CLI opcional e setup local planejado (Type: docs; Dependencies: T004; Skills: documentation, development; Done: setup local reproduzível documentado)
+- [X] T008 Criar `docs/architecture.md` com estrutura planejada `src/app`, `components`, `features`, `domain`, `services`, `lib`, `validators`, `tests`, `firebase`, `docs` (Type: docs; Dependencies: T004; Skills: documentation, development; Done: responsabilidades por pasta documentadas)
+- [X] T009 Criar `docs/security.md` inicial com ameaças, mitigação, roles, secrets, minimização de dados, rate limit e primeiro admin (Type: docs; Dependencies: T004; Skills: documentation, logic-lens, varlock; Done: segurança base documentada)
+- [X] T010 Criar `docs/testing.md` com TDD Red -> Green -> Refactor, Vitest, Testing Library, Playwright, axe-core e Firebase rules tests planejados (Type: docs; Dependencies: T004; Skills: documentation, lambdatest-agent-skills; Done: estratégia de testes documentada)
+- [X] T011 Criar `docs/firebase.md` com Firebase CLI, emuladores, Auth, Firestore, Storage condicional, rules, indexes e console steps permitidos (Type: docs; Dependencies: T004; Skills: documentation, context7-auto-research; Done: fluxo Firebase reproduzível documentado)
+- [X] T012 Criar `docs/deployment.md` com Vercel preview/produção, variáveis, build, rollback e bloqueios por credenciais mockadas (Type: docs; Dependencies: T004; Skills: documentation, agentic-actions-auditor; Done: deploy planejado documentado)
+- [X] T013 Criar ADR `docs/decisions/0001-stack-next-firebase-vercel.md` com contexto, decisão, alternativas e consequências da stack (Type: docs; Dependencies: T006-T012; Skills: documentation, context7-auto-research; Done: ADR da stack criado)
+- [X] T014 Criar ADR `docs/decisions/0002-auth-roles-first-admin.md` com estratégia de Auth, roles, primeiro admin e alternativas (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: ADR de auth/roles criado)
+- [X] T015 Criar ADR `docs/decisions/0003-payment-shipping-mocks.md` com mocks de pagamento/frete e limites sem credenciais (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: ADR de mocks criado)
+- [X] T016 Criar ADR `docs/decisions/0004-firebase-storage-decision.md` decidindo uso de Storage no MVP ou rules deny-all até fase futura (Type: docs; Dependencies: T006-T012; Skills: documentation, logic-lens; Done: decisão Storage documentada)
+- [X] T017 Validar que `docs/skills.md`, `README.md`, `docs/setup.md`, `docs/architecture.md`, `docs/security.md`, `docs/testing.md`, `docs/firebase.md`, `docs/deployment.md` e `docs/decisions/` existem (Type: validation; Dependencies: T001-T012, T013-T016; Skills: verification-before-completion; Done: checklist inicial marcado em `docs/skills.md`)
 
 **Checkpoint**: Nenhuma implementação de app começa antes de T017.
 
@@ -82,7 +82,7 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 - [ ] T038 [P] Criar teste smoke unitário em `tests/unit/smoke.test.ts` que falha primeiro por falta de implementação de helper mínimo (Type: test; Dependencies: T032; Skills: lambdatest-agent-skills; Done: estado Red registrado)
 - [ ] T039 Implementar helper mínimo em `src/test/utils/smoke.ts` para passar `tests/unit/smoke.test.ts` (Type: implementation; Dependencies: T038; Skills: development; Done: smoke unitário Green)
 - [ ] T040 Configurar cobertura em `vitest.config.ts` e script `test:coverage` em `package.json` (Type: config; Dependencies: T032; Skills: lambdatest-agent-skills; Done: coverage gera relatório)
-- [ ] T041 Atualizar `docs/testing.md` e `README.md` com comandos reais de testes, coverage, E2E, a11y e emuladores (Type: docs; Dependencies: T032-T040; Skills: documentation; Done: documentação de testes atualizada)
+- [ ] T041 Criar workflow CI básico/smoke em `.github/workflows/ci.yml` com install limpo e comandos disponíveis de lint/typecheck/test smoke, e atualizar `docs/testing.md` e `README.md` com testes, coverage, E2E, a11y, emuladores e CI básico (Type: ci; Dependencies: T032-T040; Skills: documentation, agentic-actions-auditor, lambdatest-agent-skills; Done: CI básico prepara expansão da Fase 14 e documentação de testes atualizada)
 
 ---
 
@@ -171,14 +171,14 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 **Independent Test**: em viewport mobile, a home mostra marca, CTA de catálogo, CTA WhatsApp, destaques e links sociais; metadados existem; acessibilidade básica passa.
 
 - [ ] T099 [P] [US1] Criar teste Red de renderização da home em `tests/unit/features/home/home.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: expectativa de marca/CTAs falha)
-- [ ] T100 [P] [US1] Criar teste Red de metadados base em `tests/unit/seo/home-metadata.test.ts` (Type: test; Dependencies: T041; Skills: lambdatest-agent-skills; Done: metadata ausente falha)
+- [ ] T100 [P] [US1] Criar teste Red de SEO base em `tests/unit/seo/home-metadata.test.ts` cobrindo metadata, Open Graph, robots e sitemap (Type: test; Dependencies: T041; Skills: lambdatest-agent-skills; Done: metadata/OG/robots/sitemap ausentes falham)
 - [ ] T101 [P] [US1] Criar teste Red de CTA WhatsApp/social links em `tests/unit/features/home/social-links.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills; Done: links configuráveis falham)
 - [ ] T102 [US1] Implementar config de marca/social em `src/lib/config/store.ts` e validação em `src/lib/env/schema.ts` (Type: implementation; Dependencies: T101; Skills: varlock, development; Done: links leem env/config sem quebrar se ausentes)
 - [ ] T103 [US1] Implementar home em `src/app/(store)/page.tsx` e componentes `src/features/home/` (Type: implementation; Dependencies: T099, T102; Skills: design-taste-frontend; Done: teste home Green)
-- [ ] T104 [US1] Implementar metadados base em `src/app/layout.tsx` e `src/lib/seo/metadata.ts` (Type: implementation; Dependencies: T100; Skills: development; Done: teste metadata Green)
+- [ ] T104 [US1] Implementar metadados base e Open Graph em `src/app/layout.tsx` e `src/lib/seo/metadata.ts` (Type: implementation; Dependencies: T100; Skills: development; Done: metadata e Open Graph cobertos pelo teste SEO base)
 - [ ] T105 [P] [US1] Criar teste E2E Red mobile para home em `tests/e2e/home.spec.ts` (Type: test; Dependencies: T103; Skills: lambdatest-agent-skills; Done: fluxo home mobile falha antes de ajustes finais)
 - [ ] T106 [US1] Ajustar home para passar E2E mobile e acessibilidade em `src/app/(store)/page.tsx` (Type: implementation; Dependencies: T105; Skills: design-taste-frontend; Done: E2E home Green)
-- [ ] T107 [US1] Criar/atualizar robots e sitemap base em `src/app/robots.ts`, `src/app/sitemap.ts` (Type: implementation; Dependencies: T104; Skills: development; Done: rotas SEO base existem)
+- [ ] T107 [US1] Criar/atualizar robots e sitemap base em `src/app/robots.ts`, `src/app/sitemap.ts` (Type: implementation; Dependencies: T100, T104; Skills: development; Done: rotas SEO base existem e teste SEO base Green)
 - [ ] T108 [US1] Atualizar `README.md`, `docs/architecture.md`, `docs/testing.md` e `docs/skills.md` com home/SEO base (Type: docs; Dependencies: T099-T107; Skills: documentation; Done: documentação do grupo atualizada)
 
 ---
@@ -330,7 +330,7 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 **Independent Test**: cliente aplica cupom válido/inválido e vê apenas avaliações aprovadas; admin modera avaliações.
 
 - [ ] T195 [P] [US6] Criar testes Red de CouponService em `tests/unit/services/coupon-service.test.ts` (Type: test; Dependencies: T076; Skills: lambdatest-agent-skills; Done: aplicação de cupom falha)
-- [ ] T196 [P] [US6] Criar teste Red de action `applyCoupon` em `tests/integration/actions/apply-coupon.test.ts` (Type: test; Dependencies: T195; Skills: lambdatest-agent-skills; Done: action cupom falha)
+- [ ] T196 [P] [US6] Criar teste Red de action `applyCoupon` e rate limit em `tests/integration/actions/apply-coupon.test.ts` (Type: test; Dependencies: T195, T059; Skills: lambdatest-agent-skills, logic-lens; Done: action cupom e abuso por tentativas excessivas falham)
 - [ ] T197 [P] [US6] Criar testes Red de ReviewService em `tests/unit/services/review-service.test.ts` (Type: test; Dependencies: T078; Skills: lambdatest-agent-skills; Done: review service falha)
 - [ ] T198 [P] [US6] Criar teste Red de action `submitReview` e moderação em `tests/integration/actions/reviews.test.ts` (Type: test; Dependencies: T197, T170; Skills: lambdatest-agent-skills, logic-lens; Done: actions reviews falham)
 - [ ] T199 [P] [US6] Criar teste Red de rate limit para `submitReview` em `tests/integration/actions/submit-review-rate-limit.test.ts` (Type: test; Dependencies: T059, T198; Skills: lambdatest-agent-skills, logic-lens; Done: abuso em submitReview falha sem bloqueio)
@@ -352,7 +352,7 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Purpose**: garantir que o MVP completo passa por checks, CI, auditoria e preview.
 
-- [ ] T211 Criar workflow GitHub Actions em `.github/workflows/ci.yml` com install limpo, lint, typecheck, unit, integration, rules, build e audit (Type: ci; Dependencies: T041, T060; Skills: agentic-actions-auditor; Done: workflow cobre gates mínimos)
+- [ ] T211 Expandir workflow GitHub Actions em `.github/workflows/ci.yml` com install limpo, lint, typecheck, unit, integration, rules, build e audit (Type: ci; Dependencies: T041, T060; Skills: agentic-actions-auditor; Done: workflow cobre gates mínimos completos)
 - [ ] T212 Criar jobs opcionais/condicionais de E2E e acessibilidade em `.github/workflows/ci.yml` (Type: ci; Dependencies: T211; Skills: agentic-actions-auditor, lambdatest-agent-skills; Done: E2E/a11y executáveis no CI)
 - [ ] T213 Auditar workflow de CI contra secrets e permissões mínimas em `.github/workflows/ci.yml` e `docs/security.md` (Type: security; Dependencies: T211, T212; Skills: agentic-actions-auditor, logic-lens; Done: permissões documentadas)
 - [ ] T214 Rodar `pnpm lint` e corrigir achados nos arquivos reportados (Type: validation; Dependencies: T210-T213; Skills: verification-before-completion; Done: lint passa)
@@ -425,7 +425,7 @@ T001 -> T017 -> T018 -> T030 -> T031 -> T032 -> T041 -> T042 -> T060 -> T061/T06
 
 - Phase 0 docs can parallelize after skills are selected: T006-T012.
 - Phase 1 structures can parallelize: T021-T023.
-- Phase 2 test tool setup can parallelize after T031: T033-T036.
+- Phase 2 test tool setup can parallelize after T031: T033-T036; CI smoke T041 waits for test scripts and coverage setup.
 - Phase 3 rules tests can parallelize: T043-T048.
 - Phase 4 entity tests can parallelize: T061, T062, T067, T069, T071, T073, T075, T077, T079, T081.
 - UI component test groups can parallelize: T085, T087, T089, T091, T093.
