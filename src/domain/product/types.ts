@@ -7,6 +7,7 @@ export type Product = {
   slug: string;
   name: string;
   description: string;
+  searchIndex?: string;
   basePrice: number;
   categoryId: string;
   status: ProductStatus;

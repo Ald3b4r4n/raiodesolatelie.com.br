@@ -132,6 +132,33 @@ Firestore e Storage com `firebase emulators:exec`.
 - E2E mobile do catálogo: `tests/e2e/catalog.spec.ts` cobre busca, categoria e
   disponibilidade com resposta percebida em até 2 segundos.
 
+## Registro de Validação da Fase 8
+
+- Red da fase: `pnpm exec vitest run tests/unit/domain/product/variant-selection.test.ts tests/unit/features/product/product-page.test.tsx tests/unit/seo/product-metadata.test.ts tests/integration/firebase/product-detail.test.ts`
+  falhou antes de existirem a seleção de variações, o serviço por slug, a UI da
+  página de produto e o SEO por item.
+- Green focado: o mesmo comando passou com 4 arquivos e 10 testes após a
+  implementação mínima da rota `/products/[slug]`, do serviço de detalhe, da
+  seleção local de variações e da metadata por produto.
+- E2E mobile da página de produto: `tests/e2e/product.spec.ts` cobre abertura do
+  detalhe, seleção válida e CTA estrutural do carrinho.
+- Acessibilidade da página de produto: `tests/accessibility/product.spec.ts`
+  cobre a tela pública com axe-core.
+
+## Registro de Validação da Revisão Visual do Storefront
+
+- Red focado da revisão: `pnpm test -- --run tests/unit/features/home/home.test.tsx tests/unit/features/home/social-links.test.tsx tests/unit/features/catalog/catalog-ui.test.tsx tests/e2e/home.spec.ts`
+  falhou antes da refatoração visual, da integração dos contatos reais e da
+  reorganização dos assets.
+- Green focado da revisão: os testes unitários de home, catálogo, produto,
+  serviço e integração passaram após a refatoração comercial da interface.
+- E2E da revisão: `tests/e2e/home.spec.ts`, `tests/e2e/catalog.spec.ts` e
+  `tests/e2e/product.spec.ts` passaram validando hero, vitrine, filtros e CTA
+  real de WhatsApp.
+- Checagem visual manual complementar: a home foi aberta em `http://127.0.0.1:3000`
+  com screenshot full page para confirmar presença visual de hero, vitrine,
+  categorias e bloco social.
+
 ## CI
 
 - Fase 2: CI básico/smoke para validar bootstrap, install limpo e scripts

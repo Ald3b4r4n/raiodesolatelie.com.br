@@ -9,7 +9,9 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 7 concluída com catálogo, busca e filtros mockados.
+- Etapa atual: revisão visual profunda do storefront concluída sobre as Fases 6,
+  7 e 8, com home, catálogo e produto reposicionados para linguagem comercial
+  de loja de moda feminina.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
 - Firebase configurado para desenvolvimento local com projeto demo,
   `.firebaserc`, `firebase.json`, emuladores, Security Rules e índices
@@ -21,19 +23,26 @@ visualiza pedidos.
 - Sanitização reutilizável para campos públicos e snapshots exibíveis.
 - UI base com tokens simples, header, footer, navegação mobile, componentes de
   formulário/display, drawer e estados loading/empty/error.
+- Assets reais organizados em `public/brand/`, `public/banners/`,
+  `public/products/` e `public/lookbook/`, preservando os arquivos originais da
+  pasta externa `Imagens/`.
 - Logo oficial copiada para `public/brand/logo-identidade.jpeg` e usada no
-  header. O arquivo original permanece em `Imagens/logo_identidade.jpeg`.
-- Home simples implementada com marca, chamada objetiva, destaques placeholder,
-  CTA de catálogo, CTA de WhatsApp preparado e placeholders seguros para redes
-  sociais.
+  header, no SEO base e na navegação.
+- Home refeita com hero comercial, vitrine de novidades, coleções, CTA real de
+  WhatsApp e presença visível de Instagram e TikTok.
 - SEO base configurado com metadata da home, Open Graph, `robots.ts` e
   `sitemap.ts`.
-- Catálogo público implementado em `/catalog` com listagem mock temporária,
-  categorias, busca por nome e filtros por categoria, preço e disponibilidade.
+- Catálogo público implementado em `/catalog` com vitrine comercial, busca,
+  filtros por categoria/preço/disponibilidade e foco visual nas fotos.
+- Página de produto implementada em `/products/[slug]` com galeria, bloco de
+  compra reforçado, seleção de tamanho/cor, CTA estrutural de carrinho e CTA
+  real de WhatsApp.
 - Seeds locais de catálogo ficam em `firebase/seed/products.ts` e usam dados
   fictícios, sem produto real da cliente.
-- Carrinho funcional, checkout, login visual e painel admin ainda não foram
-  implementados.
+- O botão de adicionar ao carrinho já valida a variação e prepara o item, mas a
+  persistência e o fluxo completo do carrinho continuam reservados para a Fase 9.
+- Carrinho funcional completo, checkout, login visual e painel admin ainda não
+  foram implementados.
 
 ## Stack Planejada
 
@@ -51,7 +60,7 @@ visualiza pedidos.
 
 ## Escopo do MVP
 
-- Home simples com marca, chamada, produtos em destaque, catálogo, WhatsApp,
+- Home com hero forte, vitrine de destaques, coleções, catálogo, WhatsApp,
   Instagram e TikTok.
 - Catálogo com busca, filtros por categoria/preço/disponibilidade e listagem
   mobile-first.
@@ -132,9 +141,9 @@ FIREBASE_PROJECT_ID=
 FIREBASE_CLIENT_EMAIL=
 FIREBASE_PRIVATE_KEY=
 
-STORE_WHATSAPP_PHONE=
-NEXT_PUBLIC_INSTAGRAM_URL=
-NEXT_PUBLIC_TIKTOK_URL=
+STORE_WHATSAPP_PHONE=61996632269
+NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/atelieraiode.sol?igsh=cDFrbGdzaHg0eDN0
+NEXT_PUBLIC_TIKTOK_URL=https://www.tiktok.com/@atelieraiode.sol?is_from_webapp=1&sender_device=pc
 
 PAYMENT_PROVIDER=mock
 SHIPPING_PROVIDER=mock
@@ -165,11 +174,11 @@ SHIPPING_PROVIDER=mock
 
 - O catálogo atual usa dados mock temporários em
   `src/services/firebase/catalog-mock-data.ts` e `firebase/seed/products.ts`.
-- Esses dados devem ser substituídos depois pelos produtos reais, fotos reais,
-  preços reais e variações reais aprovadas pela cliente.
-- Número oficial de WhatsApp ainda não foi informado.
-- Links oficiais de Instagram e TikTok ainda não foram informados.
-- Fotos, nomes, preços e variações reais de produtos ainda não foram fornecidos.
+- A home, o catálogo e a página de produto já usam imagens reais copiadas de
+  `Imagens/`, mas nomes, descrições, preços e parte das variações continuam
+  temporários até a aprovação comercial da cliente.
+- Esses dados devem ser substituídos depois pelos produtos reais, preços reais e
+  variações reais aprovadas pela cliente.
 - Endereço e instruções de retirada local ainda não foram informados.
 - Provedor real de pagamento e frete ainda não foi definido.
 - Processo do primeiro admin está documentado para custom claim aplicada por

@@ -197,3 +197,25 @@ Diretórios instalados em `.agents/skills/`:
 | `development`                    | Serviço com filtros, query params e seed local desacoplado da UI.               | Separação entre domínio, serviço, rota e componentes foi preservada.    |
 | `documentation`                  | README e docs atualizados com seeds, mocks, rota `/catalog` e integração local. | Substituição futura dos dados temporários ficou documentada.            |
 | `verification-before-completion` | Bateria completa de validação exigida pela fase antes de sugerir commit.        | Encerramento da fase ficou condicionado aos checks reais.               |
+
+## Uso Registrado: Fase 8 Página de Produto
+
+| Skill                            | Evidência de uso                                                                        | Impacto                                                                          |
+| -------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `speckit-implement`              | Execução limitada a T122-T133.                                                          | Manteve o escopo em detalhe do produto, sem checkout, login ou admin.            |
+| `test-driven-development`        | Testes Red de seleção de variação, detalhe, metadata, integração, E2E e acessibilidade. | A fase foi implementada em ciclo Red → Green → Refactor.                         |
+| `design-taste-frontend`          | Layout mobile-first, galeria simples, variações claras e CTAs diretos.                  | A página ficou leve, prática e coerente com a estética já adotada.               |
+| `development`                    | Separação entre domínio, serviço, UI, rota e SEO do detalhe.                            | Preservou coesão alta e baixo acoplamento para a evolução da Fase 9.             |
+| `documentation`                  | README, arquitetura e testes atualizados com mocks, placeholders e fluxo do produto.    | Troca futura de dados mock por dados reais ficou registrada.                     |
+| `verification-before-completion` | Checks obrigatórios da fase previstos antes de sugerir encerramento.                    | O fechamento da fase continua condicionado à evidência real dos comandos finais. |
+
+## Uso Registrado: Revisão Visual do Storefront
+
+| Skill                            | Evidência de uso                                                                 | Impacto                                                                                 |
+| -------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `speckit-implement`              | Revisão profunda da implementação atual sem abrir escopo de backend marketplace. | Manteve o foco em storefront, UX e vitrine comercial.                                   |
+| `test-driven-development`        | Testes Red primeiro para home, catálogo, produto e links reais de contato.       | A revisão visual foi guiada por comportamento verificável, não por ajuste cosmético.    |
+| `design-taste-frontend`          | Hero comercial, vitrine, cards, navegação, galeria e composição mobile-first.    | A interface foi reposicionada para linguagem de loja de moda feminina mais convincente. |
+| `development`                    | Refatoração modular entre config da loja, dados mock, componentes e serviços.    | Preservou separação entre UI, domínio, catálogo, SEO e WhatsApp.                        |
+| `documentation`                  | README, arquitetura e testes atualizados com assets reais e contatos oficiais.   | A troca futura de dados temporários por dados comerciais finais ficou documentada.      |
+| `verification-before-completion` | Lint, typecheck, testes focados, E2E e checagem visual manual antes de fechar.   | A revisão só avançou após evidência técnica e visual.                                   |

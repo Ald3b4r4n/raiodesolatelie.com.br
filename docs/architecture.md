@@ -102,6 +102,17 @@ provider `mock` e rejeita dados de cartão no payload.
 - O layout base usa `AppShell`, `Header`, `Footer` e `MobileNav`.
 - A logo oficial foi copiada de `Imagens/logo_identidade.jpeg` para
   `public/brand/logo-identidade.jpeg`, sem alterar o arquivo original.
+- A revisão visual atual também copia somente os assets necessários para:
+  - `public/banners/hero-vestido-dune.jpeg`
+  - `public/banners/hero-conjunto-praia.jpeg`
+  - `public/products/vestido-dune.jpeg`
+  - `public/products/conjunto-praia.jpeg`
+  - `public/products/cropped-listrado-frente.jpeg`
+  - `public/products/cropped-listrado-costa.jpeg`
+  - `public/products/bolsa-estrela-marina.jpeg`
+  - `public/products/saidinha-praia-infantil-perola-oceano.jpeg`
+  - `public/lookbook/sousplat-1.jpeg`
+  - `public/lookbook/sousplat-2.jpeg`
 - O visual deve permanecer simples, leve e prático, com foco visível, contraste
   adequado e navegação mobile por teclado.
 - Componentes de UI não carregam regras de negócio; eles recebem texto, estado e
@@ -113,10 +124,14 @@ provider `mock` e rejeita dados de cartão no payload.
   `src/features/home/HomePage.tsx`.
 - Configurações de marca, WhatsApp e redes sociais ficam em
   `src/lib/config/store.ts`.
+- `src/lib/config/store.ts` centraliza:
+  - telefone oficial do WhatsApp;
+  - links oficiais de Instagram e TikTok;
+  - normalização do telefone para `wa.me` com prefixo `55`;
+  - fallback controlado por constantes públicas quando o `.env` local ainda não
+    estiver preenchido.
 - URLs públicas de Instagram e TikTok passam por validação HTTPS antes de serem
   expostas na interface.
-- Enquanto o número oficial de WhatsApp e links oficiais não forem informados, a
-  home usa placeholders textuais e não publica links falsos.
 - Os metadados da home e Open Graph ficam em `src/lib/seo/metadata.ts` e são
   aplicados por `src/app/layout.tsx`.
 - `src/app/robots.ts` e `src/app/sitemap.ts` entregam a base de indexação do
@@ -131,7 +146,8 @@ provider `mock` e rejeita dados de cartão no payload.
   de filtros, com dependências injetáveis para mock local ou leitura por
   Firestore.
 - `src/services/firebase/catalog-mock-data.ts` mantém os produtos e categorias
-  temporários usados em desenvolvimento e testes.
+  temporários usados em desenvolvimento e testes, agora organizados para
+  refletir as peças reais já recebidas da cliente.
 - `src/domain/product/search.ts` centraliza normalização de consulta,
   construção de `searchIndex` e correspondência por termos.
 - `src/features/catalog/` separa a UI de filtros e listagem da camada de
@@ -142,6 +158,26 @@ provider `mock` e rejeita dados de cartão no payload.
   `availability`.
 - O fluxo desta fase usa formulário GET mobile-first com aplicação explícita de
   filtros para reduzir estados inconsistentes no navegador móvel.
+- A vitrine foi reposicionada para linguagem comercial, com hero, chips,
+  imagens maiores e cards mais próximos de uma loja de moda.
+
+## Página de Produto, Variações e SEO
+
+- A rota pública do detalhe fica em `src/app/(store)/products/[slug]/page.tsx`.
+- `src/services/firebase/product-detail.ts` centraliza a leitura por slug,
+  categoria associada, variantes e telefone oficial do WhatsApp.
+- `src/domain/product/variant-selection.ts` concentra a resolução de combinação
+  válida de tamanho/cor e a montagem das opções exibidas na UI.
+- `src/features/product/ProductDetailSection.tsx` mantém o estado local da
+  seleção, prepara o item para a próxima fase do carrinho e sustenta a galeria,
+  o bloco de compra e o CTA real de WhatsApp.
+- `src/services/whatsapp/product-link.ts` monta a mensagem de contato por
+  produto sem acoplar a interface ao formato do link.
+- `src/lib/seo/product.ts` gera metadata por produto com Open Graph e canonical.
+- Estados de `loading`, `error` e `not found` ficam na própria rota de produto,
+  preservando acessibilidade e navegação mobile-first.
+- As imagens já copiadas de `Imagens/` são reais, mas os nomes, preços,
+  descrições e parte das variações ainda são temporários.
 
 ## Serviços Isolados
 

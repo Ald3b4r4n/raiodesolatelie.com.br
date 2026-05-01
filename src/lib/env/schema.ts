@@ -28,3 +28,19 @@ export function readOptionalEnv(
   const value = input[key]?.trim();
   return value ? value : undefined;
 }
+
+export function validateOptionalUrl(value: string | undefined, key: string): void {
+  if (!value) {
+    return;
+  }
+
+  try {
+    const url = new URL(value);
+
+    if (url.protocol !== "https:") {
+      throw new Error("URL must use HTTPS");
+    }
+  } catch {
+    throw new Error(`Invalid URL for environment variable: ${key}`);
+  }
+}

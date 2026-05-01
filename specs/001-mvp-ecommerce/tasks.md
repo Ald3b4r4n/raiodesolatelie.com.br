@@ -211,18 +211,18 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Independent Test**: cliente abre produto, escolhe variação válida, vê indisponibilidade corretamente e inicia carrinho ou WhatsApp.
 
-- [ ] T122 [P] [US2] Criar testes Red de seleção de variação em `tests/unit/domain/product/variant-selection.test.ts` (Type: test; Dependencies: T065; Skills: lambdatest-agent-skills; Done: seleção falha)
-- [ ] T123 [P] [US2] Criar testes Red de página de produto em `tests/unit/features/product/product-page.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: detalhes/CTAs falham)
-- [ ] T124 [P] [US2] Criar testes Red de metadata de produto em `tests/unit/seo/product-metadata.test.ts` (Type: test; Dependencies: T104; Skills: lambdatest-agent-skills; Done: metadata produto falha)
-- [ ] T125 [P] [US2] Criar teste Red de integração buscar produto por slug em `tests/integration/firebase/product-detail.test.ts` (Type: test; Dependencies: T113; Skills: lambdatest-agent-skills; Done: detalhe por slug falha)
-- [ ] T126 [US2] Implementar seleção de variação em `src/domain/product/variant-selection.ts` (Type: implementation; Dependencies: T122; Skills: development; Done: testes seleção Green)
-- [ ] T127 [US2] Implementar serviço de detalhe em `src/services/firebase/product-detail.ts` (Type: implementation; Dependencies: T125; Skills: development; Done: teste integração Green)
-- [ ] T128 [US2] Implementar componentes de fotos, variações e disponibilidade em `src/features/product/` e `src/components/product/` (Type: implementation; Dependencies: T123, T126; Skills: design-taste-frontend; Done: teste UI Green)
-- [ ] T129 [US2] Implementar rota `src/app/(store)/products/[slug]/page.tsx` com dados, CTAs e fallback de foto acessível (Type: implementation; Dependencies: T127, T128; Skills: development, design-taste-frontend; Done: página produto renderiza)
-- [ ] T130 [US2] Implementar metadata por produto em `src/app/(store)/products/[slug]/page.tsx` e `src/lib/seo/product.ts` (Type: implementation; Dependencies: T124, T129; Skills: development; Done: teste SEO produto Green)
-- [ ] T131 [P] [US2] Criar teste E2E Red de produto/variação/indisponibilidade em `tests/e2e/product.spec.ts` (Type: test; Dependencies: T129; Skills: lambdatest-agent-skills; Done: E2E produto falha)
-- [ ] T132 [US2] Ajustar página de produto para passar E2E mobile e a11y em `src/features/product/` (Type: implementation; Dependencies: T131; Skills: design-taste-frontend; Done: E2E produto Green)
-- [ ] T133 [US2] Atualizar `README.md`, `docs/architecture.md`, `docs/testing.md` e `docs/skills.md` com página de produto (Type: docs; Dependencies: T122-T132; Skills: documentation; Done: docs do produto atualizadas)
+- [X] T122 [P] [US2] Criar testes Red de seleção de variação em `tests/unit/domain/product/variant-selection.test.ts` (Type: test; Dependencies: T065; Skills: lambdatest-agent-skills; Done: seleção falha)
+- [X] T123 [P] [US2] Criar testes Red de página de produto em `tests/unit/features/product/product-page.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: detalhes/CTAs falham)
+- [X] T124 [P] [US2] Criar testes Red de metadata de produto em `tests/unit/seo/product-metadata.test.ts` (Type: test; Dependencies: T104; Skills: lambdatest-agent-skills; Done: metadata produto falha)
+- [X] T125 [P] [US2] Criar teste Red de integração buscar produto por slug em `tests/integration/firebase/product-detail.test.ts` (Type: test; Dependencies: T113; Skills: lambdatest-agent-skills; Done: detalhe por slug falha)
+- [X] T126 [US2] Implementar seleção de variação em `src/domain/product/variant-selection.ts` (Type: implementation; Dependencies: T122; Skills: development; Done: testes seleção Green)
+- [X] T127 [US2] Implementar serviço de detalhe em `src/services/firebase/product-detail.ts` (Type: implementation; Dependencies: T125; Skills: development; Done: teste integração Green)
+- [X] T128 [US2] Implementar componentes de fotos, variações e disponibilidade em `src/features/product/` e `src/components/product/` (Type: implementation; Dependencies: T123, T126; Skills: design-taste-frontend; Done: teste UI Green)
+- [X] T129 [US2] Implementar rota `src/app/(store)/products/[slug]/page.tsx` com dados, CTAs e fallback de foto acessível (Type: implementation; Dependencies: T127, T128; Skills: development, design-taste-frontend; Done: página produto renderiza)
+- [X] T130 [US2] Implementar metadata por produto em `src/app/(store)/products/[slug]/page.tsx` e `src/lib/seo/product.ts` (Type: implementation; Dependencies: T124, T129; Skills: development; Done: teste SEO produto Green)
+- [X] T131 [P] [US2] Criar teste E2E Red de produto/variação/indisponibilidade em `tests/e2e/product.spec.ts` (Type: test; Dependencies: T129; Skills: lambdatest-agent-skills; Done: E2E produto falha)
+- [X] T132 [US2] Ajustar página de produto para passar E2E mobile e a11y em `src/features/product/` (Type: implementation; Dependencies: T131; Skills: design-taste-frontend; Done: E2E produto Green)
+- [X] T133 [US2] Atualizar `README.md`, `docs/architecture.md`, `docs/testing.md` e `docs/skills.md` com página de produto (Type: docs; Dependencies: T122-T132; Skills: documentation; Done: docs do produto atualizadas)
 
 ---
 

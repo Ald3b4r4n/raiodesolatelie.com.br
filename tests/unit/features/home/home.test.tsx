@@ -5,27 +5,61 @@ import { HomePage } from "@/features/home/HomePage";
 import { buildStoreConfig } from "@/lib/config/store";
 
 describe("home", () => {
-  it("renderiza marca, proposta simples e CTAs preparados", () => {
-    render(<HomePage config={buildStoreConfig({})} />);
+  it("renderiza hero comercial com CTA real de WhatsApp e navegação para catálogo", () => {
+    render(
+      <HomePage
+        config={buildStoreConfig({
+          STORE_WHATSAPP_PHONE: "61996632269",
+          NEXT_PUBLIC_INSTAGRAM_URL:
+            "https://www.instagram.com/atelieraiode.sol?igsh=cDFrbGdzaHg0eDN0",
+          NEXT_PUBLIC_TIKTOK_URL:
+            "https://www.tiktok.com/@atelieraiode.sol?is_from_webapp=1&sender_device=pc"
+        })}
+      />
+    );
 
     expect(
       screen.getByRole("heading", { name: "Raio de Sol Ateliê" })
     ).toBeInTheDocument();
-    expect(screen.getByText(/produtos artesanais/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /ver catálogo/i })).toHaveAttribute(
+    expect(
+      screen.getByText(/moda artesanal em crochê com presença de vitrine/i)
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /explorar catálogo/i })).toHaveAttribute(
       "href",
       "/catalog"
     );
-    expect(screen.getByRole("button", { name: /whatsapp em breve/i })).toBeDisabled();
+    expect(
+      screen.getAllByRole("link", { name: /comprar pelo whatsapp/i })[0]
+    ).toHaveAttribute("href", expect.stringContaining("wa.me/5561996632269"));
+    expect(screen.getAllByText(/coleção solar/i).length).toBeGreaterThan(0);
   });
 
-  it("mantém seções sem depender de dados reais de produtos", () => {
-    render(<HomePage config={buildStoreConfig({})} />);
+  it("renderiza seções de vitrine, coleções e prova social da marca", () => {
+    render(
+      <HomePage
+        config={buildStoreConfig({
+          STORE_WHATSAPP_PHONE: "61996632269",
+          NEXT_PUBLIC_INSTAGRAM_URL:
+            "https://www.instagram.com/atelieraiode.sol?igsh=cDFrbGdzaHg0eDN0",
+          NEXT_PUBLIC_TIKTOK_URL:
+            "https://www.tiktok.com/@atelieraiode.sol?is_from_webapp=1&sender_device=pc"
+        })}
+      />
+    );
 
-    expect(screen.getByRole("region", { name: /destaques/i })).toBeInTheDocument();
-    expect(screen.getByText(/produtos reais serão adicionados/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /contato e redes sociais/i })
+      screen.getByRole("region", { name: /novidades da semana/i })
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: /categorias em destaque/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: /acompanhe no instagram/i })
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /instagram/i })).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/atelieraiode.sol?igsh=cDFrbGdzaHg0eDN0"
+    );
+    expect(screen.getByRole("link", { name: /tiktok/i })).toBeInTheDocument();
   });
 });
