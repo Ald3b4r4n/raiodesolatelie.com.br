@@ -15,7 +15,7 @@ export function HomePage({ config }: HomePageProps) {
           WhatsApp assim que o número oficial for informado.
         </p>
         <div className="home-actions" aria-label="Ações principais">
-          <a className="ui-button ui-button--primary" href="#catalogo">
+          <a className="ui-button ui-button--primary" href="/catalog">
             Ver catálogo
           </a>
           {config.whatsappUrl ? (

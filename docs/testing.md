@@ -118,6 +118,20 @@ Firestore e Storage com `firebase emulators:exec`.
 - E2E mobile da home: `tests/e2e/home.spec.ts` cobre marca, CTA de catálogo,
   WhatsApp em modo pendente e destaques placeholder em viewport de celular.
 
+## Registro de Validação da Fase 7
+
+- Red de catálogo: `pnpm exec vitest run tests/unit/domain/product/search.test.ts tests/unit/services/product-catalog.test.ts tests/unit/features/catalog/catalog-ui.test.tsx`
+  falhou antes de existirem a busca normalizada, o serviço e os componentes de
+  catálogo.
+- Green focado: `pnpm exec vitest run tests/unit/domain/product/search.test.ts tests/unit/services/product-catalog.test.ts tests/unit/features/catalog/catalog-ui.test.tsx tests/integration/firebase/catalog-read.test.ts tests/unit/features/home/home.test.tsx`
+  passou com 4 arquivos verdes e 1 integração marcada como `skip` fora do
+  emulador.
+- O teste `tests/integration/firebase/catalog-read.test.ts` roda quando
+  `FIRESTORE_EMULATOR_HOST` está disponível, para não quebrar `pnpm test` fora
+  do ambiente de emuladores.
+- E2E mobile do catálogo: `tests/e2e/catalog.spec.ts` cobre busca, categoria e
+  disponibilidade com resposta percebida em até 2 segundos.
+
 ## CI
 
 - Fase 2: CI básico/smoke para validar bootstrap, install limpo e scripts

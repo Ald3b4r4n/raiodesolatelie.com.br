@@ -124,6 +124,25 @@ provider `mock` e rejeita dados de cartão no payload.
 - A logo oficial em `public/brand/logo-identidade.jpeg` é usada como asset de
   marca e imagem Open Graph base.
 
+## Catálogo, Busca e Filtros
+
+- A rota pública do catálogo fica em `src/app/(store)/catalog/page.tsx`.
+- `src/services/firebase/product-catalog.ts` concentra a leitura e a aplicação
+  de filtros, com dependências injetáveis para mock local ou leitura por
+  Firestore.
+- `src/services/firebase/catalog-mock-data.ts` mantém os produtos e categorias
+  temporários usados em desenvolvimento e testes.
+- `src/domain/product/search.ts` centraliza normalização de consulta,
+  construção de `searchIndex` e correspondência por termos.
+- `src/features/catalog/` separa a UI de filtros e listagem da camada de
+  serviço.
+- `src/components/product/ProductCard.tsx` exibe resumo do item e linka para a
+  estrutura futura de detalhe sem depender de carrinho ou checkout.
+- O catálogo atual usa query params `q`, `category`, `minPrice`, `maxPrice` e
+  `availability`.
+- O fluxo desta fase usa formulário GET mobile-first com aplicação explícita de
+  filtros para reduzir estados inconsistentes no navegador móvel.
+
 ## Serviços Isolados
 
 - `ProductCatalogService`: busca, filtros e leitura pública de produtos ativos.

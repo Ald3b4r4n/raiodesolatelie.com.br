@@ -186,3 +186,14 @@ Diretórios instalados em `.agents/skills/`:
 | `design-taste-frontend`          | Home simples, leve, mobile-first, com CTAs claros e placeholders seguros.   | Interface alinhada ao pedido de visual prático e feminino sem excesso. |
 | `documentation`                  | README, arquitetura, testes e skills atualizados com SEO e dados pendentes. | Documentação reflete placeholders e rotas SEO criadas.                 |
 | `verification-before-completion` | Checks obrigatórios previstos para a fase antes de sugerir commit.          | Encerramento condicionado à validação real dos comandos.               |
+
+## Uso Registrado: Fase 7 Catálogo, Busca e Filtros
+
+| Skill                            | Evidência de uso                                                                | Impacto                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `speckit-implement`              | Execução limitada a T109-T121.                                                  | Manteve o escopo em catálogo mockado, sem carrinho, checkout ou login.  |
+| `test-driven-development`        | Testes Red de busca, serviço, UI, integração e E2E antes da implementação.      | Catálogo foi construído seguindo Red → Green → Refactor.                |
+| `design-taste-frontend`          | Layout leve, filtros mobile-first e cards simples para catálogo.                | A experiência visual permaneceu prática, confiável e focada em celular. |
+| `development`                    | Serviço com filtros, query params e seed local desacoplado da UI.               | Separação entre domínio, serviço, rota e componentes foi preservada.    |
+| `documentation`                  | README e docs atualizados com seeds, mocks, rota `/catalog` e integração local. | Substituição futura dos dados temporários ficou documentada.            |
+| `verification-before-completion` | Bateria completa de validação exigida pela fase antes de sugerir commit.        | Encerramento da fase ficou condicionado aos checks reais.               |

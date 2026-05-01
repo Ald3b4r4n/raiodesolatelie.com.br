@@ -14,7 +14,7 @@ describe("home", () => {
     expect(screen.getByText(/produtos artesanais/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /ver catálogo/i })).toHaveAttribute(
       "href",
-      "#catalogo"
+      "/catalog"
     );
     expect(screen.getByRole("button", { name: /whatsapp em breve/i })).toBeDisabled();
   });

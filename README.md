@@ -9,7 +9,7 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 6 concluída com home simples e SEO base.
+- Etapa atual: Fase 7 concluída com catálogo, busca e filtros mockados.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
 - Firebase configurado para desenvolvimento local com projeto demo,
   `.firebaserc`, `firebase.json`, emuladores, Security Rules e índices
@@ -28,8 +28,12 @@ visualiza pedidos.
   sociais.
 - SEO base configurado com metadata da home, Open Graph, `robots.ts` e
   `sitemap.ts`.
-- Catálogo real, carrinho visual, checkout visual, login visual e painel admin
-  ainda não foram implementados.
+- Catálogo público implementado em `/catalog` com listagem mock temporária,
+  categorias, busca por nome e filtros por categoria, preço e disponibilidade.
+- Seeds locais de catálogo ficam em `firebase/seed/products.ts` e usam dados
+  fictícios, sem produto real da cliente.
+- Carrinho funcional, checkout, login visual e painel admin ainda não foram
+  implementados.
 
 ## Stack Planejada
 
@@ -159,6 +163,10 @@ SHIPPING_PROVIDER=mock
 
 ## Limitações Conhecidas
 
+- O catálogo atual usa dados mock temporários em
+  `src/services/firebase/catalog-mock-data.ts` e `firebase/seed/products.ts`.
+- Esses dados devem ser substituídos depois pelos produtos reais, fotos reais,
+  preços reais e variações reais aprovadas pela cliente.
 - Número oficial de WhatsApp ainda não foi informado.
 - Links oficiais de Instagram e TikTok ainda não foram informados.
 - Fotos, nomes, preços e variações reais de produtos ainda não foram fornecidos.

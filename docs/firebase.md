@@ -53,6 +53,7 @@ Arquivos versionados:
 - `firebase/firestore.rules`
 - `firebase/firestore.indexes.json`
 - `firebase/storage.rules`
+- `firebase/seed/products.ts`
 
 Qualquer passo no Console Web precisa ser documentado com motivo e instrução
 exata.
@@ -121,11 +122,20 @@ promover admin.
 - `products`: `status + categoryId + availability`
 - `products`: `status + featured + sortOrder`
 - `products`: `status + basePrice`
+- `products`: `status + availability + basePrice`
 - `productVariants`: `productId + status`
 - `orders`: `customerId + createdAt`
 - `orders`: `status + createdAt`
 - `coupons`: `code + status`
 - `reviews`: `productId + status + createdAt`
+
+## Seeds Temporários do Catálogo
+
+- `firebase/seed/products.ts` exporta o seed local usado apenas em
+  desenvolvimento/emulador.
+- Os dados vêm de `src/services/firebase/catalog-mock-data.ts`.
+- Os produtos, nomes, descrições e preços desse seed são fictícios e devem ser
+  substituídos quando a cliente aprovar os dados reais.
 
 ## Regras Implementadas na Fase 3
 

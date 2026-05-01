@@ -189,19 +189,19 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Independent Test**: cliente encontra produto por catálogo, busca ou filtros em celular e vê estados vazio/carregando/erro.
 
-- [ ] T109 [P] [US1] Criar testes Red de ProductCatalogService em `tests/unit/services/product-catalog.test.ts` (Type: test; Dependencies: T065-T068; Skills: lambdatest-agent-skills; Done: listagem/filtros falham)
-- [ ] T110 [P] [US1] Criar testes Red de query normalization/search em `tests/unit/domain/product/search.test.ts` (Type: test; Dependencies: T065; Skills: lambdatest-agent-skills; Done: busca normalizada falha)
-- [ ] T111 [P] [US1] Criar testes Red de ProductCard e filtros em `tests/unit/features/catalog/catalog-ui.test.tsx` (Type: test; Dependencies: T090; Skills: design-taste-frontend, lambdatest-agent-skills; Done: UI catálogo falha)
-- [ ] T112 [P] [US1] Criar teste Red de integração Firestore catálogo em `tests/integration/firebase/catalog-read.test.ts` (Type: test; Dependencies: T055; Skills: lambdatest-agent-skills; Done: leitura de produtos ativos falha)
-- [ ] T113 [US1] Implementar ProductCatalogService em `src/services/firebase/product-catalog.ts` (Type: implementation; Dependencies: T109, T112; Skills: development; Done: testes serviço/integração Green)
-- [ ] T114 [US1] Implementar busca normalizada em `src/domain/product/search.ts` e campo planejado de índice em `src/domain/product/types.ts` (Type: implementation; Dependencies: T110; Skills: development; Done: testes de busca Green)
-- [ ] T115 [US1] Implementar ProductCard e filtros mobile em `src/components/product/ProductCard.tsx`, `src/features/catalog/CatalogFilters.tsx` (Type: implementation; Dependencies: T111; Skills: design-taste-frontend; Done: UI catálogo Green)
-- [ ] T116 [US1] Implementar rota catálogo em `src/app/(store)/catalog/page.tsx` com query params `q`, `category`, `minPrice`, `maxPrice`, `availability` (Type: implementation; Dependencies: T113-T115; Skills: development, design-taste-frontend; Done: catálogo renderiza e filtra)
-- [ ] T117 [P] [US1] Criar teste E2E Red mobile de busca/filtros em `tests/e2e/catalog.spec.ts` com assertion de resposta percebida até 2s para SC-002 (Type: test; Dependencies: T116; Skills: lambdatest-agent-skills; Done: busca/filtros E2E e métrica 2s falham)
-- [ ] T118 [US1] Ajustar UX mobile de filtros, estados loading/empty/error em `src/features/catalog/` para passar E2E e métrica SC-002 (Type: implementation; Dependencies: T117; Skills: design-taste-frontend; Done: E2E catálogo Green com resposta percebida até 2s)
-- [ ] T119 [US1] Adicionar seeds de catálogo em `firebase/seed/products.ts` apenas para emulador/desenvolvimento (Type: config; Dependencies: T113; Skills: development; Done: seed sem dados reais sensíveis)
-- [ ] T120 [US1] Atualizar índices de produtos em `firebase/firestore.indexes.json` para status/categoria/preço/disponibilidade (Type: config; Dependencies: T116; Skills: development; Done: índices necessários versionados)
-- [ ] T121 [US1] Atualizar `README.md`, `docs/firebase.md`, `docs/testing.md`, `docs/architecture.md`, `docs/skills.md` para catálogo/busca/filtros (Type: docs; Dependencies: T109-T120; Skills: documentation; Done: docs do catálogo atualizadas)
+- [X] T109 [P] [US1] Criar testes Red de ProductCatalogService em `tests/unit/services/product-catalog.test.ts` (Type: test; Dependencies: T065-T068; Skills: lambdatest-agent-skills; Done: listagem/filtros falharam antes do serviço existir)
+- [X] T110 [P] [US1] Criar testes Red de query normalization/search em `tests/unit/domain/product/search.test.ts` (Type: test; Dependencies: T065; Skills: lambdatest-agent-skills; Done: busca normalizada falhou antes do domínio de busca)
+- [X] T111 [P] [US1] Criar testes Red de ProductCard e filtros em `tests/unit/features/catalog/catalog-ui.test.tsx` (Type: test; Dependencies: T090; Skills: design-taste-frontend, lambdatest-agent-skills; Done: UI catálogo falhou antes dos componentes)
+- [X] T112 [P] [US1] Criar teste Red de integração Firestore catálogo em `tests/integration/firebase/catalog-read.test.ts` (Type: test; Dependencies: T055; Skills: lambdatest-agent-skills; Done: leitura pública do catálogo coberta para execução com emulador)
+- [X] T113 [US1] Implementar ProductCatalogService em `src/services/firebase/product-catalog.ts` (Type: implementation; Dependencies: T109, T112; Skills: development; Done: serviço local/mock lista e filtra catálogo)
+- [X] T114 [US1] Implementar busca normalizada em `src/domain/product/search.ts` e campo planejado de índice em `src/domain/product/types.ts` (Type: implementation; Dependencies: T110; Skills: development; Done: testes de busca Green)
+- [X] T115 [US1] Implementar ProductCard e filtros mobile em `src/components/product/ProductCard.tsx`, `src/features/catalog/CatalogFilters.tsx` (Type: implementation; Dependencies: T111; Skills: design-taste-frontend; Done: UI catálogo Green)
+- [X] T116 [US1] Implementar rota catálogo em `src/app/(store)/catalog/page.tsx` com query params `q`, `category`, `minPrice`, `maxPrice`, `availability` (Type: implementation; Dependencies: T113-T115; Skills: development, design-taste-frontend; Done: catálogo renderiza e filtra em `/catalog`)
+- [X] T117 [P] [US1] Criar teste E2E Red mobile de busca/filtros em `tests/e2e/catalog.spec.ts` com assertion de resposta percebida até 2s para SC-002 (Type: test; Dependencies: T116; Skills: lambdatest-agent-skills; Done: busca/filtros E2E falharam antes do fluxo final)
+- [X] T118 [US1] Ajustar UX mobile de filtros, estados loading/empty/error em `src/features/catalog/` para passar E2E e métrica SC-002 (Type: implementation; Dependencies: T117; Skills: design-taste-frontend; Done: E2E catálogo Green com aplicação explícita de filtros)
+- [X] T119 [US1] Adicionar seeds de catálogo em `firebase/seed/products.ts` apenas para emulador/desenvolvimento (Type: config; Dependencies: T113; Skills: development; Done: seed sem dados reais sensíveis)
+- [X] T120 [US1] Atualizar índices de produtos em `firebase/firestore.indexes.json` para status/categoria/preço/disponibilidade (Type: config; Dependencies: T116; Skills: development; Done: índices necessários versionados)
+- [X] T121 [US1] Atualizar `README.md`, `docs/firebase.md`, `docs/testing.md`, `docs/architecture.md`, `docs/skills.md` para catálogo/busca/filtros (Type: docs; Dependencies: T109-T120; Skills: documentation; Done: docs do catálogo atualizadas)
 
 ---
 
