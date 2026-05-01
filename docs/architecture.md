@@ -2,8 +2,8 @@
 
 ## Objetivo
 
-Organizar o MVP do Raio de Sol Atelie como um e-commerce simples, mobile-first,
-seguro e facil de evoluir, sem transformar o produto em marketplace
+Organizar o MVP do Raio de Sol Ateliê como um e-commerce simples, mobile-first,
+seguro e fácil de evoluir, sem transformar o produto em marketplace
 multi-vendedor.
 
 ## Stack Planejada
@@ -48,19 +48,19 @@ docs/
 ## Responsabilidades
 
 - `src/app`: rotas, layouts, Server Actions e Route Handlers do Next.js.
-- `src/components`: componentes visuais pequenos e reutilizaveis.
-- `src/features`: composicao por caso de uso, como catalogo, carrinho,
-  checkout, admin e avaliacoes.
-- `src/domain`: regras puras de negocio, tipos e transicoes de estado.
+- `src/components`: componentes visuais pequenos e reutilizáveis.
+- `src/features`: composição por caso de uso, como catálogo, carrinho,
+  checkout, admin e avaliações.
+- `src/domain`: regras puras de negócio, tipos e transições de estado.
 - `src/services`: fronteiras com Firebase, WhatsApp, pagamento, frete, cupons e
-  avaliacoes.
-- `src/lib`: infraestrutura compartilhada, env, seguranca, Firebase e SEO.
-- `src/validators`: schemas de entrada e saida.
-- `tests`: testes unitarios, integracao, E2E, acessibilidade e rules.
-- `firebase`: configuracao reproduzivel por CLI, rules, indexes e seeds.
-- `docs`: setup, seguranca, testes, Firebase, deploy, skills e ADRs.
+  avaliações.
+- `src/lib`: infraestrutura compartilhada, env, segurança, Firebase e SEO.
+- `src/validators`: schemas de entrada e saída.
+- `tests`: testes unitários, integração, E2E, acessibilidade e rules.
+- `firebase`: configuração reproduzível por CLI, rules, indexes e seeds.
+- `docs`: setup, segurança, testes, Firebase, deploy, skills e ADRs.
 
-## Fronteiras de Dominio
+## Fronteiras de Domínio
 
 Entidades principais:
 
@@ -76,31 +76,46 @@ Entidades principais:
 - `ShippingOption`
 - `PaymentSession`
 
-Pedidos devem guardar snapshot dos itens para preservar historico mesmo que um
+Implementação atual:
+
+- Tipos e regras puras em `src/domain/` para produto, carrinho, pedido, cliente,
+  admin, cupom, review, frete e pagamento.
+- Schemas de validação em `src/validators/` para `Product`, `ProductVariant`,
+  `Category`, `Cart`, `Order`, `CustomerProfile`, `AdminUser`, `Coupon`,
+  `Review`, `ShippingOption` e `PaymentSession`.
+- Primitivas reutilizáveis de validação em `src/validators/primitives.ts`.
+- Sanitização de campos públicos e snapshots exibíveis em
+  `src/lib/security/sanitize.ts`, usada pelos schemas.
+
+Pedidos devem guardar snapshot dos itens para preservar histórico mesmo que um
 produto seja editado ou desativado.
 
-## Servicos Isolados
+`ShippingOption` usa provider `mock` ou marcador futuro `correios_future`, sem
+integração real com Correios nesta fase. `PaymentSession` aceita somente
+provider `mock` e rejeita dados de cartão no payload.
 
-- `ProductCatalogService`: busca, filtros e leitura publica de produtos ativos.
+## Serviços Isolados
+
+- `ProductCatalogService`: busca, filtros e leitura pública de produtos ativos.
 - `CartService`: regras locais de carrinho sem dados pessoais.
-- `WhatsAppService`: geracao de mensagem e link.
-- `ShippingService`: retirada local e frete mockado ate provider real.
-- `PaymentService`: Pix/cartao mockados por contrato abstrato.
-- `OrderService`: criacao e leitura autorizada de pedidos.
-- `CouponService`: validacao e aplicacao de cupom.
-- `ReviewService`: criacao, sanitizacao e moderacao.
+- `WhatsAppService`: geração de mensagem e link.
+- `ShippingService`: retirada local e frete mockado até existir provider real.
+- `PaymentService`: Pix/cartão mockados por contrato abstrato.
+- `OrderService`: criação e leitura autorizada de pedidos.
+- `CouponService`: validação e aplicação de cupom.
+- `ReviewService`: criação, sanitização e moderação.
 - `AdminProductService`: CRUD administrativo de produtos.
 
-## Decisoes Arquiteturais
+## Decisões Arquiteturais
 
-- UI nao chama APIs externas de pagamento/frete diretamente.
-- Operacoes sensiveis ficam em Server Actions ou Route Handlers.
-- Firebase client SDK fica limitado ao que pode ser publico.
+- UI não chama APIs externas de pagamento/frete diretamente.
+- Operações sensíveis ficam em Server Actions ou Route Handlers.
+- Firebase client SDK fica limitado ao que pode ser público.
 - Firebase Admin SDK e secrets ficam somente no servidor.
-- Regras de negocio nao devem viver dentro de componentes visuais.
-- Firebase Storage so sera usado se a decisao do MVP confirmar necessidade.
+- Regras de negócio não devem viver dentro de componentes visuais.
+- Firebase Storage só será usado se a decisão do MVP confirmar necessidade.
 
 ## Qualidade
 
 Toda feature deve seguir TDD, atualizar README/docs e passar pelos checks
-disponiveis antes de ser considerada concluida.
+disponíveis antes de ser considerada concluída.

@@ -47,8 +47,11 @@ pnpm format:check
 pnpm build
 ```
 
-`test:integration` e `test:rules` aceitam ausência temporária de arquivos de
-teste até as fases de Firebase e domínio criarem os testes específicos.
+`pnpm test` executa unitários e integrações comuns, mas exclui
+`tests/integration/rules/` porque esses testes dependem dos emuladores.
+`test:integration` aceita ausência temporária de arquivos de teste fora de
+rules. `test:rules` executa `vitest.rules.config.ts` dentro dos emuladores de
+Firestore e Storage com `firebase emulators:exec`.
 
 ## Registro de Validação da Fase 1
 
@@ -71,6 +74,27 @@ teste até as fases de Firebase e domínio criarem os testes específicos.
 - `pnpm test:a11y`: passou com 1 teste axe/Playwright.
 - `pnpm test:coverage`: passou e gerou relatório em `coverage/`.
 - `pnpm lint`, `pnpm typecheck` e `pnpm build`: passaram.
+
+## Registro de Validação da Fase 3
+
+- Red de adapters: `pnpm exec vitest run tests/unit/services/firebase-adapters.test.ts`
+  falhou antes de existir `src/lib/firebase/client.ts`,
+  `src/lib/firebase/admin.ts` e `src/lib/firebase/emulator.ts`.
+- Red de roles: `pnpm exec vitest run tests/unit/security/roles.test.ts` falhou
+  antes de existir `src/lib/security/roles.ts`.
+- Red de rate limit: `pnpm exec vitest run tests/unit/security/rate-limit.test.ts`
+  falhou antes de existir `src/lib/security/rate-limit.ts`.
+- Red de Security Rules: `pnpm test:rules` falhou contra as rules deny-all em
+  leitura de produto ativo, pedido próprio e permissões admin.
+- Green de Security Rules: `pnpm test:rules` passou com 5 arquivos e 13 testes.
+- Storage deny-all passou conforme decisão do MVP inicial.
+
+## Registro de Validação da Fase 4
+
+- Red de domínio/validators/sanitização: `pnpm exec vitest run tests/unit/domain/product.test.ts tests/unit/validators/product.schema.test.ts tests/unit/security/sanitize-public-fields.test.ts tests/unit/domain/category.test.ts tests/unit/validators/category.schema.test.ts tests/unit/domain/cart.test.ts tests/unit/domain/order.test.ts tests/unit/domain/user.test.ts tests/unit/domain/coupon.test.ts tests/unit/validators/coupon.schema.test.ts tests/unit/domain/review.test.ts tests/unit/validators/review.schema.test.ts tests/unit/domain/shipping.test.ts tests/unit/domain/payment.test.ts` falhou antes da implementação.
+- Green da mesma suíte: o comando acima passou com 14 arquivos e 43 testes.
+- Red complementar de schemas das entidades restantes: `pnpm exec vitest run tests/unit/validators` falhou antes da implementação com imports ausentes para `cart`, `order`, `user`, `shipping` e `payment`, além de falhas esperadas de centavos inteiros, sanitização e limites de domínio.
+- Green complementar: `pnpm exec vitest run tests/unit/validators tests/unit/domain/shipping.test.ts tests/unit/domain/payment.test.ts tests/unit/domain/order.test.ts tests/unit/domain/review.test.ts` passou com 13 arquivos e 47 testes após implementar os parsers e ajustes de domínio.
 
 ## CI
 

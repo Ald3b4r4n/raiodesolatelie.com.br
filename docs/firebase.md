@@ -2,17 +2,20 @@
 
 ## Estado Atual
 
-Firebase ainda não foi inicializado por CLI. Na Fase 1 foram criados
-placeholders seguros e, na Fase 2, foi adicionado `firebase.json` apenas para
-configuração local de emuladores de teste:
+Na Fase 3, o Firebase foi configurado para desenvolvimento local e testes com
+projeto demo:
 
-- `firebase/firestore.rules` com deny-all;
-- `firebase/storage.rules` com deny-all;
-- `firebase/firestore.indexes.json` vazio;
-- `firebase/seed/`.
-- `firebase.json` com emuladores de Auth, Firestore, Storage e UI.
+- `.firebaserc` apontando para `demo-raiodesolatelie`;
+- `firebase.json` com emuladores de Auth, Firestore, Storage e UI;
+- `firebase/firestore.rules` com regras mínimas de catálogo, pedidos, perfis,
+  sessões de pagamento, cupons, avaliações e admin;
+- `firebase/storage.rules` com deny-all porque Storage não está ativo no MVP
+  inicial;
+- `firebase/firestore.indexes.json` com índices iniciais;
+- `tests/integration/rules/` com testes de Security Rules.
 
-Ainda não existe `.firebaserc` e nenhum projeto Firebase foi selecionado.
+Nenhum projeto Firebase real foi selecionado nesta fase. O projeto demo evita
+uso acidental de serviços reais durante testes locais.
 
 ## Componentes Planejados
 
@@ -22,19 +25,28 @@ Ainda não existe `.firebaserc` e nenhum projeto Firebase foi selecionado.
 - Firebase Emulator Suite para testes locais.
 - Firebase Storage somente se a decisão do MVP confirmar necessidade.
 
-## Configuracao por CLI
+## Configuração por CLI
 
-Fluxo planejado:
+Fluxo local:
+
+```bash
+pnpm install
+pnpm firebase:emulators
+pnpm test:rules
+```
+
+Para vincular um projeto real em fase futura:
 
 ```bash
 firebase login
 firebase use --add
 firebase init
-firebase emulators:start
-pnpm firebase:emulators
 ```
 
-Arquivos esperados após configuração:
+Antes de trocar o projeto demo, documentar o motivo, revisar rules e confirmar
+que nenhum dado real será usado em testes.
+
+Arquivos versionados:
 
 - `.firebaserc`
 - `firebase.json`
@@ -42,7 +54,7 @@ Arquivos esperados após configuração:
 - `firebase/firestore.indexes.json`
 - `firebase/storage.rules`
 
-Qualquer passo no Console Web precisa ser documentado com motivo e instrucao
+Qualquer passo no Console Web precisa ser documentado com motivo e instrução
 exata.
 
 ## Emuladores
@@ -54,17 +66,20 @@ Emuladores planejados:
 - Storage se Storage for habilitado ou se rules deny-all forem testadas
 - Functions somente se uma fase futura exigir
 
-Fluxo planejado:
+Fluxo validado:
 
 ```bash
-firebase emulators:exec "pnpm test:rules && pnpm test:integration"
+pnpm test:rules
 ```
 
-## Colecoes Planejadas
+Observação: `firebase-tools@14.24.0` foi fixado como dependência de
+desenvolvimento porque a versão 15 exige Java 21. O ambiente atual usa Java 17.
+
+## Coleções Planejadas
 
 - `products`
 - `productVariants`
-- `catégories`
+- `categories`
 - `orders`
 - `customerProfiles`
 - `userRoles` ou custom claims
@@ -85,29 +100,45 @@ Se Storage for usado:
 - upload apenas por admin autenticado/autorizado;
 - path permitido;
 - content-type de imagem permitido;
-- tamanho maximo validado;
+- tamanho máximo validado;
 - escrita bloqueada para public/customer;
 - testes de rules para permitido e bloqueado.
 
 Se Storage não for usado:
 
 - rules deny-all para leitura e escrita;
-- alternativa temporaria ou fase futura documentada;
+- alternativa temporária ou fase futura documentada;
 - testes confirmando bloqueio total.
 
 ## Primeiro Admin
 
-Preferencia: custom claim aplicada por procedimento seguro com Firebase Admin
+Preferência: custom claim aplicada por procedimento seguro com Firebase Admin
 SDK em ambiente controlado. Não deve existir endpoint público permanente para
 promover admin.
 
-## Indices Iniciais Provaveis
+## Índices Iniciais Prováveis
 
-- `products`: `status + catégoryId + availability`
+- `products`: `status + categoryId + availability`
 - `products`: `status + featured + sortOrder`
 - `products`: `status + basePrice`
 - `productVariants`: `productId + status`
-- `orders`: `customerId + creatédAt`
-- `orders`: `orderStatus + creatédAt`
+- `orders`: `customerId + createdAt`
+- `orders`: `status + createdAt`
 - `coupons`: `code + status`
-- `reviews`: `productId + status + creatédAt`
+- `reviews`: `productId + status + createdAt`
+
+## Regras Implementadas na Fase 3
+
+- Produtos, categorias e variações ativas podem ser lidos publicamente.
+- Escrita em catálogo é permitida somente para `admin`.
+- Clientes autenticadas leem apenas os próprios pedidos.
+- Escrita direta de pedidos pelo cliente fica bloqueada; criação/alteração deve
+  passar por backend com Admin SDK em fase futura.
+- Perfis mínimos podem ser lidos/criados/atualizados pela própria cliente ou
+  admin.
+- Sessões de pagamento são somente leitura segura para dono/admin; escrita
+  direta fica bloqueada.
+- Cupons são gerenciados por admin.
+- Avaliações aprovadas são públicas; avaliações pendentes podem ser lidas pela
+  própria cliente ou admin; aprovação/rejeição é admin.
+- `userRoles` fica bloqueado para cliente SDK.

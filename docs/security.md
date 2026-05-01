@@ -23,6 +23,21 @@
 | Upload inseguro                      | Storage condicional com rules de path, tipo e tamanho, ou deny-all.        |
 | Coleta excessiva de dados            | Modelos mínimos e documentação de finalidade/retenção.                     |
 
+## Sanitização e Schemas
+
+- Campos públicos de produto, variação, categoria, carrinho persistido, snapshot
+  de pedido, cupom, avaliação e opção de entrega devem ser sanitizados antes de
+  exibição.
+- A sanitização reutilizável foi centralizada em `src/lib/security/sanitize.ts`.
+- Schemas de validação em `src/validators/` cobrem as entidades de domínio da
+  Fase 4 e garantem consistência antes das actions e services.
+- Valores monetários são validados como inteiros em centavos; quantidades,
+  estoque, notas e ordenações usam inteiros dentro dos limites do domínio.
+- `PaymentSession` rejeita campos sensíveis de cartão, como número, CVV e data
+  de validade. O provider permitido nesta fase é apenas `mock`.
+- `CustomerProfile` não persiste endereço por padrão, e schemas de pedido/perfil
+  não preservam CPF/CNPJ recebido indevidamente no payload.
+
 ## Roles
 
 - `public`: visitante sem autenticação; pode ler catálogo público e avaliações
@@ -57,14 +72,18 @@ armazenados. Pagamento no MVP será mockado por contrato abstrato.
 
 Deve haver contrato reutilizável para limitar abuso em:
 
-- `creatéOrder`
+- `createOrder`
 - `quoteShipping`
 - `applyCoupon`
 - `submitReview`
 - login e actions administrativas sensíveis
 
-Os testes devem validar bloqueio/limitacao antes da implementação de cada
+Os testes devem validar bloqueio/limitação antes da implementação de cada
 endpoint/action sensível.
+
+Na Fase 3 foi criado `src/lib/security/rate-limit.ts`, um contrato em memória
+para testes e desenvolvimento. Ele será aplicado às Server Actions/endpoints
+sensíveis nas fases em que essas operações forem implementadas.
 
 ## Firebase Security Rules
 
@@ -74,10 +93,31 @@ Rules devem cobrir:
 - bloqueio de escrita pública em catálogo;
 - cliente lendo apenas seus próprios pedidos;
 - admin gerenciando produtos, pedidos, cupons e reviews;
-- Storage ativo com admin-only upload e validações, ou deny-all se Storage não
-  for usado.
+- Storage ativo com upload apenas para admin e validações, ou deny-all se
+  Storage não for usado.
 
-Rules não substituem schemas server-side; ambas as camadas sao obrigatórias.
+Na Fase 3, `firebase/firestore.rules` cobre catálogo público ativo, bloqueio de
+escrita pública, leitura de pedidos próprios, permissões admin para produtos,
+pedidos, cupons e avaliações, além de bloqueio de `userRoles` no client SDK.
+`firebase/storage.rules` permanece deny-all porque Storage não está ativo no
+MVP inicial.
+
+Rules não substituem schemas server-side; ambas as camadas são obrigatórias.
+
+## Primeiro Admin
+
+O primeiro admin deve ser configurado por custom claim usando Firebase Admin SDK
+em ambiente controlado. O processo recomendado é:
+
+1. Criar a conta da administradora no Firebase Authentication.
+2. Executar um script local/CI restrito, fora do bundle frontend, usando service
+   account segura.
+3. Aplicar `admin: true` no UID da administradora.
+4. Registrar data, responsável e UID em canal interno seguro, sem commit de
+   secrets.
+5. Remover ou manter o script sem credenciais e sem endpoint público.
+
+Não foi criado endpoint público de promoção de admin.
 
 ## Secrets e Variáveis
 
@@ -87,12 +127,12 @@ Rules não substituem schemas server-side; ambas as camadas sao obrigatórias.
 - `.env.example` não pode conter valores reais.
 - Vercel deve armazenar secrets por ambiente.
 
-## Retencao
+## Retenção
 
-A politica final depende de requisitos legais e operacionais. Padrao do MVP:
+A política final depende de requisitos legais e operacionais. Padrão do MVP:
 
 - pedidos: manter pelo tempo necessário para atendimento, suporte e obrigações
   legais;
-- carrinho local: expirar ou limpar quando invalido;
+- carrinho local: expirar ou limpar quando inválido;
 - reviews rejeitadas: manter somente enquanto necessário para moderação;
 - dados de perfil: mínimo necessário e editável pela cliente quando aplicável.

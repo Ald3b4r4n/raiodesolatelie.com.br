@@ -142,3 +142,27 @@ Diretórios instalados em `.agents/skills/`:
 | `documentation`                  | README e docs atualizados com comandos e validações.                    | Documentação acompanha a mudança operacional.           |
 | `agentic-actions-auditor`        | Workflow CI básico/smoke criado com permissões mínimas.                 | CI inicial sem ações de agente ou secrets.              |
 | `verification-before-completion` | Lint, typecheck, build, testes da fase e `git diff --check`.            | Evidência fresca antes de encerrar a fase.              |
+
+## Uso Registrado: Fase 3 Firebase e Segurança
+
+| Skill                            | Evidência de uso                                                            | Impacto                                                            |
+| -------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `speckit-implement`              | Execução limitada a T042-T060.                                              | Manteve o escopo em Firebase e segurança, sem features de negócio. |
+| `firebase`                       | Rules, emuladores, `.firebaserc`, indexes e adapters Firebase configurados. | Base Firebase reproduzível para desenvolvimento local.             |
+| `test-driven-development`        | Testes Red de rules, adapters, roles e rate limit antes da implementação.   | Fluxo Red → Green aplicado à segurança da fase.                    |
+| `lambdatest-agent-skills`        | Testes Vitest e Security Rules com `@firebase/rules-unit-testing`.          | Cobertura automatizada para permissões críticas.                   |
+| `logic-lens`                     | Revisão de menor privilégio em rules, roles e bloqueios de escrita direta.  | Reduziu risco de acesso indevido a catálogo, pedidos e admin.      |
+| `varlock`                        | Separação entre env públicas e credenciais server-side nos adapters.        | Evitou dependência de secrets no frontend.                         |
+| `documentation`                  | README e docs de setup, Firebase, segurança, testes e ADRs atualizados.     | Documentação acompanha a configuração real.                        |
+| `verification-before-completion` | Execução dos checks obrigatórios da fase antes de propor commit.            | Evidência de validação antes de encerrar a fase.                   |
+
+## Uso Registrado: Fase 4 Domínio e Validação
+
+| Skill                            | Evidência de uso                                                                            | Impacto                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `speckit-implement`              | Execução limitada a tipos, regras puras, schemas, sanitização e documentação.               | Evitou avançar para UI, catálogo visual, checkout visual ou admin.   |
+| `test-driven-development`        | Testes Red de validators antes dos parsers de carrinho, pedido, usuário, frete e pagamento. | Manteve o ciclo Red → Green para as lacunas da Fase 4.               |
+| `development`                    | Organização modular entre `src/domain`, `src/validators` e `src/lib/security`.              | Separou domínio, validação e sanitização reutilizável.               |
+| `logic-lens`                     | Revisão de minimização de dados, centavos inteiros e rejeição de dados de cartão.           | Reduziu risco de XSS, inconsistência monetária e exposição de dados. |
+| `documentation`                  | README, arquitetura, segurança e testes atualizados com os novos schemas.                   | Documentação reflete modelos e decisões técnicas alteradas.          |
+| `verification-before-completion` | Suíte focada de validators e domínios executada após a implementação.                       | Evidência fresca antes dos checks finais obrigatórios.               |

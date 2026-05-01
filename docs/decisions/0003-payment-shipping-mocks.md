@@ -5,26 +5,26 @@
 
 ## Contexto
 
-A cliente deseja Pix, cartao, Correios e retirada local, mas ainda nao existem
+A cliente deseja Pix, cartão, Correios e retirada local, mas ainda não existem
 credenciais ou provider real definido para pagamento e frete.
 
-## Decisao
+## Decisão
 
-Criar contratos de servico para pagamento e frete. No MVP inicial, usar mocks
-testados para Pix/cartao e frete, mantendo retirada local disponivel quando
+Criar contratos de serviço para pagamento e frete. No MVP inicial, usar mocks
+testados para Pix/cartão e frete, mantendo retirada local disponível quando
 configurada.
 
 ## Alternativas Consideradas
 
 - Integrar provider real agora: rejeitado sem credenciais e requisitos
   operacionais.
-- Acoplar UI direto a APIs externas: rejeitado por manutencao e seguranca.
+- Acoplar UI direto a APIs externas: rejeitado por manutenção e segurança.
 - Remover checkout do MVP: rejeitado porque venda direta pelo site e objetivo
   principal.
 
-## Consequencias
+## Consequências
 
 - Checkout pode ser testado de ponta a ponta sem provider real.
-- Producao nao deve prometer pagamento/frete real sem configuracao.
+- Produção não deve prometer pagamento/frete real sem configuração.
 - Troca para provider real deve ocorrer dentro de adapters/services, sem
   refatorar UI.

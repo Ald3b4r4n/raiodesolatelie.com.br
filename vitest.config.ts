@@ -10,6 +10,7 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     include: ["tests/unit/**/*.test.{ts,tsx}", "tests/integration/**/*.test.{ts,tsx}"],
+    exclude: ["tests/integration/rules/**/*.test.{ts,tsx}"],
     passWithNoTests: true,
     setupFiles: ["./src/test/setup.ts"],
     coverage: {

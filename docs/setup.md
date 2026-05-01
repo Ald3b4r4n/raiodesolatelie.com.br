@@ -8,8 +8,9 @@ catálogo, carrinho, checkout, login ou admin.
 
 - Node.js `v22.17.0` validado localmente.
 - pnpm `10.30.3`.
-- Firebase CLI instalado e autenticado.
-- Conta/projeto Firebase definido.
+- Firebase CLI local via dependência de desenvolvimento.
+- Java 17 validado localmente para os emuladores com `firebase-tools@14.24.0`.
+- Conta/projeto Firebase real só será necessário ao sair do projeto demo.
 - Vercel CLI opcional.
 - Git.
 
@@ -17,9 +18,9 @@ catálogo, carrinho, checkout, login ou admin.
 
 - `package.json` e `pnpm-lock.yaml` existem.
 - Next.js App Router foi inicializado com TypeScript strict.
-- Firebase ainda não foi configurado por CLI.
-- Existem apenas placeholders seguros em `firebase/` para manter deny-all até a
-  fase própria de Firebase.
+- Firebase está configurado para desenvolvimento local com `.firebaserc`
+  apontando para `demo-raiodesolatelie`.
+- Firestore rules, Storage rules, indexes e emuladores estão versionados.
 
 ## Fluxo Local
 
@@ -73,19 +74,19 @@ Variáveis planejadas:
 Firebase deve ser configurado por CLI e arquivos versionáveis. Qualquer etapa
 que exija Console Web precisa ser documentada com motivo, passo a passo e risco.
 
-Na Fase 2 foi criado `firebase.json` para emuladores locais de teste. Ainda não
-foi executado `firebase init`, não existe `.firebaserc` e nenhum projeto
-Firebase foi selecionado.
+Na Fase 3 foram versionados `.firebaserc`, `firebase.json`, Firestore rules,
+Storage rules e indexes. O projeto atual é `demo-raiodesolatelie`, usado apenas
+para emuladores.
 
-Fluxo planejado:
+Fluxo local:
 
 ```bash
-firebase login
-firebase use --add
-firebase init
-firebase emulators:start
 pnpm firebase:emulators
+pnpm test:rules
 ```
+
+Para projeto real, executar `firebase login`, `firebase use --add` e revisar a
+documentação em `docs/firebase.md` antes de qualquer deploy de rules.
 
 ## Dados Necessários da Cliente
 

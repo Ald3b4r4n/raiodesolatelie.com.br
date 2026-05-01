@@ -1,48 +1,46 @@
 # ADR 0004: Firebase Storage Condicional
 
-**Status**: Decisao condicional, a confirmar na fase Firebase
+**Status**: Aceita para o MVP inicial
 **Data**: 2026-04-30
 
 ## Contexto
 
-O admin precisa cadastrar fotos de produtos, mas o MVP ainda nao definiu se as
-imagens serao armazenadas no Firebase Storage, em URLs externas controladas ou
-por outra alternativa temporaria.
+O admin precisa cadastrar fotos de produtos, mas o MVP ainda não definiu se as
+imagens serão armazenadas no Firebase Storage, em URLs externas controladas ou
+por outra alternativa temporária. A pasta local `Imagens/` contém assets da
+marca, mas ela não exige ativação imediata de upload no Firebase Storage.
 
-## Decisao
+## Decisão
 
-Firebase Storage nao fica automaticamente habilitado. Antes de criar rules ou
-upload, a task decisoria da fase Firebase deve confirmar uma das opcoes:
+Firebase Storage não fica automaticamente habilitado. Na Fase 3, a decisão é
+manter Storage com `deny-all` para leitura e escrita até existir necessidade
+confirmada de upload de imagens pelo admin.
 
-1. Habilitar Storage para imagens de produtos no MVP.
-2. Manter Storage com deny-all e documentar alternativa temporaria ou fase
-   futura.
-
-Decisao inicial para Fase 0: tratar Storage como condicional e nao configurar
-upload ainda.
+Imagens do produto serão tratadas em fase futura, usando alternativa
+documentada ou ativando Storage com regras e testes específicos.
 
 ## Alternativas Consideradas
 
-- Habilitar Storage desde o inicio: pode ser correto, mas exige rules, testes,
+- Habilitar Storage desde o início: pode ser correto, mas exige rules, testes,
   limites de tipo/tamanho e fluxo admin antes de haver necessidade confirmada.
-- Usar URLs externas temporarias: reduz setup inicial, mas exige cuidado com
-  disponibilidade e origem confiavel.
-- Adiar fotos: nao atende bem catalogo/e-commerce, mas pode ser fallback se nao
+- Usar URLs externas temporárias: reduz setup inicial, mas exige cuidado com
+  disponibilidade e origem confiável.
+- Adiar fotos: não atende bem catálogo/e-commerce, mas pode ser fallback se não
   houver imagens.
 
-## Consequencias
+## Consequências
 
-Se Storage for habilitado:
+Se Storage for habilitado em fase futura:
 
 - upload apenas por admin autenticado/autorizado;
 - validar path permitido;
 - validar content-type;
-- validar tamanho maximo;
-- negar escrita para clientes comuns e publico;
+- validar tamanho máximo;
+- negar escrita para clientes comuns e público;
 - testar upload permitido e bloqueios.
 
-Se Storage nao for habilitado:
+Para o MVP inicial:
 
 - rules deny-all para leitura e escrita;
 - testes confirmando bloqueio total;
-- documentar alternativa temporaria e criterio para habilitar depois.
+- documentar alternativa temporária e critério para habilitar depois.

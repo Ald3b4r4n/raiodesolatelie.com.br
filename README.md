@@ -9,11 +9,19 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 2 concluída como infraestrutura de testes.
+- Etapa atual: Fase 4 concluída para modelo de domínio e validações, dentro do
+  escopo sem UI.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
-- Firebase ainda não foi configurado.
-- Existem placeholders seguros de rules/indexes, mas sem Firebase CLI,
-  emuladores, `.firebaserc` ou `firebase.json`.
+- Firebase configurado para desenvolvimento local com projeto demo,
+  `.firebaserc`, `firebase.json`, emuladores, Security Rules e índices
+  versionados.
+- Storage permanece desativado no MVP inicial com rules deny-all testadas.
+- Modelos de domínio e validadores implementados para produto, variação,
+  categoria, carrinho, pedido, cliente, admin, cupom, avaliação, frete e
+  pagamento mockado.
+- Sanitização reutilizável para campos públicos e snapshots exibíveis.
+- Catálogo visual, home, carrinho visual, checkout visual, login visual e
+  painel admin ainda não foram implementados.
 
 ## Stack Planejada
 
@@ -61,7 +69,8 @@ visualiza pedidos.
 
 - Node.js `v22.17.0` validado localmente.
 - pnpm `10.30.3` definido em `packageManager`.
-- Firebase CLI instalado e autenticado.
+- Firebase CLI local via `firebase-tools@14.24.0`; Java 17 validado para os
+  emuladores nesta fase.
 - Vercel CLI opcional para deploy local/prebuilt.
 - Git.
 
@@ -87,13 +96,12 @@ pnpm format:check
 pnpm build
 ```
 
-Comandos Firebase planejados:
+Comandos Firebase:
 
 ```bash
 pnpm firebase:emulators
-firebase init
-firebase emulators:start
-firebase emulators:exec "pnpm test:integration && pnpm test:rules"
+pnpm test:rules
+firebase emulators:exec --project demo-raiodesolatelie --only firestore,storage "pnpm exec vitest run tests/integration/rules"
 ```
 
 ## Variáveis de Ambiente Planejadas
@@ -133,7 +141,7 @@ SHIPPING_PROVIDER=mock
 
 ## Política de Desenvolvimento
 
-- TDD obrigatório: Red -> Green -> Refactor.
+- TDD obrigatório: Red → Green → Refactor.
 - README e `docs/` devem ser revisados em toda feature.
 - Operações sensíveis devem ser validadas no backend e protegidas por roles,
   rate limit e Firebase Security Rules.
@@ -146,7 +154,8 @@ SHIPPING_PROVIDER=mock
 - Número oficial de WhatsApp ainda não foi informado.
 - Identidade visual e fotos reais de produtos ainda não foram fornecidas.
 - Provedor real de pagamento e frete ainda não foi definido.
-- Processo do primeiro admin será criado em fase posterior, sem endpoint público
-  permanente.
-- Firebase Storage permanece condicional até a decisão da fase de Firebase.
+- Processo do primeiro admin está documentado para custom claim aplicada por
+  ambiente seguro, sem endpoint público permanente.
+- Firebase Storage não está ativo no MVP inicial; upload de imagens dependerá
+  de decisão futura e novas rules/testes.
 - O CI atual é básico/smoke; o CI completo será consolidado nas fases finais.

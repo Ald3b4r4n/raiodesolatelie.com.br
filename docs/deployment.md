@@ -57,10 +57,10 @@ conclusão da feature.
 
 ## Git
 
-Configuracao esperada quando o usuário autorizar:
+Configuração esperada quando o usuário autorizar:
 
 ```bash
-git remote add origin https://github.com/Ald3b4r4n/raiodesolatélie.com.br.git
+git remote add origin https://github.com/Ald3b4r4n/raiodesolatelie.com.br.git
 git branch -M main
 git push -u origin main
 ```

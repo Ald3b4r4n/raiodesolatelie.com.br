@@ -1,30 +1,30 @@
 # ADR 0002: Auth, Roles e Primeiro Admin
 
-**Status**: Aceita como direcao inicial
+**Status**: Aceita como direção inicial
 **Data**: 2026-04-30
 
 ## Contexto
 
 O MVP precisa separar cliente comum e administradora. A administradora deve
 cadastrar produtos e visualizar pedidos. Clientes devem acessar apenas seus
-proprios dados quando autenticadas.
+próprios dados quando autenticadas.
 
-## Decisao
+## Decisão
 
 Usar Firebase Authentication para login. Preferir roles por custom claims para
-`admin`; usuarios autenticados sem claim admin sao `customer`. O primeiro admin
-deve ser criado por procedimento seguro e documentado, sem endpoint publico
+`admin`; usuários autenticados sem claim admin são `customer`. O primeiro admin
+deve ser criado por procedimento seguro e documentado, sem endpoint público
 permanente.
 
 ## Alternativas Consideradas
 
 - Documento `userRoles/{uid}` como fonte principal: simples, mas exige cuidado
-  extra para impedir edicao indevida.
-- Endpoint publico de promocao: rejeitado por risco de seguranca.
-- Auth externo: desnecessario para o MVP.
+  extra para impedir edição indevida.
+- Endpoint público de promoção: rejeitado por risco de segurança.
+- Auth externo: desnecessário para o MVP.
 
-## Consequencias
+## Consequências
 
-- Operacoes admin precisam validar claim/role no backend e nas rules.
-- O processo do primeiro admin deve ser testavel e auditavel.
-- Qualquer fallback por documento de role deve ser restrito e removivel.
+- Operações admin precisam validar claim/role no backend e nas rules.
+- O processo do primeiro admin deve ser testável e auditável.
+- Qualquer fallback por documento de role deve ser restrito e removível.
