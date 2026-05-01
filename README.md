@@ -48,6 +48,11 @@ visualiza pedidos.
 
 - Next.js App Router.
 - TypeScript em modo `strict`.
+- Embla Carousel para hero, vitrine de novidades e galeria do produto.
+- `lucide-react` para ícones de navegação, busca, filtros, CTA e benefícios.
+- `motion` para transições leves de entrada, hover e drawer.
+- Radix UI (`Dialog`, `Tabs`, `Select`, `Navigation Menu`, `Slot`) para interações acessíveis.
+- `clsx` e `class-variance-authority` para variantes visuais consistentes.
 - Firebase Authentication para login.
 - Cloud Firestore como banco principal.
 - Firebase Storage somente se a decisão do MVP confirmar necessidade para
@@ -186,3 +191,6 @@ SHIPPING_PROVIDER=mock
 - Firebase Storage não está ativo no MVP inicial; upload de imagens dependerá
   de decisão futura e novas rules/testes.
 - O CI atual é básico/smoke; o CI completo será consolidado nas fases finais.
+- Tailwind CSS não foi adotado nesta revisão porque a base existente em CSS global
+  já permitia atingir a direção visual premium exigida com menor risco estrutural.
+  Por isso `tailwind-merge` e `tailwindcss-animate` não se aplicam nesta fase.

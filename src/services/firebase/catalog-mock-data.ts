@@ -37,22 +37,22 @@ export const mockCatalogCategories: Category[] = [
 export const storefrontCollections = [
   {
     title: "Coleção Solar",
-    description: "Peças em crochê com cor, leveza e presença para dias de calor.",
+    description: "Peças leves e femininas para dias de sol, praia e passeio.",
     imageUrl: "/banners/hero-vestido-dune.jpeg",
     href: "/catalog?category=vestidos-e-saidas"
   },
   {
     title: "Saída de praia e conjunto",
-    description: "Modelos pensados para montar looks de verão com praticidade.",
+    description: "Looks de verão com crochê autoral e acabamento delicado.",
     imageUrl: "/banners/hero-conjunto-praia.jpeg",
     href: "/catalog?category=conjuntos-e-tops"
   }
 ] as const;
 
 export const storefrontHighlights = [
-  "Produção artesanal própria",
-  "Atendimento rápido pelo WhatsApp",
-  "Vitrine mobile-first para compra direta"
+  "Peças feitas à mão com cuidado",
+  "Atendimento direto pelo WhatsApp",
+  "Curadoria de novidades do ateliê"
 ] as const;
 
 export const mockCatalogProductDetails: Record<
@@ -69,7 +69,7 @@ export const mockCatalogProductDetails: Record<
       slug: "vestido-dune-croche",
       name: "Vestido Dune em crochê",
       description:
-        "Peça em crochê com caimento leve, recorte marcante e proposta de saída de praia ou look de verão. Dados comerciais ainda temporários.",
+        "Peça em crochê com caimento leve e visual marcante para praia, passeio e dias de verão.",
       basePrice: 23990,
       categoryId: "vestidos-e-saidas",
       availability: "made_to_order",
@@ -112,7 +112,7 @@ export const mockCatalogProductDetails: Record<
       slug: "conjunto-praia-croche",
       name: "Conjunto praia em crochê",
       description:
-        "Conjunto artesanal para compor produção de praia com top e saia em leitura feminina e comercial. Dados comerciais ainda temporários.",
+        "Conjunto em crochê para compor look de verão com leveza, conforto e presença.",
       basePrice: 21990,
       categoryId: "conjuntos-e-tops",
       availability: "available",
@@ -157,7 +157,7 @@ export const mockCatalogProductDetails: Record<
       slug: "bolsa-estrela-marina",
       name: "Bolsa Estrela Marina",
       description:
-        "Bolsa em crochê com aplicação frontal e proposta leve para compor produções casuais e de praia. Dados comerciais ainda temporários.",
+        "Bolsa em crochê com aplicação frontal para compor produções casuais e de praia.",
       basePrice: 15990,
       categoryId: "bolsas-e-acessorios",
       availability: "available",
@@ -185,7 +185,7 @@ export const mockCatalogProductDetails: Record<
       slug: "saidinha-infantil-perola-oceano",
       name: "Saidinha infantil Pérola do Oceano",
       description:
-        "Peça infantil em crochê com visual delicado e proposta especial para praia ou passeio. Dados comerciais ainda temporários.",
+        "Peça infantil em crochê com visual delicado para praia, passeio e ocasiões especiais.",
       basePrice: 14990,
       categoryId: "infantil",
       availability: "made_to_order",

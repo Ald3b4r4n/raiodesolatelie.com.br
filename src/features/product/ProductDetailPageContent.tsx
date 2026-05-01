@@ -1,8 +1,8 @@
-import Image from "next/image";
-
 import { EmptyState } from "@/components/ui/EmptyState";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { Price } from "@/components/ui/Price";
+import { ProductGalleryCarousel } from "@/components/carousel/ProductGalleryCarousel";
+import { ExternalLink } from "@/components/links/ExternalLink";
 import {
   buildVariantOptions,
   resolveSelectedVariant,
@@ -62,45 +62,11 @@ export function ProductDetailPageContent({
   return (
     <section className="product-detail-page" aria-labelledby="product-detail-title">
       <div className="product-detail-grid">
-        <div className="product-gallery" aria-label="Fotos do produto">
-          <div className="product-gallery__featured">
-            {product.imageUrls?.[0] ? (
-              <Image
-                alt={`${product.name} - foto principal`}
-                className="product-gallery__image"
-                height={1200}
-                src={product.imageUrls[0]}
-                width={1200}
-              />
-            ) : (
-              <div className="product-gallery__fallback">Foto temporária pendente</div>
-            )}
-          </div>
-
-          <div className="product-gallery__thumbs">
-            {(product.imageUrls?.length ? product.imageUrls : [undefined]).map(
-              (imageUrl, index) => (
-                <div
-                  className="product-gallery__item"
-                  key={`${imageUrl ?? "fallback"}-${index}`}
-                >
-                  {imageUrl ? (
-                    <Image
-                      alt={`${product.name} - foto ${index + 1}`}
-                      className="product-gallery__image"
-                      height={960}
-                      src={imageUrl}
-                      width={960}
-                    />
-                  ) : (
-                    <div className="product-gallery__fallback">
-                      Foto temporária pendente
-                    </div>
-                  )}
-                </div>
-              )
-            )}
-          </div>
+        <div className="product-gallery">
+          <ProductGalleryCarousel
+            productName={product.name}
+            imageUrls={product.imageUrls ?? []}
+          />
         </div>
 
         <div className="product-detail-panel">
@@ -125,7 +91,6 @@ export function ProductDetailPageContent({
 
           <div className="product-price-panel">
             <Price amountInCents={selectedVariant?.priceOverride ?? product.basePrice} />
-            <span>Valor de vitrine temporário</span>
           </div>
 
           {data.errorMessage ? <ErrorMessage message={data.errorMessage} /> : null}
@@ -172,28 +137,21 @@ export function ProductDetailPageContent({
                 Adicionar ao carrinho
               </button>
 
-              {whatsappUrl ? (
-                <a className="ui-button ui-button--secondary" href={whatsappUrl}>
-                  Comprar pelo WhatsApp
-                </a>
-              ) : (
-                <button className="ui-button ui-button--secondary" disabled type="button">
-                  WhatsApp em breve
-                </button>
-              )}
+              <ExternalLink className="ui-button ui-button--secondary" href={whatsappUrl}>
+                Comprar pelo WhatsApp
+              </ExternalLink>
             </div>
           </form>
 
           <ul className="product-benefit-list" aria-label="Diferenciais da compra">
-            <li>Mensagem pronta com referência do produto.</li>
-            <li>Seleção de variação antes de seguir para o carrinho.</li>
-            <li>Atendimento direto para confirmar detalhes da peça.</li>
+            <li>Feito à mão com cuidado e acabamento delicado.</li>
+            <li>Combine tamanho e cor antes de finalizar com o ateliê.</li>
+            <li>Atendimento direto para tirar dúvidas e ajustar detalhes.</li>
           </ul>
 
           {showPreparedStatus && selectedVariant ? (
             <p className="product-detail-status" role="status">
-              Estrutura do carrinho preparada. A conexão completa será finalizada na
-              próxima fase.
+              Seleção confirmada. Você pode seguir pelo WhatsApp para finalizar o pedido.
             </p>
           ) : null}
 

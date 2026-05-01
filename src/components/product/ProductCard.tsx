@@ -1,10 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, MessageCircleMore } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import type { Product } from "@/domain/product/types";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { ExternalLink } from "@/components/links/ExternalLink";
 import { Price } from "@/components/ui/Price";
+import { buildStoreConfig } from "@/lib/config/store";
 
 type ProductCardProps = {
   product: Product;
@@ -23,39 +30,55 @@ const salesModeLabels: Record<Product["salesMode"], string> = {
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+  const reduceMotion = useReducedMotion();
+  const config = buildStoreConfig();
+
   return (
-    <Card className="product-card">
-      <Link className="product-card__image" href={`/products/${product.slug}`}>
-        <Image
-          alt={product.name}
-          className="product-card__image-element"
-          height={960}
-          src={product.imageUrls?.[0] ?? "/brand/logo-identidade.jpeg"}
-          width={960}
-        />
-      </Link>
-      <div className="product-card__content">
-        <div className="product-card__header">
-          <Badge>{salesModeLabels[product.salesMode]}</Badge>
-          <Badge>{availabilityLabels[product.availability]}</Badge>
-        </div>
-        <div className="product-card__body">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-        </div>
-        <div className="product-card__footer">
-          <div className="product-card__pricing">
-            <Price amountInCents={product.basePrice} />
-            <span>Valor de vitrine temporário</span>
+    <motion.div
+      whileHover={reduceMotion ? undefined : { y: -6 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+    >
+      <Card className="product-card" variant="editorial">
+        <Link className="product-card__image" href={`/products/${product.slug}`}>
+          <Image
+            alt={product.name}
+            className="product-card__image-element"
+            height={960}
+            src={product.imageUrls?.[0] ?? "/brand/logo-identidade.jpeg"}
+            width={960}
+          />
+        </Link>
+        <div className="product-card__content">
+          <div className="product-card__header">
+            <Badge>{salesModeLabels[product.salesMode]}</Badge>
+            <Badge variant="subtle">{availabilityLabels[product.availability]}</Badge>
           </div>
-          <Link
-            className="ui-button ui-button--secondary"
-            href={`/products/${product.slug}`}
-          >
-            Ver detalhes
-          </Link>
+          <div className="product-card__body">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+          </div>
+          <div className="product-card__footer">
+            <div className="product-card__pricing">
+              <Price amountInCents={product.basePrice} />
+              <span>Escolha acabamento e variação na página do produto</span>
+            </div>
+            <div className="product-card__actions">
+              <Button asChild variant="secondary" size="sm">
+                <Link href={`/products/${product.slug}`}>
+                  Ver produto
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <ExternalLink href={config.whatsappUrl}>
+                  <MessageCircleMore aria-hidden="true" />
+                  WhatsApp
+                </ExternalLink>
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </motion.div>
   );
 }

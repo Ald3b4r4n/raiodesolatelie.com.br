@@ -42,9 +42,8 @@ describe("controles de formulário", () => {
       />
     );
 
-    fireEvent.change(screen.getByLabelText("Categoria"), {
-      target: { value: "encomenda" }
-    });
+    fireEvent.click(screen.getByLabelText("Categoria"));
+    fireEvent.click(screen.getByText("Encomenda via WhatsApp"));
 
     expect(onChange).toHaveBeenCalled();
   });

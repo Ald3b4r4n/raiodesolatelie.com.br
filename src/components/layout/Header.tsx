@@ -3,8 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import {
+  Camera,
+  Menu,
+  MessageCircleMore,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  Ticket
+} from "lucide-react";
 
 import { buildStoreConfig } from "@/lib/config/store";
+import { ExternalLink } from "@/components/links/ExternalLink";
+import { Button } from "@/components/ui/Button";
 import { Drawer } from "@/components/ui/Drawer";
 
 import { MobileNav } from "./MobileNav";
@@ -17,8 +29,23 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="site-header__topline">
-        <span>Moda artesanal feminina</span>
-        <a href={config.whatsappUrl}>WhatsApp: {config.whatsappPhone}</a>
+        <div className="site-header__promise">
+          <Sparkles aria-hidden="true" />
+          <span>Moda artesanal feminina feita à mão</span>
+        </div>
+        <div className="site-header__topline-links">
+          <ExternalLink
+            href={config.socialLinks[0]?.href}
+            aria-label="Instagram do ateliê"
+          >
+            <Camera aria-hidden="true" />
+            Instagram
+          </ExternalLink>
+          <ExternalLink href={config.socialLinks[1]?.href} aria-label="TikTok do ateliê">
+            <Ticket aria-hidden="true" />
+            TikTok
+          </ExternalLink>
+        </div>
       </div>
 
       <div className="site-header__main">
@@ -41,26 +68,41 @@ export function Header() {
             id="header-search-input"
             className="header-search__input"
             name="q"
-            placeholder="Buscar peças, crochê e conjuntos"
+            placeholder="Buscar vestidos, conjuntos e crochê"
             type="search"
           />
+          <button
+            className="header-search__button"
+            type="submit"
+            aria-label="Buscar no catálogo"
+          >
+            <Search aria-hidden="true" />
+          </button>
         </form>
 
-        <nav className="desktop-nav" aria-label="Navegação principal">
-          {primaryNavigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <NavigationMenu.Root className="desktop-nav">
+          <NavigationMenu.List aria-label="Navegação principal">
+            {primaryNavigation.map((item) => (
+              <NavigationMenu.Item key={item.href}>
+                <NavigationMenu.Link asChild>
+                  <Link href={item.href}>{item.label}</Link>
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            ))}
+          </NavigationMenu.List>
+        </NavigationMenu.Root>
 
         <div className="header-actions">
-          <a className="header-social-link" href={config.socialLinks[0]?.href}>
-            Instagram
-          </a>
-          <a className="header-social-link" href={config.socialLinks[1]?.href}>
-            TikTok
-          </a>
+          <Link className="header-link-chip" href="/catalog">
+            <ShoppingBag aria-hidden="true" />
+            Catálogo
+          </Link>
+          <Button asChild size="sm">
+            <ExternalLink href={config.whatsappUrl}>
+              <MessageCircleMore aria-hidden="true" />
+              Atendimento pelo WhatsApp
+            </ExternalLink>
+          </Button>
         </div>
 
         <button
@@ -70,13 +112,16 @@ export function Header() {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen(true)}
         >
-          <span />
-          <span />
-          <span />
+          <Menu aria-hidden="true" />
         </button>
       </div>
 
-      <Drawer isOpen={isMenuOpen} title="Menu" onClose={() => setIsMenuOpen(false)}>
+      <Drawer
+        description="Navegue pelo catálogo e fale com o ateliê."
+        isOpen={isMenuOpen}
+        title="Menu da loja"
+        onClose={() => setIsMenuOpen(false)}
+      >
         <MobileNav onNavigate={() => setIsMenuOpen(false)} />
       </Drawer>
     </header>

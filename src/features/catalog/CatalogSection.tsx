@@ -1,10 +1,17 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, MessageCircleMore } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { EmptyState } from "@/components/ui/EmptyState";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { ProductCard } from "@/components/product/ProductCard";
+import { ExternalLink } from "@/components/links/ExternalLink";
+import { buildStoreConfig } from "@/lib/config/store";
+import { Button } from "@/components/ui/Button";
 
 import { CatalogFilters } from "./CatalogFilters";
 import type { CatalogViewData } from "./types";
@@ -15,6 +22,9 @@ type CatalogSectionProps = {
 };
 
 export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
+  const config = buildStoreConfig();
+  const reduceMotion = useReducedMotion();
+
   return (
     <div className="catalog-page">
       <section className="catalog-hero" aria-labelledby="catalog-title">
@@ -23,9 +33,23 @@ export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
           <h1 id="catalog-title">{data.title}</h1>
           <p>{data.description}</p>
           <div className="catalog-hero__chips" aria-label="Leituras da coleção">
-            <span>Novidades artesanais</span>
-            <span>Compra fácil pelo celular</span>
-            <span>Curadoria feminina</span>
+            <span>Pronta entrega e encomendas</span>
+            <span>Feito à mão com cuidado</span>
+            <span>Atendimento pelo WhatsApp</span>
+          </div>
+          <div className="catalog-hero__actions">
+            <Button asChild>
+              <ExternalLink href={config.whatsappUrl}>
+                <MessageCircleMore aria-hidden="true" />
+                Comprar pelo WhatsApp
+              </ExternalLink>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/#lookbook">
+                Ver inspiração
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </div>
         <div className="catalog-hero__banner">
@@ -50,17 +74,30 @@ export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
       {data.products.length > 0 ? (
         <section className="catalog-grid" aria-label="Listagem de produtos">
           <div className="catalog-grid__intro">
-            <strong>Vitrine pensada para compra rápida</strong>
-            <p>
-              Fotos maiores, leitura imediata de preço e acesso direto ao detalhe de cada
-              peça.
-            </p>
-            <Link className="ui-button ui-button--ghost" href="/#atendimento">
-              Tirar dúvida no WhatsApp
-            </Link>
+            <strong>Encontre sua peça favorita</strong>
+            <p>Escolha no catálogo e fale direto com o ateliê para confirmar detalhes.</p>
+            <div className="catalog-grid__intro-actions" aria-label="Ações do catálogo">
+              <Button asChild>
+                <ExternalLink href={config.whatsappUrl}>
+                  <MessageCircleMore aria-hidden="true" />
+                  Comprar pelo WhatsApp
+                </ExternalLink>
+              </Button>
+              <Button asChild variant="ghost">
+                <Link href="/#atendimento">Atendimento</Link>
+              </Button>
+            </div>
           </div>
-          {data.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {data.products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.28, delay: index * 0.04 }}
+            >
+              <ProductCard product={product} />
+            </motion.div>
           ))}
         </section>
       ) : (

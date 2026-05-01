@@ -1,34 +1,64 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-  isLoading?: boolean;
-  variant?: "primary" | "secondary" | "ghost";
-};
+import { cn } from "@/lib/ui/cn";
+
+export const buttonVariants = cva("ui-button", {
+  variants: {
+    variant: {
+      primary: "ui-button--primary",
+      secondary: "ui-button--secondary",
+      ghost: "ui-button--ghost",
+      quiet: "ui-button--quiet"
+    },
+    size: {
+      sm: "ui-button--sm",
+      md: "ui-button--md",
+      lg: "ui-button--lg"
+    },
+    width: {
+      auto: "",
+      full: "ui-button--full"
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+    width: "auto"
+  }
+});
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+    isLoading?: boolean;
+  };
 
 export function Button({
+  asChild = false,
   children,
   className,
   disabled,
   isLoading = false,
+  size,
   type = "button",
-  variant = "primary",
+  variant,
+  width,
   ...props
 }: ButtonProps) {
-  const classes = ["ui-button", `ui-button--${variant}`, className]
-    .filter(Boolean)
-    .join(" ");
+  const Comp = asChild ? Slot : "button";
 
   return (
-    <button
-      className={classes}
-      disabled={disabled || isLoading}
-      type={type}
+    <Comp
       aria-busy={isLoading || undefined}
       aria-label={isLoading ? "Salvando" : props["aria-label"]}
+      className={cn(buttonVariants({ variant, size, width }), className)}
+      disabled={disabled || isLoading}
+      type={type}
       {...props}
     >
       {isLoading ? "Salvando..." : children}
-    </button>
+    </Comp>
   );
 }

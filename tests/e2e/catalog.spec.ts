@@ -10,7 +10,6 @@ test("catálogo mobile permite busca e filtros em até 3,5 segundos", async ({ p
 
   await page.getByLabel(/buscar por nome/i).fill("infantil");
   await page.getByRole("button", { name: /infantil/i }).click();
-  await page.getByLabel(/disponibilidade/i).selectOption("made_to_order");
 
   const startedAt = Date.now();
   await page.getByRole("button", { name: /aplicar filtros/i }).click();

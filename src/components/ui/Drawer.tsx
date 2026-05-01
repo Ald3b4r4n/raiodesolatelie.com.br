@@ -1,62 +1,60 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useRef } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 type DrawerProps = {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  description?: string;
 };
 
-export function Drawer({ children, isOpen, onClose, title }: DrawerProps) {
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    closeButtonRef.current?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) {
-    return null;
-  }
+export function Drawer({ children, description, isOpen, onClose, title }: DrawerProps) {
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div className="drawer" role="presentation">
-      <button
-        className="drawer__backdrop"
-        type="button"
-        aria-label="Fechar menu"
-        onClick={onClose}
-      />
-      <div className="drawer__panel" role="dialog" aria-modal="true" aria-label={title}>
-        <div className="drawer__header">
-          <h2>{title}</h2>
-          <button
-            className="drawer__close"
-            type="button"
-            onClick={onClose}
-            ref={closeButtonRef}
-          >
-            Fechar
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>
+    <Dialog.Root open={isOpen} onOpenChange={(open) => (!open ? onClose() : null)}>
+      <AnimatePresence>
+        {isOpen ? (
+          <Dialog.Portal forceMount>
+            <Dialog.Overlay asChild forceMount>
+              <motion.div
+                animate={{ opacity: 1 }}
+                className="drawer__backdrop"
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.2 }}
+              />
+            </Dialog.Overlay>
+            <Dialog.Content asChild forceMount>
+              <motion.div
+                animate={{ opacity: 1, x: 0 }}
+                className="drawer__panel"
+                exit={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
+                initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
+                transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+              >
+                <div className="drawer__header">
+                  <div className="drawer__heading">
+                    <Dialog.Title>{title}</Dialog.Title>
+                    {description ? (
+                      <Dialog.Description>{description}</Dialog.Description>
+                    ) : null}
+                  </div>
+                  <Dialog.Close className="drawer__close" aria-label="Fechar painel">
+                    <X aria-hidden="true" />
+                  </Dialog.Close>
+                </div>
+                {children}
+              </motion.div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        ) : null}
+      </AnimatePresence>
+    </Dialog.Root>
   );
 }

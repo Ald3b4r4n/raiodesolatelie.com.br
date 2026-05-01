@@ -21,6 +21,10 @@ describe("app shell", () => {
     );
     expect(screen.getByRole("main")).toHaveTextContent("Base visual");
     expect(screen.getByRole("contentinfo")).toHaveTextContent(/raio de sol ateliê/i);
+    expect(screen.queryByText(/6199663/i)).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /atendimento pelo whatsapp/i })
+    ).toHaveAttribute("target", "_blank");
   });
 
   it("abre navegação mobile por botão acessível", () => {
@@ -32,7 +36,7 @@ describe("app shell", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /abrir menu/i }));
 
-    const dialog = screen.getByRole("dialog", { name: /menu/i });
+    const dialog = screen.getByRole("dialog", { name: /menu da loja/i });
 
     expect(dialog).toBeInTheDocument();
     expect(within(dialog).getByRole("link", { name: "Início" })).toHaveAttribute(

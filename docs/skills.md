@@ -219,3 +219,21 @@ Diretórios instalados em `.agents/skills/`:
 | `development`                    | Refatoração modular entre config da loja, dados mock, componentes e serviços.    | Preservou separação entre UI, domínio, catálogo, SEO e WhatsApp.                        |
 | `documentation`                  | README, arquitetura e testes atualizados com assets reais e contatos oficiais.   | A troca futura de dados temporários por dados comerciais finais ficou documentada.      |
 | `verification-before-completion` | Lint, typecheck, testes focados, E2E e checagem visual manual antes de fechar.   | A revisão só avançou após evidência técnica e visual.                                   |
+
+## Bibliotecas Obrigatórias da Revisão Visual
+
+| Biblioteca                               | Uso real nesta revisão                                                 |
+| ---------------------------------------- | ---------------------------------------------------------------------- |
+| `embla-carousel`, `embla-carousel-react` | Hero da home, carrossel de novidades e galeria do produto.             |
+| `lucide-react`                           | Busca, menu, filtros, setas, WhatsApp, benefícios, navegação e rodapé. |
+| `motion`                                 | Entrada suave de seções, hover de cards e transições do drawer.        |
+| `@radix-ui/react-dialog`                 | Drawer mobile do menu e drawer de filtros do catálogo.                 |
+| `@radix-ui/react-tabs`                   | Abas de detalhes, entrega e cuidados na página de produto.             |
+| `@radix-ui/react-select`                 | Select acessível dos filtros.                                          |
+| `@radix-ui/react-navigation-menu`        | Navegação desktop no header.                                           |
+| `@radix-ui/react-slot`                   | Composição `asChild` nos botões.                                       |
+| `clsx`                                   | Combinação segura de classes em `cn()`.                                |
+| `class-variance-authority`               | Variantes de `Button`, `Badge` e `Card`.                               |
+| `tailwind-merge`                         | Não se aplica nesta fase porque Tailwind não foi adotado.              |
+| `tailwindcss-animate`                    | Não se aplica nesta fase porque Tailwind não foi adotado.              |
+| `tailwindcss`, `@tailwindcss/postcss`    | Não instalados pela mesma decisão técnica acima.                       |

@@ -1,11 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Camera,
+  HeartHandshake,
+  MessageCircleMore,
+  PackageCheck,
+  Truck
+} from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import type { StoreConfig } from "@/lib/config/store";
+import { EmblaCarousel } from "@/components/carousel/EmblaCarousel";
+import { ExternalLink } from "@/components/links/ExternalLink";
+import { ProductCard } from "@/components/product/ProductCard";
+import { Button } from "@/components/ui/Button";
 import {
   mockCatalogProducts,
-  storefrontCollections,
-  storefrontHighlights
+  storefrontCollections
 } from "@/services/firebase/catalog-mock-data";
 
 type HomePageProps = {
@@ -14,7 +27,7 @@ type HomePageProps = {
 
 const featuredProducts = mockCatalogProducts
   .filter((product) => product.status === "active")
-  .slice(0, 4);
+  .slice(0, 6);
 
 const categoryLinks = [
   { label: "Vestidos e saídas", href: "/catalog?category=vestidos-e-saidas" },
@@ -24,125 +37,134 @@ const categoryLinks = [
 ] as const;
 
 export function HomePage({ config }: HomePageProps) {
+  const reduceMotion = useReducedMotion();
+  const heroSlides = [
+    <article className="hero-slide" key="hero-1">
+      <div className="hero-slide__media">
+        <Image
+          alt="Vestido em crochê do Raio de Sol Ateliê"
+          fill
+          priority
+          sizes="100vw"
+          src="/banners/hero-vestido-dune.jpeg"
+        />
+      </div>
+      <div className="hero-slide__content">
+        <p className="hero-slide__eyebrow">Nova coleção</p>
+        <h2>Vestidos e crochês com presença leve e acabamento autoral</h2>
+        <p>
+          Peças feitas à mão para praia, passeio e momentos de sol com elegância simples.
+        </p>
+        <div className="hero-slide__actions" aria-label="Ações principais">
+          <Button asChild size="lg">
+            <Link href="/catalog">Ver catálogo</Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
+          </Button>
+        </div>
+      </div>
+    </article>,
+    <article className="hero-slide" key="hero-2">
+      <div className="hero-slide__media">
+        <Image
+          alt="Conjunto em crochê do Raio de Sol Ateliê"
+          fill
+          priority
+          sizes="100vw"
+          src="/banners/hero-conjunto-praia.jpeg"
+        />
+      </div>
+      <div className="hero-slide__content">
+        <p className="hero-slide__eyebrow">Moda praia</p>
+        <h2>Conjuntos e saídas com visual de loja e atendimento pessoal</h2>
+        <p>
+          Combine tamanho, cor e disponibilidade direto com o ateliê em um fluxo comercial
+          claro.
+        </p>
+        <div className="hero-slide__actions" aria-label="Ações principais">
+          <Button asChild size="lg">
+            <Link href="/catalog">Ver catálogo</Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
+          </Button>
+        </div>
+      </div>
+    </article>
+  ];
+
+  const productSlides = featuredProducts.map((product) => (
+    <div className="home-product-slide" key={product.id}>
+      <ProductCard product={product} />
+    </div>
+  ));
+
   return (
     <div className="home-page">
-      <section className="home-hero home-band" aria-labelledby="home-title">
-        <div className="home-hero__copy">
-          <p className="eyebrow">Moda artesanal com venda direta</p>
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="home-hero__top home-shell">
           <h1 id="home-title">Raio de Sol Ateliê</h1>
-          <p className="home-hero__text">
-            Moda artesanal em crochê com presença de vitrine, imagens reais e compra
-            prática para quem prefere resolver tudo pelo celular.
+          <p className="home-hero__subtitle">
+            Moda artesanal feminina em crochê, com atmosfera editorial, vitrine comercial
+            e atendimento direto do ateliê.
           </p>
-          <div className="home-actions" aria-label="Ações principais">
-            <Link className="ui-button ui-button--primary" href="/catalog">
-              Explorar catálogo
-            </Link>
-            <a className="ui-button ui-button--secondary" href={config.whatsappUrl}>
-              Comprar pelo WhatsApp
-            </a>
-          </div>
-          <ul className="hero-highlights" aria-label="Diferenciais da loja">
-            {storefrontHighlights.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
         </div>
 
-        <div className="home-hero__media">
-          <article className="hero-feature-card">
-            <div className="hero-feature-card__image">
-              <Image
-                alt="Vestido em crochê laranja do Raio de Sol Ateliê"
-                fill
-                sizes="(max-width: 719px) 100vw, 40vw"
-                src="/banners/hero-vestido-dune.jpeg"
-              />
-            </div>
-            <div className="hero-feature-card__content">
-              <p className="eyebrow">Coleção Solar</p>
-              <h2>Peças leves para praia, passeio e look de verão</h2>
-              <p>
-                Vitrine com foco nas peças reais já produzidas pelo ateliê e contato
-                direto para fechar pedido sem atrito.
-              </p>
-            </div>
-          </article>
+        <EmblaCarousel
+          className="hero-carousel"
+          label="Carrossel principal"
+          slides={heroSlides}
+          options={{ loop: true, align: "start" }}
+        />
 
-          <div className="hero-side-grid" aria-label="Destaques visuais da coleção">
-            <div className="hero-side-grid__item">
-              <Image
-                alt="Conjunto em crochê amarelo"
-                fill
-                sizes="(max-width: 719px) 50vw, 20vw"
-                src="/banners/hero-conjunto-praia.jpeg"
-              />
-            </div>
-            <div className="hero-side-grid__item hero-side-grid__item--text">
-              <span>Novidades autorais</span>
-              <strong>Vitrine comercial com linguagem de loja feminina</strong>
-            </div>
-          </div>
-        </div>
+        <ul className="hero-highlights home-shell" aria-label="Diferenciais do ateliê">
+          {[
+            { icon: HeartHandshake, text: "Feito à mão" },
+            { icon: PackageCheck, text: "Pronta entrega e encomendas" },
+            { icon: MessageCircleMore, text: "Atendimento pelo WhatsApp" },
+            { icon: Truck, text: "Retirada ou envio combinado" }
+          ].map((item) => (
+            <li key={item.text}>
+              <item.icon aria-hidden="true" />
+              <span>{item.text}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section
-        className="home-band home-showcase"
+      <motion.section
+        className="home-showcase home-shell"
         aria-labelledby="novidades-title"
-        id="catalogo"
+        id="novidades"
+        initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <div className="section-heading">
           <p className="eyebrow">Novidades</p>
-          <h2 id="novidades-title">Novidades da semana</h2>
-          <p>
-            Seleção com melhor leitura de foto, preço em destaque e entrada rápida para o
-            detalhe do produto.
-          </p>
+          <h2 id="novidades-title">Novidades do ateliê</h2>
+          <p>Uma vitrine com peças leves, femininas e prontas para conversa de compra.</p>
         </div>
+        <EmblaCarousel
+          className="product-carousel"
+          label="Carrossel de novidades do ateliê"
+          slides={productSlides}
+          options={{ align: "start", loop: false }}
+        />
+      </motion.section>
 
-        <div className="home-product-grid">
-          {featuredProducts.map((product) => (
-            <Link
-              key={product.id}
-              className="home-product-card"
-              href={`/products/${product.slug}`}
-            >
-              <div className="home-product-card__image">
-                <Image
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 719px) 100vw, 25vw"
-                  src={product.imageUrls?.[0] ?? "/brand/logo-identidade.jpeg"}
-                />
-              </div>
-              <div className="home-product-card__body">
-                <span className="home-product-card__badge">
-                  {product.availability === "available"
-                    ? "Pronta para compra"
-                    : "Encomenda aberta"}
-                </span>
-                <strong>{product.name}</strong>
-                <p>{product.description}</p>
-                <span className="home-product-card__price">
-                  {new Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL"
-                  }).format(product.basePrice / 100)}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="home-band home-collections" aria-labelledby="categorias-title">
+      <motion.section
+        className="home-collections home-shell"
+        aria-labelledby="categorias-title"
+        initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <div className="section-heading">
-          <p className="eyebrow">Categorias</p>
-          <h2 id="categorias-title">Categorias em destaque</h2>
-          <p>
-            Organização de loja para facilitar navegação, descoberta e contato comercial
-            mais rápido.
-          </p>
+          <p className="eyebrow">Coleções</p>
+          <h2 id="categorias-title">Explore por categoria</h2>
+          <p>Escolha a coleção e encontre a peça ideal para o seu momento.</p>
         </div>
 
         <div className="collection-grid">
@@ -168,61 +190,106 @@ export function HomePage({ config }: HomePageProps) {
           ))}
         </div>
 
-        <div className="category-chip-row">
+        <div className="category-chip-row" aria-label="Atalhos de categorias">
           {categoryLinks.map((category) => (
             <Link key={category.href} className="category-chip" href={category.href}>
               {category.label}
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section className="home-band home-social" aria-labelledby="social-title">
-        <div className="section-heading">
-          <p className="eyebrow">Social</p>
-          <h2 id="social-title">Acompanhe no Instagram</h2>
-          <p>
-            Os canais oficiais já estão ligados para transformar a vitrine em conversa e
-            pedido direto.
-          </p>
-        </div>
-
-        <div className="home-social__grid">
-          <div className="home-social__lookbook" aria-label="Inspiração visual do ateliê">
-            <div className="home-social__image">
+      <motion.section
+        className="home-lookbook"
+        aria-labelledby="lookbook-title"
+        id="lookbook"
+        initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="home-shell home-lookbook__grid">
+          <div className="section-heading">
+            <p className="eyebrow">Inspiração</p>
+            <h2 id="lookbook-title">Textura, delicadeza e acabamento em cada detalhe</h2>
+            <p>
+              O lookbook reforça o clima artesanal da marca sem sobrecarregar a loja com
+              texto técnico.
+            </p>
+            <Button asChild variant="secondary">
+              <Link href="/catalog">Ver peças da coleção</Link>
+            </Button>
+          </div>
+          <div className="home-lookbook__images">
+            <div className="home-lookbook__image home-lookbook__image--tall">
               <Image
                 alt="Composição artesanal com sousplat em crochê"
                 fill
-                sizes="(max-width: 719px) 100vw, 32vw"
+                sizes="(max-width: 719px) 100vw, 28vw"
                 src="/lookbook/sousplat-1.jpeg"
               />
             </div>
-            <div className="home-social__image">
+            <div className="home-lookbook__image">
               <Image
                 alt="Detalhe de composição artesanal em mesa posta"
                 fill
-                sizes="(max-width: 719px) 100vw, 32vw"
+                sizes="(max-width: 719px) 100vw, 20vw"
                 src="/lookbook/sousplat-2.jpeg"
               />
             </div>
+            <div className="home-lookbook__image">
+              <Image
+                alt="Vestido em crochê com composição editorial"
+                fill
+                sizes="(max-width: 719px) 100vw, 20vw"
+                src="/products/vestido-dune.jpeg"
+              />
+            </div>
           </div>
+        </div>
+      </motion.section>
 
+      <motion.section
+        className="home-social home-shell"
+        aria-labelledby="social-title"
+        initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="section-heading">
+          <p className="eyebrow">Social</p>
+          <h2 id="social-title">Acompanhe o ateliê e fale com a loja</h2>
+          <p>Bastidores, peças novas e atendimento direto em canais externos.</p>
+        </div>
+
+        <div className="home-social__grid">
           <div className="home-social__panel" id="atendimento">
             <ul className="social-list" aria-label="Redes sociais">
               {config.socialLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} rel="noreferrer" target="_blank">
+                  <ExternalLink href={link.href}>
+                    {link.label === "Instagram" ? (
+                      <Camera aria-hidden="true" />
+                    ) : (
+                      <MessageCircleMore aria-hidden="true" />
+                    )}
                     {link.label}
-                  </a>
+                  </ExternalLink>
                 </li>
               ))}
             </ul>
-            <a className="ui-button ui-button--primary" href={config.whatsappUrl}>
-              Falar no WhatsApp
-            </a>
+            <Button asChild>
+              <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
+            </Button>
+          </div>
+          <div className="home-social__quote">
+            <p>
+              Do catálogo à conversa final, a experiência foi desenhada para vender como
+              loja.
+            </p>
+            <strong>Escolha a peça, veja os detalhes e finalize com o ateliê.</strong>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

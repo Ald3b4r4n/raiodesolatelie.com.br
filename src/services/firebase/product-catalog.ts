@@ -74,7 +74,7 @@ export class ProductCatalogService {
     return {
       title: "Coleção em destaque",
       description:
-        "Vitrine pensada para compra rápida, com peças reais do ateliê e dados comerciais temporários enquanto o catálogo oficial é finalizado.",
+        "Seleção do ateliê com peças artesanais em crochê para praia, passeio e looks leves.",
       products: normalizedProducts.sort((left, right) => {
         return (
           (left.sortOrder ?? Number.MAX_SAFE_INTEGER) -
@@ -85,8 +85,7 @@ export class ProductCatalogService {
       appliedFilters: filters,
       emptyState: {
         title: "Nenhum produto encontrado",
-        description:
-          "Ajuste a busca ou os filtros para encontrar outra peça desta vitrine."
+        description: "Tente buscar por outro termo ou escolha outra categoria."
       }
     };
   }

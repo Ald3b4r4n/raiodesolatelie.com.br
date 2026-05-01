@@ -10,7 +10,7 @@ describe("página inicial", () => {
       screen.getByRole("heading", { name: "Raio de Sol Ateliê" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /novidades da semana/i })
-    ).toBeInTheDocument();
+      screen.getAllByRole("region", { name: /novidades do ateliê/i }).length
+    ).toBeGreaterThan(0);
   });
 });

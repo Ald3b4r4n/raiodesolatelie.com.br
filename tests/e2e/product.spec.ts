@@ -17,7 +17,7 @@ test("produto mobile permite selecionar variação válida e aciona WhatsApp rea
   await page.getByLabel(/cor/i).selectOption("Amarelo sol");
   await page.getByRole("button", { name: /adicionar ao carrinho/i }).click();
 
-  await expect(page.getByRole("status")).toContainText(/próxima fase/i);
+  await expect(page.getByRole("status")).toContainText(/seleção confirmada/i);
   await expect(
     page.getByRole("link", { name: /comprar pelo whatsapp/i })
   ).toHaveAttribute("href", /wa\.me\/5561996632269/i);

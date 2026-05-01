@@ -14,15 +14,12 @@ describe("UI de catálogo", () => {
     expect(
       screen.getByRole("heading", { name: /coleção em destaque/i })
     ).toBeInTheDocument();
-    expect(screen.getByLabelText(/buscar por nome/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /filtrar/i })).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /vestidos e saídas/i })
     ).toBeInTheDocument();
     expect(screen.getByText("Bolsa Estrela Marina")).toBeInTheDocument();
-    expect(
-      screen.getAllByText(/vitrine pensada para compra rápida/i).length
-    ).toBeGreaterThan(0);
-    expect(screen.getByText(/novidades artesanais/i)).toBeInTheDocument();
+    expect(screen.getByText(/encontre sua peça favorita/i)).toBeInTheDocument();
   });
 
   it("mostra estado vazio quando não há produtos", () => {

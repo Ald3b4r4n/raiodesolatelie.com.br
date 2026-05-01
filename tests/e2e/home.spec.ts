@@ -5,13 +5,14 @@ test("home mobile apresenta hero comercial, vitrine e contato real", async ({ pa
   await page.goto("/");
 
   await expect(page.getByRole("heading", { name: "Raio de Sol Ateliê" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /explorar catálogo/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /ver catálogo/i }).first()).toBeVisible();
   await expect(
     page
       .getByLabel("Ações principais")
       .getByRole("link", { name: /comprar pelo whatsapp/i })
+      .first()
   ).toBeVisible();
-  await expect(page.getByRole("region", { name: /novidades da semana/i })).toBeVisible();
+  await expect(page.locator("#novidades")).toBeVisible();
   await expect(
     page.getByLabel("Redes sociais").getByRole("link", { name: /instagram/i })
   ).toBeVisible();

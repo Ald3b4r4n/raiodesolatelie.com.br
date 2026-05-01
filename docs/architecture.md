@@ -97,6 +97,17 @@ provider `mock` e rejeita dados de cartão no payload.
 ## UI Base e Assets
 
 - A UI base mobile-first está em `src/components/ui/` e `src/components/layout/`.
+- `src/components/ui/Button.tsx`, `Badge.tsx` e `Card.tsx` usam
+  `class-variance-authority`, `clsx` e `@radix-ui/react-slot` para variantes e
+  composição segura.
+- `src/components/ui/Drawer.tsx` usa `@radix-ui/react-dialog` com `motion` para
+  drawer mobile de menu e filtros.
+- `src/components/ui/Select.tsx` usa `@radix-ui/react-select` para seleção
+  acessível em filtros.
+- `src/components/layout/Header.tsx` usa
+  `@radix-ui/react-navigation-menu` para a navegação desktop.
+- `src/features/product/ProductDetailSection.tsx` usa `@radix-ui/react-tabs`
+  para organizar detalhes comerciais do produto.
 - Tokens simples de cor, raio, sombra e tamanho de toque ficam em
   `src/components/ui/tokens.ts` e são refletidos em `src/app/globals.css`.
 - O layout base usa `AppShell`, `Header`, `Footer` e `MobileNav`.
@@ -134,6 +145,12 @@ provider `mock` e rejeita dados de cartão no payload.
   expostas na interface.
 - Os metadados da home e Open Graph ficam em `src/lib/seo/metadata.ts` e são
   aplicados por `src/app/layout.tsx`.
+- A home e a galeria de produto usam Embla Carousel (`embla-carousel-react`) com
+  setas, dots e suporte a swipe/teclado.
+- A home, os cards de produto e o drawer usam `motion` com respeito a
+  `prefers-reduced-motion` para microinterações discretas.
+- A tipografia base usa `next/font/google` para carregar fontes com `display:
+swap`, mantendo performance e consistência visual.
 - `src/app/robots.ts` e `src/app/sitemap.ts` entregam a base de indexação do
   domínio `https://raiodesolatelie.com.br`.
 - A logo oficial em `public/brand/logo-identidade.jpeg` é usada como asset de
@@ -160,6 +177,10 @@ provider `mock` e rejeita dados de cartão no payload.
   filtros para reduzir estados inconsistentes no navegador móvel.
 - A vitrine foi reposicionada para linguagem comercial, com hero, chips,
   imagens maiores e cards mais próximos de uma loja de moda.
+- Tailwind CSS não foi adotado nesta fase. A equipe preservou CSS global +
+  tokens existentes para evitar migração estrutural ampla no meio da revisão da
+  storefront. Assim, `tailwind-merge` e `tailwindcss-animate` não se aplicam
+  neste momento.
 
 ## Página de Produto, Variações e SEO
 

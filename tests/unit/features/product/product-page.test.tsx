@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ProductDetailSection } from "@/features/product/ProductDetailSection";
@@ -18,7 +18,7 @@ describe("página de produto", () => {
     expect(screen.getByLabelText(/cor/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /adicionar ao carrinho/i })).toBeDisabled();
     expect(screen.getByRole("link", { name: /comprar pelo whatsapp/i })).toBeVisible();
-    expect(screen.getByAltText(/foto principal/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/fotos do produto/i)).toBeInTheDocument();
   });
 
   it("habilita a preparação de carrinho quando a variação é válida", () => {
@@ -27,8 +27,10 @@ describe("página de produto", () => {
 
     render(<ProductDetailSection data={data} onAddToCart={onAddToCart} />);
 
-    fireEvent.change(screen.getByLabelText(/tamanho/i), { target: { value: "M" } });
-    fireEvent.change(screen.getByLabelText(/cor/i), { target: { value: "Amarelo sol" } });
+    fireEvent.click(screen.getByLabelText(/tamanho/i));
+    fireEvent.click(screen.getByText("M"));
+    fireEvent.click(screen.getByLabelText(/cor/i));
+    fireEvent.click(screen.getByText("Amarelo sol"));
     fireEvent.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
 
     expect(onAddToCart).toHaveBeenCalledWith(
@@ -37,7 +39,7 @@ describe("página de produto", () => {
         variantId: "variant-5"
       })
     );
-    expect(screen.getByRole("status")).toHaveTextContent(/próxima fase/i);
+    expect(screen.getByRole("status")).toHaveTextContent(/seleção confirmada/i);
   });
 
   it("renderiza CTA real do WhatsApp com referência do produto", () => {
@@ -48,6 +50,16 @@ describe("página de produto", () => {
       "href",
       expect.stringContaining("wa.me/5561996632269")
     );
+  });
+
+  it("renderiza tabs com detalhes comerciais do produto", () => {
+    const data = createProductDetailFixture();
+    render(<ProductDetailSection data={data} />);
+
+    const tabs = screen.getByRole("tablist", { name: /detalhes do produto/i });
+    expect(within(tabs).getByRole("tab", { name: /detalhes/i })).toBeInTheDocument();
+    expect(within(tabs).getByRole("tab", { name: /entrega/i })).toBeInTheDocument();
+    expect(within(tabs).getByRole("tab", { name: /cuidados/i })).toBeInTheDocument();
   });
 
   it("renderiza estado de produto não encontrado", () => {

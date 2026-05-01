@@ -1,13 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
+import * as Tabs from "@radix-ui/react-tabs";
+import { Check, MessageCircleMore, Palette, Ruler, ShieldCheck } from "lucide-react";
 
 import { EmptyState } from "@/components/ui/EmptyState";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { Price } from "@/components/ui/Price";
 import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { ProductGalleryCarousel } from "@/components/carousel/ProductGalleryCarousel";
+import { ExternalLink } from "@/components/links/ExternalLink";
 import {
   buildVariantOptions,
   resolveSelectedVariant
@@ -35,7 +39,7 @@ const salesModeLabels = {
 export function ProductDetailSection({ data, onAddToCart }: ProductDetailSectionProps) {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [statusMessage, setStatusMessage] = useState("");
+  const [prepared, setPrepared] = useState(false);
   const product = data.product;
   const category = data.category;
   const variants = data.variants ?? [];
@@ -82,55 +86,21 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
   return (
     <section className="product-detail-page" aria-labelledby="product-detail-title">
       <div className="product-detail-grid">
-        <div className="product-gallery" aria-label="Fotos do produto">
-          <div className="product-gallery__featured">
-            {product.imageUrls?.[0] ? (
-              <Image
-                alt={`${product.name} - foto principal`}
-                className="product-gallery__image"
-                height={1200}
-                src={product.imageUrls[0]}
-                width={1200}
-              />
-            ) : (
-              <div className="product-gallery__fallback">Foto temporária pendente</div>
-            )}
-          </div>
-
-          <div className="product-gallery__thumbs">
-            {(product.imageUrls?.length ? product.imageUrls : [undefined]).map(
-              (imageUrl, index) => (
-                <div
-                  className="product-gallery__item"
-                  key={`${imageUrl ?? "fallback"}-${index}`}
-                >
-                  {imageUrl ? (
-                    <Image
-                      alt={`${product.name} - foto ${index + 1}`}
-                      className="product-gallery__image"
-                      height={960}
-                      src={imageUrl}
-                      width={960}
-                    />
-                  ) : (
-                    <div className="product-gallery__fallback">
-                      Foto temporária pendente
-                    </div>
-                  )}
-                </div>
-              )
-            )}
-          </div>
+        <div className="product-gallery">
+          <ProductGalleryCarousel
+            productName={product.name}
+            imageUrls={product.imageUrls ?? []}
+          />
         </div>
 
         <div className="product-detail-panel">
           <p className="eyebrow">Produto</p>
           <h1 id="product-detail-title">{product.name}</h1>
           <div className="product-detail-badges">
-            <span className="ui-badge">{salesModeLabels[product.salesMode]}</span>
-            <span className="ui-badge">{availabilityLabels[product.availability]}</span>
+            <Badge>{salesModeLabels[product.salesMode]}</Badge>
+            <Badge variant="subtle">{availabilityLabels[product.availability]}</Badge>
           </div>
-          <p>{product.description}</p>
+          <p className="product-detail-lead">{product.description}</p>
 
           <div className="product-detail-meta">
             <div>
@@ -145,7 +115,7 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
 
           <div className="product-price-panel">
             <Price amountInCents={selectedVariant?.priceOverride ?? product.basePrice} />
-            <span>Valor de vitrine temporário</span>
+            <span>Atendimento direto para confirmar disponibilidade e acabamento.</span>
           </div>
 
           {data.errorMessage ? <ErrorMessage message={data.errorMessage} /> : null}
@@ -156,10 +126,11 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
                 <Select
                   label="Tamanho"
                   name="size"
+                  placeholder="Selecione um tamanho"
                   value={size}
                   onChange={(event) => setSize(event.target.value)}
                   options={[
-                    { label: "Selecione um tamanho", value: "" },
+                    { label: "Selecione um tamanho", value: "placeholder-size" },
                     ...options.sizes.map((option) => ({
                       label: option.available
                         ? option.label
@@ -173,10 +144,11 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
                 <Select
                   label="Cor"
                   name="color"
+                  placeholder="Selecione uma cor"
                   value={color}
                   onChange={(event) => setColor(event.target.value)}
                   options={[
-                    { label: "Selecione uma cor", value: "" },
+                    { label: "Selecione uma cor", value: "placeholder-color" },
                     ...options.colors.map((option) => ({
                       label: option.available
                         ? option.label
@@ -192,6 +164,7 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
           <div className="product-cta-group">
             <Button
               disabled={!canPrepareCart}
+              size="lg"
               onClick={() => {
                 if (!canPrepareCart) {
                   return;
@@ -204,36 +177,92 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
                 };
 
                 onAddToCart?.(item);
-                setStatusMessage(
-                  "Estrutura do carrinho preparada. A conexão completa será finalizada na próxima fase."
-                );
+                setPrepared(true);
               }}
             >
               Adicionar ao carrinho
             </Button>
 
-            {whatsappUrl ? (
-              <a className="ui-button ui-button--secondary" href={whatsappUrl}>
+            <Button asChild size="lg" variant="secondary">
+              <ExternalLink href={whatsappUrl}>
+                <MessageCircleMore aria-hidden="true" />
                 Comprar pelo WhatsApp
-              </a>
-            ) : (
-              <button className="ui-button ui-button--secondary" type="button" disabled>
-                WhatsApp em breve
-              </button>
-            )}
+              </ExternalLink>
+            </Button>
           </div>
 
-          <ul className="product-benefit-list" aria-label="Diferenciais da compra">
-            <li>Mensagem pronta com referência do produto.</li>
-            <li>Seleção de variação antes de seguir para o carrinho.</li>
-            <li>Atendimento direto para confirmar detalhes da peça.</li>
-          </ul>
-
-          {statusMessage ? (
+          {prepared ? (
             <p className="product-detail-status" role="status">
-              {statusMessage}
+              Seleção confirmada. Use o WhatsApp para combinar detalhes e finalizar o
+              pedido.
             </p>
           ) : null}
+
+          <div className="product-benefit-strip" aria-label="Diferenciais da compra">
+            <div>
+              <ShieldCheck aria-hidden="true" />
+              <span>Acabamento artesanal</span>
+            </div>
+            <div>
+              <Ruler aria-hidden="true" />
+              <span>Escolha tamanho com apoio</span>
+            </div>
+            <div>
+              <Palette aria-hidden="true" />
+              <span>Cor e detalhes combinados</span>
+            </div>
+          </div>
+
+          <Tabs.Root className="product-tabs" defaultValue="details">
+            <Tabs.List aria-label="Detalhes do produto" className="product-tabs__list">
+              <Tabs.Trigger className="product-tabs__trigger" value="details">
+                Detalhes
+              </Tabs.Trigger>
+              <Tabs.Trigger className="product-tabs__trigger" value="delivery">
+                Entrega
+              </Tabs.Trigger>
+              <Tabs.Trigger className="product-tabs__trigger" value="care">
+                Cuidados
+              </Tabs.Trigger>
+            </Tabs.List>
+
+            <Tabs.Content className="product-tabs__content" value="details">
+              <ul className="product-benefit-list">
+                <li>
+                  <Check aria-hidden="true" />
+                  Atendimento direto para escolher tamanho e cor.
+                </li>
+                <li>
+                  <Check aria-hidden="true" />
+                  Peça pensada para compor looks leves e femininos.
+                </li>
+              </ul>
+            </Tabs.Content>
+            <Tabs.Content className="product-tabs__content" value="delivery">
+              <ul className="product-benefit-list">
+                <li>
+                  <Check aria-hidden="true" />
+                  Pronta entrega e encomendas disponíveis conforme o modelo.
+                </li>
+                <li>
+                  <Check aria-hidden="true" />
+                  Retirada ou envio combinado com o ateliê.
+                </li>
+              </ul>
+            </Tabs.Content>
+            <Tabs.Content className="product-tabs__content" value="care">
+              <ul className="product-benefit-list">
+                <li>
+                  <Check aria-hidden="true" />
+                  Guarde a peça em local arejado e evite atrito excessivo.
+                </li>
+                <li>
+                  <Check aria-hidden="true" />
+                  Tire dúvidas de cuidado diretamente pelo WhatsApp.
+                </li>
+              </ul>
+            </Tabs.Content>
+          </Tabs.Root>
         </div>
       </div>
     </section>

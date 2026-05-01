@@ -21,10 +21,8 @@ describe("home", () => {
     expect(
       screen.getByRole("heading", { name: "Raio de Sol Ateliê" })
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/moda artesanal em crochê com presença de vitrine/i)
-    ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /explorar catálogo/i })).toHaveAttribute(
+    expect(screen.getByText(/moda artesanal feminina em crochê/i)).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /ver catálogo/i })[0]).toHaveAttribute(
       "href",
       "/catalog"
     );
@@ -32,6 +30,9 @@ describe("home", () => {
       screen.getAllByRole("link", { name: /comprar pelo whatsapp/i })[0]
     ).toHaveAttribute("href", expect.stringContaining("wa.me/5561996632269"));
     expect(screen.getAllByText(/coleção solar/i).length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("region", { name: /carrossel principal/i })
+    ).toBeInTheDocument();
   });
 
   it("renderiza seções de vitrine, coleções e prova social da marca", () => {
@@ -48,13 +49,18 @@ describe("home", () => {
     );
 
     expect(
-      screen.getByRole("region", { name: /novidades da semana/i })
+      screen.getAllByRole("region", { name: /novidades do ateliê/i }).length
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("region", { name: /explore por categoria/i })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /categorias em destaque/i })
+      screen.getByRole("region", { name: /acompanhe o ateliê e fale com a loja/i })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /acompanhe no instagram/i })
+      screen.getByRole("region", {
+        name: /textura, delicadeza e acabamento em cada detalhe/i
+      })
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /instagram/i })).toHaveAttribute(
       "href",

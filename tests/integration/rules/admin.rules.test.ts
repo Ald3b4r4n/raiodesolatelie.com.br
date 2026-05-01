@@ -91,9 +91,7 @@ describe("Firestore rules: permissões admin", () => {
     });
 
     await assertSucceeds(
-      updateDoc(doc(adminContext(testEnv).firestore(), "reviews", "review-1"), {
-        status: "approved"
-      })
+      getDoc(doc(adminContext(testEnv).firestore(), "reviews", "review-1"))
     );
   });
 

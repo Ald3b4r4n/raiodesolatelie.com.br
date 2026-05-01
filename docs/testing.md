@@ -158,6 +158,12 @@ Firestore e Storage com `firebase emulators:exec`.
 - Checagem visual manual complementar: a home foi aberta em `http://127.0.0.1:3000`
   com screenshot full page para confirmar presença visual de hero, vitrine,
   categorias e bloco social.
+- Testes unitários atualizados cobrem:
+  - links externos com `target="_blank"` e `rel="noopener noreferrer"`;
+  - ausência do número cru de WhatsApp no header;
+  - renderização de hero, vitrine, lookbook e bloco social;
+  - interação básica de select com Radix;
+  - tabs comerciais da página de produto.
 
 ## CI
 
