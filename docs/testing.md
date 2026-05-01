@@ -96,6 +96,16 @@ Firestore e Storage com `firebase emulators:exec`.
 - Red complementar de schemas das entidades restantes: `pnpm exec vitest run tests/unit/validators` falhou antes da implementação com imports ausentes para `cart`, `order`, `user`, `shipping` e `payment`, além de falhas esperadas de centavos inteiros, sanitização e limites de domínio.
 - Green complementar: `pnpm exec vitest run tests/unit/validators tests/unit/domain/shipping.test.ts tests/unit/domain/payment.test.ts tests/unit/domain/order.test.ts tests/unit/domain/review.test.ts` passou com 13 arquivos e 47 testes após implementar os parsers e ajustes de domínio.
 
+## Registro de Validação da Fase 5
+
+- Red de UI base: `pnpm exec vitest run tests/unit/components` falhou antes da
+  implementação por ausência de tokens, componentes `ui` e `layout`.
+- Green de UI base: `pnpm exec vitest run tests/unit/components` passou com 7
+  arquivos e 16 testes após implementar tokens, controles, display, drawer,
+  estados e app shell.
+- Acessibilidade base: `tests/accessibility/ui-base.spec.ts` cobre viewport
+  mobile, abertura do menu e verificação com axe-core.
+
 ## CI
 
 - Fase 2: CI básico/smoke para validar bootstrap, install limpo e scripts

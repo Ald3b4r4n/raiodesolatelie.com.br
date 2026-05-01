@@ -166,3 +166,13 @@ Diretórios instalados em `.agents/skills/`:
 | `logic-lens`                     | Revisão de minimização de dados, centavos inteiros e rejeição de dados de cartão.           | Reduziu risco de XSS, inconsistência monetária e exposição de dados. |
 | `documentation`                  | README, arquitetura, segurança e testes atualizados com os novos schemas.                   | Documentação reflete modelos e decisões técnicas alteradas.          |
 | `verification-before-completion` | Suíte focada de validators e domínios executada após a implementação.                       | Evidência fresca antes dos checks finais obrigatórios.               |
+
+## Uso Registrado: Fase 5 UI Base/Design System
+
+| Skill                            | Evidência de uso                                                               | Impacto                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `speckit-implement`              | Execução limitada a T085-T098.                                                 | Manteve o escopo na UI base, sem catálogo, checkout, login ou admin. |
+| `test-driven-development`        | Testes Red de tokens, controles, display, drawer, estados e app shell.         | UI base foi implementada após falha esperada dos testes.             |
+| `design-taste-frontend`          | Tokens simples, layout mobile-first, foco visível e estados de UI.             | Visual ficou leve, prático e compatível com a marca.                 |
+| `documentation`                  | README, arquitetura, testes e skills atualizados com assets e padrões visuais. | Estrutura visual e destino da logo ficaram documentados.             |
+| `verification-before-completion` | Checks obrigatórios executados antes de sugerir commit.                        | Evidência de lint, tipos, testes, acessibilidade, build e formato.   |

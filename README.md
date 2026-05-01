@@ -9,8 +9,7 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 4 concluída para modelo de domínio e validações, dentro do
-  escopo sem UI.
+- Etapa atual: Fase 5 concluída com UI base/design system mobile-first.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
 - Firebase configurado para desenvolvimento local com projeto demo,
   `.firebaserc`, `firebase.json`, emuladores, Security Rules e índices
@@ -20,6 +19,10 @@ visualiza pedidos.
   categoria, carrinho, pedido, cliente, admin, cupom, avaliação, frete e
   pagamento mockado.
 - Sanitização reutilizável para campos públicos e snapshots exibíveis.
+- UI base com tokens simples, header, footer, navegação mobile, componentes de
+  formulário/display, drawer e estados loading/empty/error.
+- Logo oficial copiada para `public/brand/logo-identidade.jpeg` e usada no
+  header. O arquivo original permanece em `Imagens/logo_identidade.jpeg`.
 - Catálogo visual, home, carrinho visual, checkout visual, login visual e
   painel admin ainda não foram implementados.
 

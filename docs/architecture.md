@@ -94,6 +94,19 @@ produto seja editado ou desativado.
 integração real com Correios nesta fase. `PaymentSession` aceita somente
 provider `mock` e rejeita dados de cartão no payload.
 
+## UI Base e Assets
+
+- A UI base mobile-first está em `src/components/ui/` e `src/components/layout/`.
+- Tokens simples de cor, raio, sombra e tamanho de toque ficam em
+  `src/components/ui/tokens.ts` e são refletidos em `src/app/globals.css`.
+- O layout base usa `AppShell`, `Header`, `Footer` e `MobileNav`.
+- A logo oficial foi copiada de `Imagens/logo_identidade.jpeg` para
+  `public/brand/logo-identidade.jpeg`, sem alterar o arquivo original.
+- O visual deve permanecer simples, leve e prático, com foco visível, contraste
+  adequado e navegação mobile por teclado.
+- Componentes de UI não carregam regras de negócio; eles recebem texto, estado e
+  callbacks por props.
+
 ## Serviços Isolados
 
 - `ProductCatalogService`: busca, filtros e leitura pública de produtos ativos.

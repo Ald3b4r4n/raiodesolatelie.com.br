@@ -147,20 +147,20 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Purpose**: base visual simples, acessível e prática para todas as telas.
 
-- [ ] T085 [P] Criar testes Red de tokens de design em `tests/unit/components/design-tokens.test.ts` (Type: test; Dependencies: T041; Skills: design-taste-frontend, lambdatest-agent-skills; Done: tokens esperados ausentes falham)
-- [ ] T086 Implementar tokens simples em `src/components/ui/tokens.ts` e estilos globais em `src/app/globals.css` (Type: implementation; Dependencies: T085; Skills: design-taste-frontend; Done: tokens aplicáveis e contraste documentado)
-- [ ] T087 [P] Criar testes Red de Button/Input/Select em `tests/unit/components/form-controls.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend, lambdatest-agent-skills; Done: controles acessíveis falham)
-- [ ] T088 Implementar `Button`, `Input`, `Select` em `src/components/ui/` com labels, foco visível e estados (Type: implementation; Dependencies: T087; Skills: design-taste-frontend; Done: testes de controles Green)
-- [ ] T089 [P] Criar testes Red de Card/Badge/Price em `tests/unit/components/display.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend; Done: componentes de display falham)
-- [ ] T090 Implementar `Card`, `Badge`, `Price` em `src/components/ui/` (Type: implementation; Dependencies: T089; Skills: design-taste-frontend; Done: testes de display Green)
-- [ ] T091 [P] Criar testes Red de Modal/Drawer mobile em `tests/unit/components/overlay.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend, lambdatest-agent-skills; Done: foco/keyboard falha)
-- [ ] T092 Implementar Modal/Drawer acessível em `src/components/ui/` (Type: implementation; Dependencies: T091; Skills: design-taste-frontend; Done: foco preso e fechamento por teclado funcionam)
-- [ ] T093 [P] Criar testes Red de Loading/Empty/Error states em `tests/unit/components/states.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend; Done: estados ausentes falham)
-- [ ] T094 Implementar `LoadingState`, `EmptyState`, `ErrorMessage` em `src/components/ui/` (Type: implementation; Dependencies: T093; Skills: design-taste-frontend; Done: mensagens PT-BR acessíveis)
-- [ ] T095 Criar teste Red de app shell em `tests/unit/components/app-shell.test.tsx` para header, footer e navegação mobile (Type: test; Dependencies: T033, T094; Skills: design-taste-frontend; Done: shell esperado falha)
-- [ ] T096 Implementar layout base em `src/components/layout/AppShell.tsx`, `Header.tsx`, `Footer.tsx`, `MobileNav.tsx` e conectar em `src/app/layout.tsx` (Type: implementation; Dependencies: T095; Skills: design-taste-frontend; Done: shell mobile-first Green)
-- [ ] T097 Criar teste de acessibilidade Red para UI base em `tests/accessibility/ui-base.spec.ts` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: axe encontra falhas esperadas antes dos ajustes)
-- [ ] T098 Atualizar `docs/architecture.md`, `docs/testing.md`, `README.md` e registrar skills de frontend em `docs/skills.md` (Type: docs; Dependencies: T085-T097; Skills: documentation, design-taste-frontend; Done: design system documentado)
+- [X] T085 [P] Criar testes Red de tokens de design em `tests/unit/components/design-tokens.test.ts` (Type: test; Dependencies: T041; Skills: design-taste-frontend, lambdatest-agent-skills; Done: tokens esperados ausentes falham)
+- [X] T086 Implementar tokens simples em `src/components/ui/tokens.ts` e estilos globais em `src/app/globals.css` (Type: implementation; Dependencies: T085; Skills: design-taste-frontend; Done: tokens aplicáveis e contraste documentado)
+- [X] T087 [P] Criar testes Red de Button/Input/Select em `tests/unit/components/form-controls.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend, lambdatest-agent-skills; Done: controles acessíveis falham)
+- [X] T088 Implementar `Button`, `Input`, `Select` em `src/components/ui/` com labels, foco visível e estados (Type: implementation; Dependencies: T087; Skills: design-taste-frontend; Done: testes de controles Green)
+- [X] T089 [P] Criar testes Red de Card/Badge/Price em `tests/unit/components/display.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend; Done: componentes de display falham)
+- [X] T090 Implementar `Card`, `Badge`, `Price` em `src/components/ui/` (Type: implementation; Dependencies: T089; Skills: design-taste-frontend; Done: testes de display Green)
+- [X] T091 [P] Criar testes Red de Modal/Drawer mobile em `tests/unit/components/overlay.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend, lambdatest-agent-skills; Done: foco/keyboard falha)
+- [X] T092 Implementar Modal/Drawer acessível em `src/components/ui/` (Type: implementation; Dependencies: T091; Skills: design-taste-frontend; Done: foco preso e fechamento por teclado funcionam)
+- [X] T093 [P] Criar testes Red de Loading/Empty/Error states em `tests/unit/components/states.test.tsx` (Type: test; Dependencies: T033; Skills: design-taste-frontend; Done: estados ausentes falham)
+- [X] T094 Implementar `LoadingState`, `EmptyState`, `ErrorMessage` em `src/components/ui/` (Type: implementation; Dependencies: T093; Skills: design-taste-frontend; Done: mensagens PT-BR acessíveis)
+- [X] T095 Criar teste Red de app shell em `tests/unit/components/app-shell.test.tsx` para header, footer e navegação mobile (Type: test; Dependencies: T033, T094; Skills: design-taste-frontend; Done: shell esperado falha)
+- [X] T096 Implementar layout base em `src/components/layout/AppShell.tsx`, `Header.tsx`, `Footer.tsx`, `MobileNav.tsx` e conectar em `src/app/layout.tsx` (Type: implementation; Dependencies: T095; Skills: design-taste-frontend; Done: shell mobile-first Green)
+- [X] T097 Criar teste de acessibilidade Red para UI base em `tests/accessibility/ui-base.spec.ts` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: axe encontra falhas esperadas antes dos ajustes)
+- [X] T098 Atualizar `docs/architecture.md`, `docs/testing.md`, `README.md` e registrar skills de frontend em `docs/skills.md` (Type: docs; Dependencies: T085-T097; Skills: documentation, design-taste-frontend; Done: design system documentado)
 
 ---
 

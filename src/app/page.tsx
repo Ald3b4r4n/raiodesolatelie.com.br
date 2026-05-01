@@ -1,14 +1,12 @@
 export default function Home() {
   return (
-    <main className="app-shell">
-      <section className="bootstrap-panel" aria-labelledby="bootstrap-title">
-        <p className="eyebrow">Raio de Sol Ateliê</p>
-        <h1 id="bootstrap-title">Bootstrap técnico em andamento</h1>
-        <p>
-          Base Next.js preparada para receber o MVP mobile-first sem funcionalidades
-          comerciais implementadas nesta fase.
-        </p>
-      </section>
-    </main>
+    <section className="bootstrap-panel" aria-labelledby="bootstrap-title">
+      <p className="eyebrow">Raio de Sol Ateliê</p>
+      <h1 id="bootstrap-title">Base visual em andamento</h1>
+      <p>
+        Design system mobile-first preparado para receber o MVP sem catálogo, carrinho ou
+        checkout implementados nesta fase.
+      </p>
+    </section>
   );
 }

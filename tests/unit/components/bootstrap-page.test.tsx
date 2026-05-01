@@ -6,11 +6,9 @@ describe("página inicial de bootstrap", () => {
   it("renderiza o estado técnico inicial sem conteúdo de e-commerce", () => {
     render(<Home />);
 
+    expect(screen.getByRole("heading", { name: /base visual/i })).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /bootstrap técnico/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/sem funcionalidades comerciais implementadas/i)
+      screen.getByText(/sem catálogo, carrinho ou checkout implementados/i)
     ).toBeInTheDocument();
   });
 });
