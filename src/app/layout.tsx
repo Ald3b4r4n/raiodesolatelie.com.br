@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { AppShell } from "@/components/layout/AppShell";
+import { buildHomeMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Raio de Sol Ateliê",
-  description: "E-commerce simples e mobile-first do Raio de Sol Ateliê."
-};
+export const metadata: Metadata = buildHomeMetadata();
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;

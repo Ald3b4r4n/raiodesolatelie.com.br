@@ -176,3 +176,13 @@ Diretórios instalados em `.agents/skills/`:
 | `design-taste-frontend`          | Tokens simples, layout mobile-first, foco visível e estados de UI.             | Visual ficou leve, prático e compatível com a marca.                 |
 | `documentation`                  | README, arquitetura, testes e skills atualizados com assets e padrões visuais. | Estrutura visual e destino da logo ficaram documentados.             |
 | `verification-before-completion` | Checks obrigatórios executados antes de sugerir commit.                        | Evidência de lint, tipos, testes, acessibilidade, build e formato.   |
+
+## Uso Registrado: Fase 6 Home e SEO Base
+
+| Skill                            | Evidência de uso                                                            | Impacto                                                                |
+| -------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `speckit-implement`              | Execução limitada a T099-T108.                                              | Manteve o escopo em home e SEO, sem catálogo real, checkout ou admin.  |
+| `test-driven-development`        | Testes Red de home, SEO, links sociais e E2E antes da implementação.        | Ciclo Red → Green aplicado à entrega da home.                          |
+| `design-taste-frontend`          | Home simples, leve, mobile-first, com CTAs claros e placeholders seguros.   | Interface alinhada ao pedido de visual prático e feminino sem excesso. |
+| `documentation`                  | README, arquitetura, testes e skills atualizados com SEO e dados pendentes. | Documentação reflete placeholders e rotas SEO criadas.                 |
+| `verification-before-completion` | Checks obrigatórios previstos para a fase antes de sugerir commit.          | Encerramento condicionado à validação real dos comandos.               |

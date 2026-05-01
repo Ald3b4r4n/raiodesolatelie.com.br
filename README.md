@@ -9,7 +9,7 @@ visualiza pedidos.
 ## Status do Projeto
 
 - Feature atual: `001-mvp-ecommerce`.
-- Etapa atual: Fase 5 concluída com UI base/design system mobile-first.
+- Etapa atual: Fase 6 concluída com home simples e SEO base.
 - App Next.js inicializado com App Router, TypeScript strict e pnpm.
 - Firebase configurado para desenvolvimento local com projeto demo,
   `.firebaserc`, `firebase.json`, emuladores, Security Rules e índices
@@ -23,8 +23,13 @@ visualiza pedidos.
   formulário/display, drawer e estados loading/empty/error.
 - Logo oficial copiada para `public/brand/logo-identidade.jpeg` e usada no
   header. O arquivo original permanece em `Imagens/logo_identidade.jpeg`.
-- Catálogo visual, home, carrinho visual, checkout visual, login visual e
-  painel admin ainda não foram implementados.
+- Home simples implementada com marca, chamada objetiva, destaques placeholder,
+  CTA de catálogo, CTA de WhatsApp preparado e placeholders seguros para redes
+  sociais.
+- SEO base configurado com metadata da home, Open Graph, `robots.ts` e
+  `sitemap.ts`.
+- Catálogo real, carrinho visual, checkout visual, login visual e painel admin
+  ainda não foram implementados.
 
 ## Stack Planejada
 
@@ -155,7 +160,9 @@ SHIPPING_PROVIDER=mock
 ## Limitações Conhecidas
 
 - Número oficial de WhatsApp ainda não foi informado.
-- Identidade visual e fotos reais de produtos ainda não foram fornecidas.
+- Links oficiais de Instagram e TikTok ainda não foram informados.
+- Fotos, nomes, preços e variações reais de produtos ainda não foram fornecidos.
+- Endereço e instruções de retirada local ainda não foram informados.
 - Provedor real de pagamento e frete ainda não foi definido.
 - Processo do primeiro admin está documentado para custom claim aplicada por
   ambiente seguro, sem endpoint público permanente.

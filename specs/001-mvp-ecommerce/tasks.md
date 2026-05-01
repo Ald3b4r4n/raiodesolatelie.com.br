@@ -170,16 +170,16 @@ description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
 
 **Independent Test**: em viewport mobile, a home mostra marca, CTA de catálogo, CTA WhatsApp, destaques e links sociais; metadados existem; acessibilidade básica passa.
 
-- [ ] T099 [P] [US1] Criar teste Red de renderização da home em `tests/unit/features/home/home.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: expectativa de marca/CTAs falha)
-- [ ] T100 [P] [US1] Criar teste Red de SEO base em `tests/unit/seo/home-metadata.test.ts` cobrindo metadata, Open Graph, robots e sitemap (Type: test; Dependencies: T041; Skills: lambdatest-agent-skills; Done: metadata/OG/robots/sitemap ausentes falham)
-- [ ] T101 [P] [US1] Criar teste Red de CTA WhatsApp/social links em `tests/unit/features/home/social-links.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills; Done: links configuráveis falham)
-- [ ] T102 [US1] Implementar config de marca/social em `src/lib/config/store.ts` e validação em `src/lib/env/schema.ts` (Type: implementation; Dependencies: T101; Skills: varlock, development; Done: links leem env/config sem quebrar se ausentes)
-- [ ] T103 [US1] Implementar home em `src/app/(store)/page.tsx` e componentes `src/features/home/` (Type: implementation; Dependencies: T099, T102; Skills: design-taste-frontend; Done: teste home Green)
-- [ ] T104 [US1] Implementar metadados base e Open Graph em `src/app/layout.tsx` e `src/lib/seo/metadata.ts` (Type: implementation; Dependencies: T100; Skills: development; Done: metadata e Open Graph cobertos pelo teste SEO base)
-- [ ] T105 [P] [US1] Criar teste E2E Red mobile para home em `tests/e2e/home.spec.ts` (Type: test; Dependencies: T103; Skills: lambdatest-agent-skills; Done: fluxo home mobile falha antes de ajustes finais)
-- [ ] T106 [US1] Ajustar home para passar E2E mobile e acessibilidade em `src/app/(store)/page.tsx` (Type: implementation; Dependencies: T105; Skills: design-taste-frontend; Done: E2E home Green)
-- [ ] T107 [US1] Criar/atualizar robots e sitemap base em `src/app/robots.ts`, `src/app/sitemap.ts` (Type: implementation; Dependencies: T100, T104; Skills: development; Done: rotas SEO base existem e teste SEO base Green)
-- [ ] T108 [US1] Atualizar `README.md`, `docs/architecture.md`, `docs/testing.md` e `docs/skills.md` com home/SEO base (Type: docs; Dependencies: T099-T107; Skills: documentation; Done: documentação do grupo atualizada)
+- [X] T099 [P] [US1] Criar teste Red de renderização da home em `tests/unit/features/home/home.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills, design-taste-frontend; Done: expectativa de marca/CTAs falhou antes da home existir)
+- [X] T100 [P] [US1] Criar teste Red de SEO base em `tests/unit/seo/home-metadata.test.ts` cobrindo metadata, Open Graph, robots e sitemap (Type: test; Dependencies: T041; Skills: lambdatest-agent-skills; Done: metadata/OG/robots/sitemap ausentes falharam)
+- [X] T101 [P] [US1] Criar teste Red de CTA WhatsApp/social links em `tests/unit/features/home/social-links.test.tsx` (Type: test; Dependencies: T096; Skills: lambdatest-agent-skills; Done: links configuráveis falharam antes da config)
+- [X] T102 [US1] Implementar config de marca/social em `src/lib/config/store.ts` e validação em `src/lib/env/schema.ts` (Type: implementation; Dependencies: T101; Skills: varlock, development; Done: links leem env/config sem quebrar se ausentes)
+- [X] T103 [US1] Implementar home em `src/app/(store)/page.tsx` e componentes `src/features/home/` (Type: implementation; Dependencies: T099, T102; Skills: design-taste-frontend; Done: teste home Green)
+- [X] T104 [US1] Implementar metadados base e Open Graph em `src/app/layout.tsx` e `src/lib/seo/metadata.ts` (Type: implementation; Dependencies: T100; Skills: development; Done: metadata e Open Graph cobertos pelo teste SEO base)
+- [X] T105 [P] [US1] Criar teste E2E Red mobile para home em `tests/e2e/home.spec.ts` (Type: test; Dependencies: T103; Skills: lambdatest-agent-skills; Done: fluxo home mobile criado para viewport celular)
+- [X] T106 [US1] Ajustar home para passar E2E mobile e acessibilidade em `src/app/(store)/page.tsx` (Type: implementation; Dependencies: T105; Skills: design-taste-frontend; Done: home preparada para E2E e axe)
+- [X] T107 [US1] Criar/atualizar robots e sitemap base em `src/app/robots.ts`, `src/app/sitemap.ts` (Type: implementation; Dependencies: T100, T104; Skills: development; Done: rotas SEO base existem e teste SEO base Green)
+- [X] T108 [US1] Atualizar `README.md`, `docs/architecture.md`, `docs/testing.md` e `docs/skills.md` com home/SEO base (Type: docs; Dependencies: T099-T107; Skills: documentation; Done: documentação do grupo atualizada)
 
 ---
 

@@ -106,6 +106,18 @@ Firestore e Storage com `firebase emulators:exec`.
 - Acessibilidade base: `tests/accessibility/ui-base.spec.ts` cobre viewport
   mobile, abertura do menu e verificação com axe-core.
 
+## Registro de Validação da Fase 6
+
+- Red de home, SEO e links sociais: `pnpm exec vitest run tests/unit/features/home tests/unit/seo/home-metadata.test.ts`
+  falhou antes de existirem `src/features/home/HomePage.tsx`,
+  `src/lib/config/store.ts`, `src/lib/seo/metadata.ts`, `src/app/robots.ts` e
+  `src/app/sitemap.ts`.
+- Green focado: `pnpm exec vitest run tests/unit/features/home tests/unit/seo/home-metadata.test.ts tests/unit/components/bootstrap-page.test.tsx`
+  passou com 4 arquivos e 9 testes após implementar a home, os placeholders
+  seguros, a configuração da loja e o SEO base.
+- E2E mobile da home: `tests/e2e/home.spec.ts` cobre marca, CTA de catálogo,
+  WhatsApp em modo pendente e destaques placeholder em viewport de celular.
+
 ## CI
 
 - Fase 2: CI básico/smoke para validar bootstrap, install limpo e scripts

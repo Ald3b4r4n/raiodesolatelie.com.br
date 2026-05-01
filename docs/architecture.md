@@ -107,6 +107,23 @@ provider `mock` e rejeita dados de cartão no payload.
 - Componentes de UI não carregam regras de negócio; eles recebem texto, estado e
   callbacks por props.
 
+## Home, Configuração da Loja e SEO
+
+- A home pública fica em `src/app/(store)/page.tsx` e compõe
+  `src/features/home/HomePage.tsx`.
+- Configurações de marca, WhatsApp e redes sociais ficam em
+  `src/lib/config/store.ts`.
+- URLs públicas de Instagram e TikTok passam por validação HTTPS antes de serem
+  expostas na interface.
+- Enquanto o número oficial de WhatsApp e links oficiais não forem informados, a
+  home usa placeholders textuais e não publica links falsos.
+- Os metadados da home e Open Graph ficam em `src/lib/seo/metadata.ts` e são
+  aplicados por `src/app/layout.tsx`.
+- `src/app/robots.ts` e `src/app/sitemap.ts` entregam a base de indexação do
+  domínio `https://raiodesolatelie.com.br`.
+- A logo oficial em `public/brand/logo-identidade.jpeg` é usada como asset de
+  marca e imagem Open Graph base.
+
 ## Serviços Isolados
 
 - `ProductCatalogService`: busca, filtros e leitura pública de produtos ativos.
