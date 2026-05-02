@@ -66,7 +66,7 @@ export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
           <Image
             alt="Vitrine principal da coleção em crochê"
             fill
-            sizes="(max-width: 719px) 100vw, 38vw"
+            sizes="(max-width: 719px) 100vw, 50vw"
             src="/banners/hero-conjunto-praia.jpeg"
           />
         </div>

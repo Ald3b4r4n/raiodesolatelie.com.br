@@ -83,6 +83,7 @@ export function ProductGalleryCarousel({
                   alt={`${productName} - foto ${index + 1}`}
                   className="gallery__image"
                   height={1200}
+                  sizes="(max-width: 719px) calc(100vw - 4.3rem), (max-width: 1039px) calc(100vw - 5.8rem), 670px"
                   src={imageUrl}
                   width={1200}
                 />
@@ -129,6 +130,7 @@ export function ProductGalleryCarousel({
                 aria-hidden="true"
                 className="gallery__thumb-image"
                 height={240}
+                sizes="5.6rem"
                 src={imageUrl}
                 width={240}
               />

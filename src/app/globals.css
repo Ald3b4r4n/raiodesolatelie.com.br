@@ -776,6 +776,10 @@ p {
   position: absolute;
 }
 
+.catalog-hero__banner {
+  min-height: 18rem;
+}
+
 .hero-slide__media img,
 .collection-card__image img,
 .home-lookbook__image img,
@@ -1644,6 +1648,10 @@ p {
     align-items: stretch;
     display: grid;
     grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 0.95fr);
+  }
+
+  .catalog-hero__banner {
+    min-height: 100%;
   }
 
   .catalog-filters-toolbar {

@@ -7,7 +7,7 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return signedIn() && "admin" in request.auth.token && request.auth.token.admin == true;
+      return signedIn() && request.auth.token.get("admin", false) == true;
     }
 
     function ownsUserDocument(userId) {
@@ -15,7 +15,7 @@ service cloud.firestore {
     }
 
     function activeResource() {
-      return resource.data.status == "active";
+      return resource != null && resource.data.status == "active";
     }
 
     match /products/{productId} {

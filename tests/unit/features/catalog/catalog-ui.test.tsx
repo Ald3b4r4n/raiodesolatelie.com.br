@@ -20,6 +20,14 @@ describe("UI de catálogo", () => {
     ).toBeInTheDocument();
     expect(screen.getByText("Bolsa Estrela Marina")).toBeInTheDocument();
     expect(screen.getByText(/encontre sua peça favorita/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/vitrine principal/i)).toHaveAttribute(
+      "sizes",
+      "(max-width: 719px) 100vw, 50vw"
+    );
+    expect(screen.getByAltText("Bolsa Estrela Marina")).toHaveAttribute(
+      "sizes",
+      "(max-width: 719px) 85vw, (max-width: 1039px) 46vw, 32vw"
+    );
   });
 
   it("mostra estado vazio quando não há produtos", () => {

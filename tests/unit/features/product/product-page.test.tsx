@@ -19,6 +19,10 @@ describe("página de produto", () => {
     expect(screen.getByRole("button", { name: /adicionar ao carrinho/i })).toBeDisabled();
     expect(screen.getByRole("link", { name: /comprar pelo whatsapp/i })).toBeVisible();
     expect(screen.getByLabelText(/fotos do produto/i)).toBeInTheDocument();
+    expect(screen.getByAltText(`${data.product!.name} - foto 1`)).toHaveAttribute(
+      "sizes",
+      "(max-width: 719px) calc(100vw - 4.3rem), (max-width: 1039px) calc(100vw - 5.8rem), 670px"
+    );
   });
 
   it("habilita a preparação de carrinho quando a variação é válida", () => {
@@ -27,10 +31,10 @@ describe("página de produto", () => {
 
     render(<ProductDetailSection data={data} onAddToCart={onAddToCart} />);
 
-    fireEvent.click(screen.getByLabelText(/tamanho/i));
-    fireEvent.click(screen.getByText("M"));
-    fireEvent.click(screen.getByLabelText(/cor/i));
-    fireEvent.click(screen.getByText("Amarelo sol"));
+    fireEvent.change(screen.getByLabelText(/tamanho/i), { target: { value: "M" } });
+    fireEvent.change(screen.getByLabelText(/cor/i), {
+      target: { value: "Amarelo sol" }
+    });
     fireEvent.click(screen.getByRole("button", { name: /adicionar ao carrinho/i }));
 
     expect(onAddToCart).toHaveBeenCalledWith(

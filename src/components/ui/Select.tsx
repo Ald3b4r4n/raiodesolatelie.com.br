@@ -1,8 +1,4 @@
-"use client";
-
 import * as React from "react";
-import * as RadixSelect from "@radix-ui/react-select";
-import { ChevronDown, Check } from "lucide-react";
 
 type SelectOption = {
   label: string;
@@ -22,8 +18,6 @@ type SelectProps = {
   id?: string;
 };
 
-const EMPTY_OPTION_VALUE = "__empty__";
-
 export function Select({
   error,
   helperText,
@@ -41,55 +35,32 @@ export function Select({
   const helperId = helperText ? `${selectId}-helper` : undefined;
   const errorId = error ? `${selectId}-error` : undefined;
   const describedBy = [helperId, errorId].filter(Boolean).join(" ") || undefined;
+  const selectValue = value === undefined ? undefined : value;
 
   return (
     <div className="field">
       <label className="field__label" htmlFor={selectId}>
         {label}
       </label>
-      <RadixSelect.Root
-        defaultValue={defaultValue === "" ? EMPTY_OPTION_VALUE : defaultValue}
+      <select
+        aria-describedby={describedBy}
+        aria-invalid={error ? true : undefined}
+        className="field__control field__control--select"
+        defaultValue={defaultValue}
+        id={selectId}
         name={name}
-        value={
-          value === undefined ? undefined : value === "" ? EMPTY_OPTION_VALUE : value
-        }
-        onValueChange={(nextValue) =>
-          onChange?.({
-            target: { value: nextValue === EMPTY_OPTION_VALUE ? "" : nextValue, name }
-          })
-        }
+        value={selectValue}
+        onChange={onChange}
       >
-        <RadixSelect.Trigger
-          aria-describedby={describedBy}
-          aria-invalid={error ? true : undefined}
-          className="field__control field__control--select"
-          id={selectId}
-          type="button"
-        >
-          <RadixSelect.Value placeholder={placeholder ?? options[0]?.label} />
-          <RadixSelect.Icon className="field__icon">
-            <ChevronDown aria-hidden="true" />
-          </RadixSelect.Icon>
-        </RadixSelect.Trigger>
-        <RadixSelect.Portal>
-          <RadixSelect.Content className="select-content" position="popper">
-            <RadixSelect.Viewport className="select-viewport">
-              {options.map((option) => (
-                <RadixSelect.Item
-                  className="select-item"
-                  key={option.value}
-                  value={option.value === "" ? EMPTY_OPTION_VALUE : option.value}
-                >
-                  <RadixSelect.ItemText>{option.label}</RadixSelect.ItemText>
-                  <RadixSelect.ItemIndicator className="select-item__indicator">
-                    <Check aria-hidden="true" />
-                  </RadixSelect.ItemIndicator>
-                </RadixSelect.Item>
-              ))}
-            </RadixSelect.Viewport>
-          </RadixSelect.Content>
-        </RadixSelect.Portal>
-      </RadixSelect.Root>
+        {placeholder && !options.some((option) => option.value === "") ? (
+          <option value="">{placeholder}</option>
+        ) : null}
+        {options.map((option) => (
+          <option key={`${option.value}-${option.label}`} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
       {helperText ? (
         <p className="field__helper" id={helperId}>
           {helperText}

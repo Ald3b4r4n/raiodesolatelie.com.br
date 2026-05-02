@@ -44,6 +44,7 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             className="product-card__image-element"
             height={960}
+            sizes="(max-width: 719px) 85vw, (max-width: 1039px) 46vw, 32vw"
             src={product.imageUrls?.[0] ?? "/brand/logo-identidade.png"}
             width={960}
           />

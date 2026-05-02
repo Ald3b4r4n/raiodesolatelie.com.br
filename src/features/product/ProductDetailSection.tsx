@@ -138,7 +138,7 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
                     value={size}
                     onChange={(event) => setSize(event.target.value)}
                     options={[
-                      { label: "Selecione um tamanho", value: "placeholder-size" },
+                      { label: "Selecione um tamanho", value: "" },
                       ...options.sizes.map((option) => ({
                         label: option.available
                           ? option.label
@@ -156,7 +156,7 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
                     value={color}
                     onChange={(event) => setColor(event.target.value)}
                     options={[
-                      { label: "Selecione uma cor", value: "placeholder-color" },
+                      { label: "Selecione uma cor", value: "" },
                       ...options.colors.map((option) => ({
                         label: option.available
                           ? option.label

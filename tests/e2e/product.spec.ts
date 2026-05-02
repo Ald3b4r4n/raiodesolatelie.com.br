@@ -13,10 +13,11 @@ test("produto mobile permite selecionar variação válida e aciona WhatsApp rea
   await expect(page.getByLabel(/tamanho/i)).toBeVisible();
   await expect(page.getByLabel(/cor/i)).toBeVisible();
 
-  await page.getByRole("combobox").nth(0).click();
-  await page.getByRole("option", { name: /^M$/i }).click();
-  await page.getByRole("combobox").nth(1).click();
-  await page.getByRole("option", { name: /amarelo sol/i }).click();
+  await page.getByLabel(/tamanho/i).selectOption("M");
+  await page.getByLabel(/cor/i).selectOption("Amarelo sol");
+  await expect(
+    page.getByRole("button", { name: /adicionar ao carrinho/i })
+  ).toBeEnabled();
   await page.getByRole("button", { name: /adicionar ao carrinho/i }).click();
 
   await expect(page.getByRole("status")).toContainText(/seleção confirmada/i);

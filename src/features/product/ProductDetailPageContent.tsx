@@ -35,6 +35,33 @@ const salesModeLabels = {
   both: "Compra direta e encomenda"
 } as const;
 
+const productDetailTabs = [
+  {
+    label: "Detalhes",
+    value: "details",
+    items: [
+      "Atendimento direto para escolher tamanho e cor.",
+      "Peça pensada para compor looks leves e femininos."
+    ]
+  },
+  {
+    label: "Entrega",
+    value: "delivery",
+    items: [
+      "Pronta entrega e encomendas disponíveis conforme o modelo.",
+      "Retirada ou envio combinado com o ateliê."
+    ]
+  },
+  {
+    label: "Cuidados",
+    value: "care",
+    items: [
+      "Guarde a peça em local arejado e evite atrito excessivo.",
+      "Tire dúvidas de cuidado diretamente pelo WhatsApp."
+    ]
+  }
+] as const;
+
 export function ProductDetailPageContent({
   data,
   selection,
@@ -189,53 +216,33 @@ export function ProductDetailPageContent({
 
           <Tabs.Root className="product-tabs" defaultValue="details">
             <Tabs.List aria-label="Detalhes do produto" className="product-tabs__list">
-              <Tabs.Trigger className="product-tabs__trigger" value="details">
-                Detalhes
-              </Tabs.Trigger>
-              <Tabs.Trigger className="product-tabs__trigger" value="delivery">
-                Entrega
-              </Tabs.Trigger>
-              <Tabs.Trigger className="product-tabs__trigger" value="care">
-                Cuidados
-              </Tabs.Trigger>
+              {productDetailTabs.map((tab) => (
+                <Tabs.Trigger
+                  className="product-tabs__trigger"
+                  key={tab.value}
+                  value={tab.value}
+                >
+                  {tab.label}
+                </Tabs.Trigger>
+              ))}
             </Tabs.List>
 
-            <Tabs.Content className="product-tabs__content" value="details">
-              <ul className="product-benefit-list">
-                <li>
-                  <Check aria-hidden="true" />
-                  Atendimento direto para escolher tamanho e cor.
-                </li>
-                <li>
-                  <Check aria-hidden="true" />
-                  Peça pensada para compor looks leves e femininos.
-                </li>
-              </ul>
-            </Tabs.Content>
-            <Tabs.Content className="product-tabs__content" value="delivery">
-              <ul className="product-benefit-list">
-                <li>
-                  <Check aria-hidden="true" />
-                  Pronta entrega e encomendas disponíveis conforme o modelo.
-                </li>
-                <li>
-                  <Check aria-hidden="true" />
-                  Retirada ou envio combinado com o ateliê.
-                </li>
-              </ul>
-            </Tabs.Content>
-            <Tabs.Content className="product-tabs__content" value="care">
-              <ul className="product-benefit-list">
-                <li>
-                  <Check aria-hidden="true" />
-                  Guarde a peça em local arejado e evite atrito excessivo.
-                </li>
-                <li>
-                  <Check aria-hidden="true" />
-                  Tire dúvidas de cuidado diretamente pelo WhatsApp.
-                </li>
-              </ul>
-            </Tabs.Content>
+            {productDetailTabs.map((tab) => (
+              <Tabs.Content
+                className="product-tabs__content"
+                key={tab.value}
+                value={tab.value}
+              >
+                <ul className="product-benefit-list">
+                  {tab.items.map((item) => (
+                    <li key={item}>
+                      <Check aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Tabs.Content>
+            ))}
           </Tabs.Root>
         </div>
       </div>

@@ -37,6 +37,15 @@ describe("home", () => {
     expect(
       screen.getByRole("region", { name: /carrossel principal/i })
     ).toBeInTheDocument();
+    expect(
+      screen.getByAltText("Vestido em crochê do Ateliê Raios de Sol")
+    ).toHaveAttribute("sizes", "(max-width: 719px) 100vw, 1180px");
+    expect(
+      screen.getByAltText("Vestido em crochê do Ateliê Raios de Sol")
+    ).toHaveAttribute("loading", "eager");
+    expect(
+      screen.getByAltText("Composição artesanal com sousplat em crochê")
+    ).toHaveAttribute("loading", "eager");
   });
 
   it("renderiza seções de vitrine, coleções e prova social da marca", () => {

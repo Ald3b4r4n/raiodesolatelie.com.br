@@ -39,6 +39,8 @@ const categoryLinks = [
   { label: "Infantil", href: "/catalog?category=infantil" }
 ] as const;
 
+const heroImageSizes = "(max-width: 719px) 100vw, 1180px";
+
 export function HomePage({ config }: HomePageProps) {
   const reduceMotion = useReducedMotion();
   const heroSlides = [
@@ -47,8 +49,9 @@ export function HomePage({ config }: HomePageProps) {
         <Image
           alt={`Vestido em crochê do ${config.brandName}`}
           fill
+          loading="eager"
           priority
-          sizes="100vw"
+          sizes={heroImageSizes}
           src="/banners/hero-vestido-dune.jpeg"
         />
       </div>
@@ -77,8 +80,9 @@ export function HomePage({ config }: HomePageProps) {
         <Image
           alt={`Conjunto em crochê do ${config.brandName}`}
           fill
+          loading="eager"
           priority
-          sizes="100vw"
+          sizes={heroImageSizes}
           src="/banners/hero-conjunto-praia.jpeg"
         />
       </div>
@@ -269,6 +273,7 @@ export function HomePage({ config }: HomePageProps) {
               <Image
                 alt="Composição artesanal com sousplat em crochê"
                 fill
+                loading="eager"
                 sizes="(max-width: 719px) 100vw, 28vw"
                 src="/lookbook/sousplat-1.jpeg"
               />
