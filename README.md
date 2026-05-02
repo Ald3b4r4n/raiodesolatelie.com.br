@@ -1,7 +1,7 @@
-# Raio de Sol Ateliê
+# Ateliê Raios de Sol
 
 Site mostruário/e-commerce simples, rápido e mobile-first para venda de
-produtos próprios da marca Raio de Sol Ateliê. O MVP deve permitir que clientes
+produtos próprios da marca Ateliê Raios de Sol. O MVP deve permitir que clientes
 encontrem produtos, escolham variações, adicionem ao carrinho e iniciem pedido
 pelo checkout ou WhatsApp, enquanto a administradora gerencia produtos e
 visualiza pedidos.
@@ -26,8 +26,11 @@ visualiza pedidos.
 - Assets reais organizados em `public/brand/`, `public/banners/`,
   `public/products/` e `public/lookbook/`, preservando os arquivos originais da
   pasta externa `Imagens/`.
-- Logo oficial copiada para `public/brand/logo-identidade.jpeg` e usada no
-  header, no SEO base e na navegação.
+- Logo oficial atual em PNG copiada de
+  `D:\Projetos\raiodesolatelie.com.br\Imagens\logo_identidade.png` para
+  `public/brand/logo-identidade.png`, com cópia pública otimizada para web e
+  preservação do arquivo original externo. Ela é usada no header, no footer, na
+  home, em fallbacks visuais e no SEO/Open Graph base.
 - Home refeita com hero comercial, vitrine de novidades, coleções, CTA real de
   WhatsApp e presença visível de Instagram e TikTok.
 - SEO base configurado com metadata da home, Open Graph, `robots.ts` e

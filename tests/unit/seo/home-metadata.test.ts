@@ -9,15 +9,21 @@ describe("SEO base da home", () => {
   it("configura metadata e Open Graph da marca", () => {
     const homeMetadata = buildHomeMetadata();
 
-    expect(homeMetadata.title).toBe("Raio de Sol Ateliê | Produtos artesanais");
+    expect(homeMetadata.title).toBe("Ateliê Raios de Sol | Produtos artesanais");
     expect(homeMetadata.description).toMatch(/e-commerce simples/i);
     expect(homeMetadata.openGraph?.title).toBe(
-      "Raio de Sol Ateliê | Produtos artesanais"
+      "Ateliê Raios de Sol | Produtos artesanais"
     );
     expect(homeMetadata.openGraph?.images).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ url: "/brand/logo-identidade.jpeg" })
+        expect.objectContaining({
+          url: "/brand/logo-identidade.png",
+          alt: "Logo do Ateliê Raios de Sol"
+        })
       ])
+    );
+    expect(JSON.stringify(homeMetadata)).not.toContain(
+      ["logo-identidade", "jpeg"].join(".")
     );
     expect(metadata).toMatchObject(homeMetadata);
   });

@@ -45,7 +45,7 @@ export function HomePage({ config }: HomePageProps) {
     <article className="hero-slide" key="hero-1">
       <div className="hero-slide__media">
         <Image
-          alt="Vestido em crochê do Raio de Sol Ateliê"
+          alt={`Vestido em crochê do ${config.brandName}`}
           fill
           priority
           sizes="100vw"
@@ -75,7 +75,7 @@ export function HomePage({ config }: HomePageProps) {
     <article className="hero-slide" key="hero-2">
       <div className="hero-slide__media">
         <Image
-          alt="Conjunto em crochê do Raio de Sol Ateliê"
+          alt={`Conjunto em crochê do ${config.brandName}`}
           fill
           priority
           sizes="100vw"
@@ -115,12 +115,23 @@ export function HomePage({ config }: HomePageProps) {
     <div className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero__top home-shell">
-          <p className="eyebrow">Loja autoral</p>
-          <h1 id="home-title">Raio de Sol Ateliê</h1>
-          <p className="home-hero__subtitle">
-            Moda artesanal feminina em crochê, com atmosfera editorial, vitrine comercial
-            e atendimento direto do ateliê.
-          </p>
+          <div className="home-hero__brand-lockup">
+            <Image
+              alt={`Identidade visual ${config.brandName}`}
+              height={168}
+              priority
+              src="/brand/logo-identidade.png"
+              width={168}
+            />
+            <div>
+              <p className="eyebrow">Loja autoral</p>
+              <h1 id="home-title">{config.brandName}</h1>
+              <p className="home-hero__subtitle">
+                Moda artesanal feminina em crochê, com atmosfera editorial, vitrine
+                comercial e atendimento direto do ateliê.
+              </p>
+            </div>
+          </div>
           <div className="home-hero__chips" aria-label="Leituras da coleção">
             <span>Coleção solar</span>
             <span>Pronta entrega e encomendas</span>

@@ -57,17 +57,21 @@ export function Header() {
 
       <div className="site-header__main">
         <div className="site-header__brand-group">
-          <Link className="brand-link" href="/" aria-label="Raio de Sol Ateliê - início">
+          <Link
+            className="brand-link"
+            href="/"
+            aria-label={`${config.brandName} - início`}
+          >
             <Image
               className="brand-link__logo"
-              src="/brand/logo-identidade.jpeg"
-              alt=""
-              width="56"
-              height="56"
+              src="/brand/logo-identidade.png"
+              alt={`Logo do ${config.brandName}`}
+              width="128"
+              height="128"
             />
             <span className="brand-link__copy">
               <span className="brand-link__kicker">Loja autoral</span>
-              <span className="brand-link__text">Raio de Sol Ateliê</span>
+              <span className="brand-link__text">{config.brandName}</span>
             </span>
           </Link>
         </div>

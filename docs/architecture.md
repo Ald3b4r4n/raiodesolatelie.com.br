@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Organizar o MVP do Raio de Sol Ateliê como um e-commerce simples, mobile-first,
+Organizar o MVP do Ateliê Raios de Sol como um e-commerce simples, mobile-first,
 seguro e fácil de evoluir, sem transformar o produto em marketplace
 multi-vendedor.
 
@@ -111,8 +111,10 @@ provider `mock` e rejeita dados de cartão no payload.
 - Tokens simples de cor, raio, sombra e tamanho de toque ficam em
   `src/components/ui/tokens.ts` e são refletidos em `src/app/globals.css`.
 - O layout base usa `AppShell`, `Header`, `Footer` e `MobileNav`.
-- A logo oficial foi copiada de `Imagens/logo_identidade.jpeg` para
-  `public/brand/logo-identidade.jpeg`, sem alterar o arquivo original.
+- A logo oficial atual é a versão PNG. Ela foi copiada de
+  `D:\Projetos\raiodesolatelie.com.br\Imagens\logo_identidade.png` para
+  `public/brand/logo-identidade.png` como cópia pública otimizada para web, sem
+  alterar o arquivo original externo.
 - A revisão visual atual também copia somente os assets necessários para:
   - `public/banners/hero-vestido-dune.jpeg`
   - `public/banners/hero-conjunto-praia.jpeg`
@@ -153,8 +155,8 @@ provider `mock` e rejeita dados de cartão no payload.
 swap`, mantendo performance e consistência visual.
 - `src/app/robots.ts` e `src/app/sitemap.ts` entregam a base de indexação do
   domínio `https://raiodesolatelie.com.br`.
-- A logo oficial em `public/brand/logo-identidade.jpeg` é usada como asset de
-  marca e imagem Open Graph base.
+- A logo oficial em `public/brand/logo-identidade.png` é usada como asset de
+  marca no header, footer, home, fallbacks de produto e imagem Open Graph base.
 
 ## Catálogo, Busca e Filtros
 

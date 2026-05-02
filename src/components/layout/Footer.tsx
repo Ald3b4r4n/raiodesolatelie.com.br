@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Camera, MapPin, MessageCircleMore, Ticket, Truck } from "lucide-react";
 
@@ -12,7 +13,15 @@ export function Footer() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <p className="site-footer__eyebrow">Raio de Sol Ateliê</p>
+          <div className="site-footer__brand-mark">
+            <Image
+              alt={`Marca ${config.brandName} no rodapé`}
+              height={96}
+              src="/brand/logo-identidade.png"
+              width={96}
+            />
+            <p className="site-footer__eyebrow">{config.brandName}</p>
+          </div>
           <h2>Loja de crochê artesanal com curadoria feminina e atendimento direto.</h2>
           <p>Peças feitas à mão, pronta entrega e encomendas combinadas com o ateliê.</p>
           <Button asChild>

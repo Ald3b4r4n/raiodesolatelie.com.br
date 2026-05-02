@@ -44,7 +44,7 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             className="product-card__image-element"
             height={960}
-            src={product.imageUrls?.[0] ?? "/brand/logo-identidade.jpeg"}
+            src={product.imageUrls?.[0] ?? "/brand/logo-identidade.png"}
             width={960}
           />
           <span className="product-card__image-badge">Curadoria da loja</span>

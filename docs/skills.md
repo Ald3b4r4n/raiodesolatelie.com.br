@@ -237,3 +237,14 @@ Diretórios instalados em `.agents/skills/`:
 | `tailwind-merge`                         | Não se aplica nesta fase porque Tailwind não foi adotado.              |
 | `tailwindcss-animate`                    | Não se aplica nesta fase porque Tailwind não foi adotado.              |
 | `tailwindcss`, `@tailwindcss/postcss`    | Não instalados pela mesma decisão técnica acima.                       |
+
+## Uso Registrado: Rodada Curta da Nova Logomarca
+
+| Skill                            | Evidência de uso                                                                        | Impacto                                                                     |
+| -------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `speckit-implement`              | Rodada limitada à identidade visual da logo, sem carrinho, checkout, login ou admin.    | Preservou o escopo funcional e manteve a melhoria concentrada em marca.     |
+| `test-driven-development`        | Testes Red para header/footer, home e metadata antes da implementação.                  | A troca da logo foi guiada por comportamento verificável.                   |
+| `design-taste-frontend`          | Ajustes de proporção, respiro, nitidez e presença da marca no header, footer e home.    | A nova logo ganhou leitura mais premium e artesanal sem redesenhar o site.  |
+| `development`                    | Asset PNG copiado para `public/brand/` e referências centralizadas nos pontos públicos. | O arquivo original externo foi preservado e a versão pública ficou estável. |
+| `documentation`                  | README, arquitetura, deployment e skills atualizados com origem/destino da nova logo.   | A logo oficial atual em `.png` ficou documentada para próximas rodadas.     |
+| `verification-before-completion` | Validações obrigatórias da rodada executadas antes de solicitar autorização de commit.  | O encerramento ficou condicionado à evidência real dos comandos.            |

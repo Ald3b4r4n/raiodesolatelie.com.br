@@ -19,8 +19,12 @@ describe("home", () => {
     );
 
     expect(
-      screen.getByRole("heading", { name: "Raio de Sol Ateliê" })
+      screen.getByRole("heading", { name: "Ateliê Raios de Sol" })
     ).toBeInTheDocument();
+    expect(screen.getByAltText("Identidade visual Ateliê Raios de Sol")).toHaveAttribute(
+      "src",
+      expect.stringContaining("logo-identidade.png")
+    );
     expect(screen.getByText(/moda artesanal feminina em crochê/i)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /ver catálogo/i })[0]).toHaveAttribute(
       "href",

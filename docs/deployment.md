@@ -10,6 +10,10 @@ variáveis e Firebase estarem configurados.
 - App Next.js inicial foi criado.
 - Nenhum projeto Vercel foi linkado.
 - Nenhum deploy foi executado.
+- A identidade visual oficial atual usa
+  `public/brand/logo-identidade.png`, cópia pública otimizada a partir da origem
+  externa preservada
+  `D:\Projetos\raiodesolatelie.com.br\Imagens\logo_identidade.png`.
 - Nenhum `vercel.json` foi criado na Fase 1 porque o baseline padrão da Vercel
   para Next.js e suficiente neste momento. Criar `vercel.json` apenas quando
   houver configuração real de rotas, headers, cron, regions ou build custom.

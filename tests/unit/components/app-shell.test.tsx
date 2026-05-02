@@ -14,13 +14,21 @@ describe("app shell", () => {
 
     expect(screen.getByRole("banner")).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /raio de sol ateliê - início/i })
+      screen.getByRole("link", { name: /ateliê raios de sol - início/i })
     ).toBeInTheDocument();
-    expect(document.querySelector(".brand-link__logo")?.getAttribute("src")).toContain(
-      "logo-identidade.jpeg"
+    expect(screen.getByAltText("Logo do Ateliê Raios de Sol")).toHaveAttribute(
+      "src",
+      expect.stringContaining("logo-identidade.png")
+    );
+    expect(screen.getByAltText("Marca Ateliê Raios de Sol no rodapé")).toHaveAttribute(
+      "src",
+      expect.stringContaining("logo-identidade.png")
     );
     expect(screen.getByRole("main")).toHaveTextContent("Base visual");
-    expect(screen.getByRole("contentinfo")).toHaveTextContent(/raio de sol ateliê/i);
+    expect(screen.getByRole("contentinfo")).toHaveTextContent(/ateliê raios de sol/i);
+    expect(
+      screen.getByRole("link", { name: /ateliê raios de sol - início/i })
+    ).toHaveAttribute("aria-label", "Ateliê Raios de Sol - início");
     expect(screen.queryByText(/6199663/i)).not.toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: /atendimento no whatsapp/i })
