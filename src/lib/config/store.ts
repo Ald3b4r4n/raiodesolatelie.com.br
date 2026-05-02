@@ -8,8 +8,10 @@ export type SocialLink = {
   placeholder: string;
 };
 
+export const PUBLIC_BRAND_NAME = "Ateliê Raios de Sol";
+
 export type StoreConfig = {
-  brandName: "Raio de Sol Ateliê";
+  brandName: typeof PUBLIC_BRAND_NAME;
   whatsappPhone: string;
   whatsappUrl?: string;
   socialLinks: SocialLink[];
@@ -21,8 +23,7 @@ export const DEFAULT_INSTAGRAM_URL =
 export const DEFAULT_TIKTOK_URL =
   "https://www.tiktok.com/@atelieraiode.sol?is_from_webapp=1&sender_device=pc";
 
-const WHATSAPP_MESSAGE =
-  "Olá, gostaria de saber mais sobre os produtos do Raio de Sol Ateliê.";
+const WHATSAPP_MESSAGE = `Olá, gostaria de saber mais sobre os produtos do ${PUBLIC_BRAND_NAME}.`;
 
 export function normalizeWhatsAppPhone(phone: string | undefined): string | undefined {
   const normalizedPhone = phone?.replace(/\D/g, "");
@@ -64,7 +65,7 @@ export function buildStoreConfig(input: StoreConfigInput = process.env): StoreCo
   validateOptionalUrl(tiktokUrl, "NEXT_PUBLIC_TIKTOK_URL");
 
   return {
-    brandName: "Raio de Sol Ateliê",
+    brandName: PUBLIC_BRAND_NAME,
     whatsappPhone,
     whatsappUrl: buildWhatsAppUrl(whatsappPhone),
     socialLinks: [

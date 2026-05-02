@@ -1,4 +1,4 @@
-# Research: MVP Inicial Raio de Sol Ateliê
+# Research: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Date**: 2026-04-30

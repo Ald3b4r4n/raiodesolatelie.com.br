@@ -1,4 +1,4 @@
-# Data Model: MVP Inicial Raio de Sol Ateliê
+# Data Model: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Date**: 2026-04-30

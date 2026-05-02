@@ -1,4 +1,4 @@
-# Quickstart: MVP Inicial Raio de Sol Ateliê
+# Quickstart: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Status**: planejado. O app ainda não foi criado nesta etapa.

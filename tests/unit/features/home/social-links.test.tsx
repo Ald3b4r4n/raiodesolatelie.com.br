@@ -34,7 +34,7 @@ describe("links sociais e WhatsApp", () => {
   it("gera mensagem real de WhatsApp com número configurado", () => {
     expect(buildWhatsAppUrl("61996632269")).toContain("wa.me/5561996632269");
     expect(buildWhatsAppUrl("61996632269")).toContain(
-      "Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20do%20Raio%20de%20Sol%20Ateli%C3%AA."
+      "Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20do%20Ateli%C3%AA%20Raios%20de%20Sol."
     );
   });
 });

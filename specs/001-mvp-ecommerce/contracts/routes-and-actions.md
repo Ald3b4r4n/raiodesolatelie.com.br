@@ -1,4 +1,4 @@
-# Routes and Actions Contract: MVP Inicial Raio de Sol Ateliê
+# Routes and Actions Contract: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Purpose**: definir rotas, ações sensíveis e comportamento esperado.

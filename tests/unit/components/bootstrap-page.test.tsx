@@ -7,7 +7,7 @@ describe("página inicial", () => {
     render(<Home />);
 
     expect(
-      screen.getByRole("heading", { name: "Raio de Sol Ateliê" })
+      screen.getByRole("heading", { name: "Ateliê Raios de Sol" })
     ).toBeInTheDocument();
     expect(
       screen.getAllByRole("region", { name: /novidades do ateliê/i }).length

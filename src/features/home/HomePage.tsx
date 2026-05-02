@@ -39,130 +39,71 @@ const categoryLinks = [
   { label: "Infantil", href: "/catalog?category=infantil" }
 ] as const;
 
-const heroImageSizes = "(max-width: 719px) 100vw, 1180px";
+const heroImageSizes = "(max-width: 719px) 100vw, 52vw";
 
 export function HomePage({ config }: HomePageProps) {
   const reduceMotion = useReducedMotion();
-  const heroSlides = [
-    <article className="hero-slide" key="hero-1">
-      <div className="hero-slide__media">
-        <Image
-          alt={`Vestido em crochê do ${config.brandName}`}
-          fill
-          loading="eager"
-          priority
-          sizes={heroImageSizes}
-          src="/banners/hero-vestido-dune.jpeg"
-        />
-      </div>
-      <div className="hero-slide__content">
-        <p className="hero-slide__eyebrow">Nova coleção</p>
-        <div className="hero-slide__meta">
-          <span>Edição solar</span>
-          <span>Feito à mão</span>
-        </div>
-        <h2>Vestidos e crochês com presença leve e acabamento autoral</h2>
-        <p>
-          Peças feitas à mão para praia, passeio e momentos de sol com elegância simples.
-        </p>
-        <div className="hero-slide__actions" aria-label="Ações principais">
-          <Button asChild size="lg">
-            <Link href="/catalog">Ver catálogo</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
-          </Button>
-        </div>
-      </div>
-    </article>,
-    <article className="hero-slide" key="hero-2">
-      <div className="hero-slide__media">
-        <Image
-          alt={`Conjunto em crochê do ${config.brandName}`}
-          fill
-          loading="eager"
-          priority
-          sizes={heroImageSizes}
-          src="/banners/hero-conjunto-praia.jpeg"
-        />
-      </div>
-      <div className="hero-slide__content">
-        <p className="hero-slide__eyebrow">Moda praia</p>
-        <div className="hero-slide__meta">
-          <span>Curadoria da semana</span>
-          <span>Atendimento da loja</span>
-        </div>
-        <h2>Conjuntos e saídas com visual de loja e atendimento pessoal</h2>
-        <p>
-          Combine tamanho, cor e disponibilidade direto com o ateliê em um fluxo comercial
-          claro.
-        </p>
-        <div className="hero-slide__actions" aria-label="Ações principais">
-          <Button asChild size="lg">
-            <Link href="/catalog">Ver catálogo</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
-          </Button>
-        </div>
-      </div>
-    </article>
-  ];
-
-  const productSlides = featuredProducts.map((product) => (
+  const productSlides = featuredProducts.map((product, index) => (
     <div className="home-product-slide" key={product.id}>
-      <ProductCard product={product} />
+      <ProductCard imageLoading={index === 0 ? "eager" : "lazy"} product={product} />
     </div>
   ));
 
   return (
     <div className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
-        <div className="home-hero__top home-shell">
-          <div className="home-hero__brand-lockup">
+        <div className="home-shell hero-editorial">
+          <div className="hero-editorial__copy">
             <Image
               alt={`Identidade visual ${config.brandName}`}
+              className="hero-editorial__logo"
               height={168}
               priority
               src="/brand/logo-identidade.png"
               width={168}
             />
-            <div>
-              <p className="eyebrow">Loja autoral</p>
-              <h1 id="home-title">{config.brandName}</h1>
-              <p className="home-hero__subtitle">
-                Moda artesanal feminina em crochê, com atmosfera editorial, vitrine
-                comercial e atendimento direto do ateliê.
-              </p>
+            <p className="eyebrow">Moda artesanal feminina</p>
+            <h1 id="home-title">{config.brandName}</h1>
+            <p>
+              Crochê autoral para praia, passeio e dias de sol, com curadoria de loja e
+              atendimento direto pelo WhatsApp.
+            </p>
+            <div className="hero-slide__actions" aria-label="Ações principais">
+              <Button asChild size="lg">
+                <Link href="/catalog">Ver catálogo</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <ExternalLink href={config.whatsappUrl}>
+                  Comprar pelo WhatsApp
+                </ExternalLink>
+              </Button>
             </div>
           </div>
-          <div className="home-hero__chips" aria-label="Leituras da coleção">
-            <span>Coleção solar</span>
-            <span>Pronta entrega e encomendas</span>
-            <span>Conversa direta com a loja</span>
+          <div className="hero-editorial__media">
+            <Image
+              alt="Modelo usando vestido laranja em crochê do Ateliê Raios de Sol"
+              fill
+              fetchPriority="high"
+              loading="eager"
+              priority
+              sizes={heroImageSizes}
+              src="/editorial/vestido-laranja-modelo.jpeg"
+            />
           </div>
+          <ul className="hero-editorial__highlights" aria-label="Diferenciais do ateliê">
+            {[
+              { icon: HeartHandshake, text: "Feito à mão" },
+              { icon: PackageCheck, text: "Pronta entrega e encomendas" },
+              { icon: MessageCircleMore, text: "Atendimento pelo WhatsApp" },
+              { icon: Truck, text: "Retirada ou envio combinado" }
+            ].map((item) => (
+              <li key={item.text}>
+                <item.icon aria-hidden="true" />
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <EmblaCarousel
-          className="hero-carousel"
-          label="Carrossel principal"
-          slides={heroSlides}
-          options={{ loop: true, align: "start" }}
-        />
-
-        <ul className="hero-highlights home-shell" aria-label="Diferenciais do ateliê">
-          {[
-            { icon: HeartHandshake, text: "Feito à mão" },
-            { icon: PackageCheck, text: "Pronta entrega e encomendas" },
-            { icon: MessageCircleMore, text: "Atendimento pelo WhatsApp" },
-            { icon: Truck, text: "Retirada ou envio combinado" }
-          ].map((item) => (
-            <li key={item.text}>
-              <item.icon aria-hidden="true" />
-              <span>{item.text}</span>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <motion.section
@@ -177,8 +118,8 @@ export function HomePage({ config }: HomePageProps) {
           <p className="eyebrow">Novidades</p>
           <h2 id="novidades-title">Novidades do ateliê</h2>
           <p>
-            Uma curadoria com respiro, foco na imagem e leitura de loja desde a primeira
-            peça.
+            Peças com caimento real, textura visível e leitura comercial para escolher sem
+            pressa.
           </p>
         </div>
         <EmblaCarousel
@@ -254,8 +195,8 @@ export function HomePage({ config }: HomePageProps) {
               Textura, delicadeza e acabamento com olhar editorial
             </h2>
             <p>
-              O lookbook aproxima a coleção do clima da marca e reforça o acabamento
-              artesanal com mais presença visual.
+              Fotos reais aproximam textura, caimento e cor antes da conversa com o
+              ateliê.
             </p>
             <div className="home-lookbook__actions">
               <Button asChild variant="secondary">
@@ -271,27 +212,27 @@ export function HomePage({ config }: HomePageProps) {
           <div className="home-lookbook__images">
             <div className="home-lookbook__image home-lookbook__image--tall">
               <Image
-                alt="Composição artesanal com sousplat em crochê"
+                alt="Modelo usando vestido lilás e bolsa azul em crochê"
                 fill
                 loading="eager"
                 sizes="(max-width: 719px) 100vw, 28vw"
-                src="/lookbook/sousplat-1.jpeg"
+                src="/editorial/vestido-lilas-bolsa-modelo.jpeg"
               />
             </div>
             <div className="home-lookbook__image">
               <Image
-                alt="Detalhe de composição artesanal em mesa posta"
+                alt="Modelo usando cropped listrado em crochê"
                 fill
                 sizes="(max-width: 719px) 100vw, 20vw"
-                src="/lookbook/sousplat-2.jpeg"
+                src="/editorial/cropped-listrado-frente-modelo.jpeg"
               />
             </div>
             <div className="home-lookbook__image">
               <Image
-                alt="Vestido em crochê com composição editorial"
+                alt="Modelo usando conjunto amarelo em crochê"
                 fill
                 sizes="(max-width: 719px) 100vw, 20vw"
-                src="/products/vestido-dune.jpeg"
+                src="/editorial/conjunto-amarelo-modelo.jpeg"
               />
             </div>
           </div>

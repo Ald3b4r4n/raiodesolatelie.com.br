@@ -18,6 +18,7 @@ describe("metadata de produto", () => {
       data.product!.seoDescription ?? data.product!.description
     );
     expect(metadata.openGraph?.url).toBe(`/products/${data.product!.slug}`);
+    expect(metadata.openGraph?.siteName).toBe("Ateliê Raios de Sol");
     expect(images[0]).toEqual(
       expect.objectContaining({
         url: data.product!.imageUrls?.[0]

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ProductDetailSection } from "@/features/product";
+import { PUBLIC_BRAND_NAME } from "@/lib/config/store";
 import { buildProductMetadata } from "@/lib/seo/product";
 import { ProductDetailService } from "@/services/firebase/product-detail";
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   if (!detail) {
     return {
-      title: "Produto não encontrado | Raio de Sol Ateliê",
+      title: `Produto não encontrado | ${PUBLIC_BRAND_NAME}`,
       description: "Produto indisponível no momento."
     };
   }

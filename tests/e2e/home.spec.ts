@@ -4,7 +4,10 @@ test("home mobile apresenta hero comercial, vitrine e contato real", async ({ pa
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: "Raio de Sol Ateliê" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ateliê Raios de Sol" })).toBeVisible();
+  await expect(
+    page.getByAltText("Modelo usando vestido laranja em crochê do Ateliê Raios de Sol")
+  ).toBeVisible();
   await expect(page.getByRole("link", { name: /ver catálogo/i }).first()).toBeVisible();
   await expect(
     page

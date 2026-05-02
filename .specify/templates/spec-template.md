@@ -9,7 +9,7 @@
 
 <!--
   ACTION REQUIRED: Explain how this feature supports the simple mobile-first
-  own-product catalog/e-commerce for Raio de Sol Ateliê.
+  own-product catalog/e-commerce for Ateliê Raios de Sol.
 -->
 
 - **Business Goal**: [sell products, attract customers, simplify administration, etc.]

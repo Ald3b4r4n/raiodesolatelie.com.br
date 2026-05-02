@@ -1,9 +1,9 @@
-# Feature Specification: MVP Inicial Raio de Sol Ateliê
+# Feature Specification: MVP Inicial Ateliê Raios de Sol
 
 **Feature Branch**: `001-mvp-ecommerce`
 **Created**: 2026-04-30
 **Status**: Draft
-**Input**: User description: "/speckit.specify Crie a especificação funcional do MVP inicial do projeto Raio de Sol Ateliê"
+**Input**: User description: "/speckit.specify Crie a especificação funcional do MVP inicial do projeto Ateliê Raios de Sol"
 
 ## Product Fit *(mandatory)*
 
@@ -366,7 +366,7 @@ poluir o checkout ou a página de produto.
 
 - A cliente aceitará começar com pagamento e frete em camadas mockadas/testadas até credenciais reais existirem.
 - A venda por WhatsApp é alternativa e complemento ao checkout, não substitui todo o fluxo do site.
-- Produtos são próprios do Raio de Sol Ateliê e não haverá vendedores independentes no MVP.
+- Produtos são próprios do Ateliê Raios de Sol e não haverá vendedores independentes no MVP.
 - Clientes podem navegar sem login; login é necessário apenas quando a funcionalidade exigir identidade ou associação segura de pedido.
 - Retirada local estará disponível para clientes da cidade, com instruções claras no checkout ou confirmação.
 - O primeiro admin será configurado por processo documentado e restrito.

@@ -1,4 +1,4 @@
-# Security Rules Contract: MVP Inicial Raio de Sol Ateliê
+# Security Rules Contract: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Purpose**: definir comportamento esperado para Firebase Security Rules.

@@ -1,8 +1,8 @@
 ---
-description: "Task list for MVP inicial do e-commerce Raio de Sol Ateliê"
+description: "Task list for MVP inicial do e-commerce Ateliê Raios de Sol"
 ---
 
-# Tasks: MVP Inicial Raio de Sol Ateliê
+# Tasks: MVP Inicial Ateliê Raios de Sol
 
 **Input**: Design documents from `/specs/001-mvp-ecommerce/`
 **Prerequisites**: [plan.md](./plan.md), [spec.md](./spec.md), [research.md](./research.md), [data-model.md](./data-model.md), [quickstart.md](./quickstart.md), [service-contracts.md](./contracts/service-contracts.md), [routes-and-actions.md](./contracts/routes-and-actions.md), [security-rules-contract.md](./contracts/security-rules-contract.md), [AGENTS.md](../../AGENTS.md)

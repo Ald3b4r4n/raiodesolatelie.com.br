@@ -11,7 +11,7 @@ type SelectProps = {
   value?: string;
   defaultValue?: string;
   name?: string;
-  onChange?: (event: { target: { value: string; name?: string } }) => void;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
   helperText?: string;
   error?: string;
   placeholder?: string;
@@ -36,6 +36,12 @@ export function Select({
   const errorId = error ? `${selectId}-error` : undefined;
   const describedBy = [helperId, errorId].filter(Boolean).join(" ") || undefined;
   const selectValue = value === undefined ? undefined : value;
+  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    onChange?.(event);
+  };
+  const handleInput: React.FormEventHandler<HTMLSelectElement> = (event) => {
+    onChange?.(event as unknown as React.ChangeEvent<HTMLSelectElement>);
+  };
 
   return (
     <div className="field">
@@ -50,7 +56,10 @@ export function Select({
         id={selectId}
         name={name}
         value={selectValue}
-        onChange={onChange}
+        onChange={handleChange}
+        onChangeCapture={handleChange}
+        onInput={handleInput}
+        onInputCapture={handleInput}
       >
         {placeholder && !options.some((option) => option.value === "") ? (
           <option value="">{placeholder}</option>

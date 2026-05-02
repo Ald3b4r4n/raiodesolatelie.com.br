@@ -1,4 +1,4 @@
-# Implementation Plan: MVP Inicial Raio de Sol Ateliê
+# Implementation Plan: MVP Inicial Ateliê Raios de Sol
 
 **Branch**: `001-mvp-ecommerce` | **Date**: 2026-04-30 | **Spec**: [spec.md](./spec.md)
 **Input**: Feature specification from `/specs/001-mvp-ecommerce/spec.md`
@@ -8,7 +8,7 @@ implementação futura, mas não implementa código.
 
 ## Summary
 
-Criar o MVP mobile-first do e-commerce/catálogo Raio de Sol Ateliê para venda
+Criar o MVP mobile-first do e-commerce/catálogo Ateliê Raios de Sol para venda
 de produtos próprios, com home, catálogo, busca/filtros, página de produto,
 carrinho, WhatsApp, checkout inicial, pedidos, login, painel admin simples,
 cupons, avaliações, SEO, acessibilidade, segurança e documentação. A stack

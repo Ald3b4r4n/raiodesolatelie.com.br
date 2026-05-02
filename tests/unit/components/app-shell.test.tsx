@@ -52,4 +52,40 @@ describe("app shell", () => {
       "/"
     );
   });
+
+  it("mantém a navegação principal enxuta para a storefront", () => {
+    render(
+      <AppShell>
+        <p>Conteúdo</p>
+      </AppShell>
+    );
+
+    const desktopNav = screen.getByLabelText("Navegação principal");
+
+    expect(within(desktopNav).getByRole("link", { name: "Início" })).toHaveAttribute(
+      "href",
+      "/"
+    );
+    expect(within(desktopNav).getByRole("link", { name: "Novidades" })).toHaveAttribute(
+      "href",
+      "/#novidades"
+    );
+    expect(within(desktopNav).getByRole("link", { name: "Catálogo" })).toHaveAttribute(
+      "href",
+      "/catalog"
+    );
+    expect(within(desktopNav).getByRole("link", { name: "Atendimento" })).toHaveAttribute(
+      "href",
+      "/#atendimento"
+    );
+    expect(
+      within(desktopNav).queryByRole("link", { name: "Vestidos" })
+    ).not.toBeInTheDocument();
+    expect(
+      within(desktopNav).queryByRole("link", { name: "Conjuntos" })
+    ).not.toBeInTheDocument();
+    expect(
+      within(desktopNav).queryByRole("link", { name: "Lookbook" })
+    ).not.toBeInTheDocument();
+  });
 });

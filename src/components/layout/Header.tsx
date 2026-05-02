@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import {
-  Camera,
-  Menu,
-  MessageCircleMore,
-  Search,
-  ShoppingBag,
-  Sparkles,
-  Ticket
-} from "lucide-react";
+import { Camera, Menu, MessageCircleMore, Search, Sparkles, Ticket } from "lucide-react";
 
 import { buildStoreConfig } from "@/lib/config/store";
 import { ExternalLink } from "@/components/links/ExternalLink";
@@ -112,10 +104,6 @@ export function Header() {
         </NavigationMenu.Root>
 
         <div className="header-actions">
-          <Link className="header-link-chip" href="/catalog">
-            <ShoppingBag aria-hidden="true" />
-            Catálogo
-          </Link>
           <Button asChild className="header-actions__whatsapp" size="sm">
             <ExternalLink href={config.whatsappUrl}>
               <MessageCircleMore aria-hidden="true" />

@@ -25,7 +25,7 @@ describe("home", () => {
       "src",
       expect.stringContaining("logo-identidade.png")
     );
-    expect(screen.getByText(/moda artesanal feminina em crochê/i)).toBeInTheDocument();
+    expect(screen.getByText(/crochê autoral para praia/i)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /ver catálogo/i })[0]).toHaveAttribute(
       "href",
       "/catalog"
@@ -33,18 +33,21 @@ describe("home", () => {
     expect(
       screen.getAllByRole("link", { name: /comprar pelo whatsapp/i })[0]
     ).toHaveAttribute("href", expect.stringContaining("wa.me/5561996632269"));
-    expect(screen.getAllByText(/coleção solar/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/feito à mão/i).length).toBeGreaterThan(0);
+
+    const heroImage = screen.getByAltText(
+      "Modelo usando vestido laranja em crochê do Ateliê Raios de Sol"
+    );
+
+    expect(heroImage).toHaveAttribute(
+      "src",
+      expect.stringContaining("vestido-laranja-modelo.jpeg")
+    );
+    expect(heroImage).toHaveAttribute("sizes", "(max-width: 719px) 100vw, 52vw");
+    expect(heroImage).toHaveAttribute("loading", "eager");
+
     expect(
-      screen.getByRole("region", { name: /carrossel principal/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByAltText("Vestido em crochê do Ateliê Raios de Sol")
-    ).toHaveAttribute("sizes", "(max-width: 719px) 100vw, 1180px");
-    expect(
-      screen.getByAltText("Vestido em crochê do Ateliê Raios de Sol")
-    ).toHaveAttribute("loading", "eager");
-    expect(
-      screen.getByAltText("Composição artesanal com sousplat em crochê")
+      screen.getByAltText("Modelo usando vestido lilás e bolsa azul em crochê")
     ).toHaveAttribute("loading", "eager");
   });
 

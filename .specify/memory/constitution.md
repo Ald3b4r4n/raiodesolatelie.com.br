@@ -37,7 +37,7 @@ Templates requiring updates:
 Follow-up TODOs: none
 -->
 
-# Raio de Sol Ateliê Constitution
+# Ateliê Raios de Sol Constitution
 
 ## Core Principles
 
@@ -239,7 +239,7 @@ technical stack commonly uses English naming.
 
 ## Product Scope and Required Stack
 
-Raio de Sol Ateliê is a simple, practical, mobile-first catalog/e-commerce for
+Ateliê Raios de Sol is a simple, practical, mobile-first catalog/e-commerce for
 the client's own products. The site MUST support direct sales on the site and
 contact or order continuation through WhatsApp. Initial product types include
 ready-to-ship products and products ordered by WhatsApp, with size and color

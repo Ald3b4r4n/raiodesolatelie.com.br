@@ -1,4 +1,4 @@
-# Service Contracts: MVP Inicial Raio de Sol Ateliê
+# Service Contracts: MVP Inicial Ateliê Raios de Sol
 
 **Feature**: `001-mvp-ecommerce`
 **Purpose**: documentar fronteiras de serviços antes da implementação.

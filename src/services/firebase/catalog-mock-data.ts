@@ -38,13 +38,13 @@ export const storefrontCollections = [
   {
     title: "Coleção Solar",
     description: "Peças leves e femininas para dias de sol, praia e passeio.",
-    imageUrl: "/banners/hero-vestido-dune.jpeg",
+    imageUrl: "/editorial/vestido-laranja-modelo.jpeg",
     href: "/catalog?category=vestidos-e-saidas"
   },
   {
     title: "Saída de praia e conjunto",
     description: "Looks de verão com crochê autoral e acabamento delicado.",
-    imageUrl: "/banners/hero-conjunto-praia.jpeg",
+    imageUrl: "/editorial/conjunto-amarelo-modelo.jpeg",
     href: "/catalog?category=conjuntos-e-tops"
   }
 ] as const;
@@ -76,8 +76,11 @@ export const mockCatalogProductDetails: Record<
       salesMode: "both",
       featured: true,
       sortOrder: 1,
-      imageUrls: ["/products/vestido-dune.jpeg", "/banners/hero-vestido-dune.jpeg"],
-      seoTitle: "Vestido Dune em crochê | Raio de Sol Ateliê",
+      imageUrls: [
+        "/editorial/vestido-laranja-modelo.jpeg",
+        "/editorial/conjunto-amarelo-modelo.jpeg"
+      ],
+      seoTitle: "Vestido Dune em crochê | Ateliê Raios de Sol",
       seoDescription:
         "Vestido em crochê com visual marcante e atendimento direto pelo WhatsApp."
     }),
@@ -120,11 +123,11 @@ export const mockCatalogProductDetails: Record<
       featured: true,
       sortOrder: 2,
       imageUrls: [
-        "/products/conjunto-praia.jpeg",
-        "/products/cropped-listrado-frente.jpeg",
-        "/products/cropped-listrado-costa.jpeg"
+        "/editorial/conjunto-amarelo-modelo.jpeg",
+        "/editorial/cropped-listrado-frente-modelo.jpeg",
+        "/editorial/vestido-lilas-bolsa-modelo.jpeg"
       ],
-      seoTitle: "Conjunto praia em crochê | Raio de Sol Ateliê",
+      seoTitle: "Conjunto praia em crochê | Ateliê Raios de Sol",
       seoDescription:
         "Conjunto em crochê com visual de verão e compra prática pelo catálogo."
     }),
@@ -164,8 +167,8 @@ export const mockCatalogProductDetails: Record<
       salesMode: "ready_to_ship",
       featured: true,
       sortOrder: 3,
-      imageUrls: ["/products/bolsa-estrela-marina.jpeg"],
-      seoTitle: "Bolsa Estrela Marina | Raio de Sol Ateliê",
+      imageUrls: ["/editorial/vestido-lilas-bolsa-modelo.jpeg"],
+      seoTitle: "Bolsa Estrela Marina | Ateliê Raios de Sol",
       seoDescription:
         "Bolsa artesanal em crochê com destaque visual e pronta para venda direta."
     }),
@@ -192,7 +195,7 @@ export const mockCatalogProductDetails: Record<
       salesMode: "whatsapp_order",
       sortOrder: 4,
       imageUrls: ["/products/saidinha-praia-infantil-perola-oceano.jpeg"],
-      seoTitle: "Saidinha infantil Pérola do Oceano | Raio de Sol Ateliê",
+      seoTitle: "Saidinha infantil Pérola do Oceano | Ateliê Raios de Sol",
       seoDescription:
         "Modelo infantil em crochê disponível para encomenda com atendimento direto."
     }),

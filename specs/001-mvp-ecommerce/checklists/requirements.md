@@ -1,4 +1,4 @@
-# Specification Quality Checklist: MVP Inicial Raio de Sol Ateliê
+# Specification Quality Checklist: MVP Inicial Ateliê Raios de Sol
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-04-30
