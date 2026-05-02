@@ -39,8 +39,6 @@ const categoryLinks = [
   { label: "Infantil", href: "/catalog?category=infantil" }
 ] as const;
 
-const heroImageSizes = "(max-width: 719px) 100vw, 52vw";
-
 export function HomePage({ config }: HomePageProps) {
   const reduceMotion = useReducedMotion();
   const productSlides = featuredProducts.map((product, index) => (
@@ -53,19 +51,22 @@ export function HomePage({ config }: HomePageProps) {
     <div className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-shell hero-editorial">
-          <div className="hero-editorial__copy">
+          <div className="hero-editorial__media">
             <Image
-              alt={`Identidade visual ${config.brandName}`}
-              className="hero-editorial__logo"
-              height={168}
+              alt="Modelo usando vestido laranja em crochê do Ateliê Raios de Sol"
+              fill
+              fetchPriority="high"
+              loading="eager"
               priority
-              src="/brand/logo-identidade.png"
-              width={168}
+              sizes="100vw"
+              src="/editorial/vestido-laranja-modelo.jpeg"
             />
-            <p className="eyebrow">Moda artesanal feminina</p>
+          </div>
+          <div className="hero-editorial__copy">
+            <p className="eyebrow">Nova coleção</p>
             <h1 id="home-title">{config.brandName}</h1>
             <p>
-              Crochê autoral para praia, passeio e dias de sol, com curadoria de loja e
+              Coleção solar em crochê, com peças autorais para praia, passeio e
               atendimento direto pelo WhatsApp.
             </p>
             <div className="hero-slide__actions" aria-label="Ações principais">
@@ -78,17 +79,6 @@ export function HomePage({ config }: HomePageProps) {
                 </ExternalLink>
               </Button>
             </div>
-          </div>
-          <div className="hero-editorial__media">
-            <Image
-              alt="Modelo usando vestido laranja em crochê do Ateliê Raios de Sol"
-              fill
-              fetchPriority="high"
-              loading="eager"
-              priority
-              sizes={heroImageSizes}
-              src="/editorial/vestido-laranja-modelo.jpeg"
-            />
           </div>
           <ul className="hero-editorial__highlights" aria-label="Diferenciais do ateliê">
             {[

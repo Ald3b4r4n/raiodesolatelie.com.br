@@ -51,6 +51,27 @@ describe("app shell", () => {
       "href",
       "/"
     );
+    expect(within(dialog).getByRole("link", { name: "Novidades" })).toHaveAttribute(
+      "href",
+      "/#novidades"
+    );
+    expect(within(dialog).getByRole("link", { name: "Catálogo" })).toHaveAttribute(
+      "href",
+      "/catalog"
+    );
+    expect(within(dialog).getByRole("link", { name: "Atendimento" })).toHaveAttribute(
+      "href",
+      "/#atendimento"
+    );
+    expect(
+      within(dialog).queryByRole("link", { name: "Vestidos" })
+    ).not.toBeInTheDocument();
+    expect(
+      within(dialog).queryByRole("link", { name: "Conjuntos" })
+    ).not.toBeInTheDocument();
+    expect(
+      within(dialog).queryByRole("link", { name: "Lookbook" })
+    ).not.toBeInTheDocument();
   });
 
   it("mantém a navegação principal enxuta para a storefront", () => {

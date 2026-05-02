@@ -36,6 +36,7 @@ export function ProductCard({ imageLoading = "lazy", product }: ProductCardProps
 
   return (
     <motion.div
+      className="product-card-shell"
       whileHover={reduceMotion ? undefined : { y: -8 }}
       transition={{ duration: 0.24, ease: "easeOut" }}
     >

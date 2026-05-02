@@ -21,11 +21,10 @@ describe("home", () => {
     expect(
       screen.getByRole("heading", { name: "Ateliê Raios de Sol" })
     ).toBeInTheDocument();
-    expect(screen.getByAltText("Identidade visual Ateliê Raios de Sol")).toHaveAttribute(
-      "src",
-      expect.stringContaining("logo-identidade.png")
-    );
-    expect(screen.getByText(/crochê autoral para praia/i)).toBeInTheDocument();
+    expect(
+      screen.queryByAltText("Identidade visual Ateliê Raios de Sol")
+    ).not.toBeInTheDocument();
+    expect(screen.getByText(/coleção solar em crochê/i)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /ver catálogo/i })[0]).toHaveAttribute(
       "href",
       "/catalog"
@@ -43,12 +42,34 @@ describe("home", () => {
       "src",
       expect.stringContaining("vestido-laranja-modelo.jpeg")
     );
-    expect(heroImage).toHaveAttribute("sizes", "(max-width: 719px) 100vw, 52vw");
+    expect(heroImage).toHaveAttribute("sizes", "100vw");
     expect(heroImage).toHaveAttribute("loading", "eager");
 
     expect(
       screen.getByAltText("Modelo usando vestido lilás e bolsa azul em crochê")
     ).toHaveAttribute("loading", "eager");
+  });
+
+  it("monta o carrossel de novidades com cards estáveis e imagens reais", () => {
+    render(
+      <HomePage
+        config={buildStoreConfig({
+          STORE_WHATSAPP_PHONE: "61996632269"
+        })}
+      />
+    );
+
+    expect(
+      screen.getByRole("region", { name: /carrossel de novidades do ateliê/i })
+    ).toBeInTheDocument();
+    expect(
+      document.querySelectorAll(".home-product-slide .product-card-shell").length
+    ).toBeGreaterThan(0);
+    expect(screen.getByAltText("Vestido Dune em crochê")).toHaveAttribute(
+      "src",
+      expect.stringContaining("vestido-laranja-modelo.jpeg")
+    );
+    expect(screen.getAllByText("Ver produto").length).toBeGreaterThan(0);
   });
 
   it("renderiza seções de vitrine, coleções e prova social da marca", () => {

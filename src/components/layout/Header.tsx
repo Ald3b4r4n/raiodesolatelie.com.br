@@ -79,7 +79,7 @@ export function Header() {
             id="header-search-input"
             className="header-search__input"
             name="q"
-            placeholder="Buscar vestidos, saídas e peças em crochê"
+            placeholder="Buscar vestidos e peças"
             type="search"
           />
           <button
