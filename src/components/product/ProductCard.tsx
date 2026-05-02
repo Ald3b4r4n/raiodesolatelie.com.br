@@ -35,8 +35,8 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <motion.div
-      whileHover={reduceMotion ? undefined : { y: -6 }}
-      transition={{ duration: 0.22, ease: "easeOut" }}
+      whileHover={reduceMotion ? undefined : { y: -8 }}
+      transition={{ duration: 0.24, ease: "easeOut" }}
     >
       <Card className="product-card" variant="editorial">
         <Link className="product-card__image" href={`/products/${product.slug}`}>
@@ -47,6 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
             src={product.imageUrls?.[0] ?? "/brand/logo-identidade.jpeg"}
             width={960}
           />
+          <span className="product-card__image-badge">Curadoria da loja</span>
         </Link>
         <div className="product-card__content">
           <div className="product-card__header">
@@ -60,7 +61,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="product-card__footer">
             <div className="product-card__pricing">
               <Price amountInCents={product.basePrice} />
-              <span>Escolha acabamento e variação na página do produto</span>
+              <span>Veja acabamento, medidas e variações na página do produto</span>
             </div>
             <div className="product-card__actions">
               <Button asChild variant="secondary" size="sm">

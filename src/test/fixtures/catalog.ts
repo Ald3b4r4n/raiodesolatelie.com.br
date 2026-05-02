@@ -21,7 +21,7 @@ export function createCatalogPageData(
     title: input.title ?? "Coleção em destaque",
     description:
       input.description ??
-      "Vitrine pensada para compra rápida, com peças reais do ateliê e dados comerciais temporários enquanto o catálogo oficial é finalizado.",
+      "Vitrine pensada para compra rápida, com peças do ateliê, leitura comercial clara e seleção pronta para atendimento.",
     products: input.products ?? createCatalogProductsFixture(),
     categories: input.categories ?? createCatalogCategoriesFixture(),
     currentFilters: {},

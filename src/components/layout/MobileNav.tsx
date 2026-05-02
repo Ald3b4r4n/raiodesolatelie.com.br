@@ -19,6 +19,8 @@ type MobileNavProps = {
 
 export function MobileNav({ onNavigate }: MobileNavProps) {
   const config = buildStoreConfig();
+  const instagramLink = config.socialLinks.find((link) => link.label === "Instagram");
+  const tiktokLink = config.socialLinks.find((link) => link.label === "TikTok");
 
   return (
     <div className="mobile-nav">
@@ -35,22 +37,26 @@ export function MobileNav({ onNavigate }: MobileNavProps) {
         <div className="mobile-nav__highlight">
           <Sparkles aria-hidden="true" />
           <div>
-            <strong>Peças autorais em crochê</strong>
-            <p>Escolha no catálogo e finalize com atendimento direto do ateliê.</p>
+            <strong>Curadoria artesanal com clima de loja</strong>
+            <p>Escolha sua peça, veja os detalhes e combine tudo direto com o ateliê.</p>
           </div>
         </div>
 
         <Button asChild width="full">
           <ExternalLink href={config.whatsappUrl}>
             <MessageCircleMore aria-hidden="true" />
-            Atendimento pelo WhatsApp
+            Atendimento no WhatsApp
           </ExternalLink>
         </Button>
 
         <div className="mobile-nav__socials">
-          <ExternalLink href={config.socialLinks[0]?.href}>
+          <ExternalLink href={instagramLink?.href}>
             <Camera aria-hidden="true" />
             Instagram
+          </ExternalLink>
+          <ExternalLink href={tiktokLink?.href}>
+            <Sparkles aria-hidden="true" />
+            TikTok
           </ExternalLink>
           <Link href="/catalog" onClick={onNavigate}>
             <ShoppingBag aria-hidden="true" />

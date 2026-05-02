@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageCircleMore } from "lucide-react";
+import { ArrowRight, MessageCircleMore, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -36,6 +36,16 @@ export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
             <span>Pronta entrega e encomendas</span>
             <span>Feito à mão com cuidado</span>
             <span>Atendimento pelo WhatsApp</span>
+          </div>
+          <div className="catalog-hero__summary">
+            <div>
+              <span>{data.products.length}</span>
+              <p>peças em destaque</p>
+            </div>
+            <div>
+              <span>{data.categories.length}</span>
+              <p>categorias selecionadas</p>
+            </div>
           </div>
           <div className="catalog-hero__actions">
             <Button asChild>
@@ -74,8 +84,15 @@ export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
       {data.products.length > 0 ? (
         <section className="catalog-grid" aria-label="Listagem de produtos">
           <div className="catalog-grid__intro">
+            <div className="catalog-grid__intro-kicker">
+              <Sparkles aria-hidden="true" />
+              Curadoria da semana
+            </div>
             <strong>Encontre sua peça favorita</strong>
-            <p>Escolha no catálogo e fale direto com o ateliê para confirmar detalhes.</p>
+            <p>
+              Escolha no catálogo e fale direto com o ateliê para confirmar detalhes,
+              acabamento e disponibilidade.
+            </p>
             <div className="catalog-grid__intro-actions" aria-label="Ações do catálogo">
               <Button asChild>
                 <ExternalLink href={config.whatsappUrl}>

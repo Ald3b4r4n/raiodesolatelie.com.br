@@ -4,9 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Camera,
+  ChevronRight,
   HeartHandshake,
   MessageCircleMore,
   PackageCheck,
+  Sparkles,
+  Ticket,
   Truck
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -51,6 +54,10 @@ export function HomePage({ config }: HomePageProps) {
       </div>
       <div className="hero-slide__content">
         <p className="hero-slide__eyebrow">Nova coleção</p>
+        <div className="hero-slide__meta">
+          <span>Edição solar</span>
+          <span>Feito à mão</span>
+        </div>
         <h2>Vestidos e crochês com presença leve e acabamento autoral</h2>
         <p>
           Peças feitas à mão para praia, passeio e momentos de sol com elegância simples.
@@ -77,6 +84,10 @@ export function HomePage({ config }: HomePageProps) {
       </div>
       <div className="hero-slide__content">
         <p className="hero-slide__eyebrow">Moda praia</p>
+        <div className="hero-slide__meta">
+          <span>Curadoria da semana</span>
+          <span>Atendimento da loja</span>
+        </div>
         <h2>Conjuntos e saídas com visual de loja e atendimento pessoal</h2>
         <p>
           Combine tamanho, cor e disponibilidade direto com o ateliê em um fluxo comercial
@@ -104,11 +115,17 @@ export function HomePage({ config }: HomePageProps) {
     <div className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero__top home-shell">
+          <p className="eyebrow">Loja autoral</p>
           <h1 id="home-title">Raio de Sol Ateliê</h1>
           <p className="home-hero__subtitle">
             Moda artesanal feminina em crochê, com atmosfera editorial, vitrine comercial
             e atendimento direto do ateliê.
           </p>
+          <div className="home-hero__chips" aria-label="Leituras da coleção">
+            <span>Coleção solar</span>
+            <span>Pronta entrega e encomendas</span>
+            <span>Conversa direta com a loja</span>
+          </div>
         </div>
 
         <EmblaCarousel
@@ -144,7 +161,10 @@ export function HomePage({ config }: HomePageProps) {
         <div className="section-heading">
           <p className="eyebrow">Novidades</p>
           <h2 id="novidades-title">Novidades do ateliê</h2>
-          <p>Uma vitrine com peças leves, femininas e prontas para conversa de compra.</p>
+          <p>
+            Uma curadoria com respiro, foco na imagem e leitura de loja desde a primeira
+            peça.
+          </p>
         </div>
         <EmblaCarousel
           className="product-carousel"
@@ -183,8 +203,13 @@ export function HomePage({ config }: HomePageProps) {
                 />
               </div>
               <div className="collection-card__body">
+                <span className="collection-card__tag">Coleção</span>
                 <strong>{collection.title}</strong>
                 <p>{collection.description}</p>
+                <span className="collection-card__cta">
+                  Ver seleção
+                  <ChevronRight aria-hidden="true" />
+                </span>
               </div>
             </Link>
           ))}
@@ -209,15 +234,24 @@ export function HomePage({ config }: HomePageProps) {
       >
         <div className="home-shell home-lookbook__grid">
           <div className="section-heading">
-            <p className="eyebrow">Inspiração</p>
-            <h2 id="lookbook-title">Textura, delicadeza e acabamento em cada detalhe</h2>
+            <p className="eyebrow">Lookbook</p>
+            <h2 id="lookbook-title">
+              Textura, delicadeza e acabamento com olhar editorial
+            </h2>
             <p>
-              O lookbook reforça o clima artesanal da marca sem sobrecarregar a loja com
-              texto técnico.
+              O lookbook aproxima a coleção do clima da marca e reforça o acabamento
+              artesanal com mais presença visual.
             </p>
-            <Button asChild variant="secondary">
-              <Link href="/catalog">Ver peças da coleção</Link>
-            </Button>
+            <div className="home-lookbook__actions">
+              <Button asChild variant="secondary">
+                <Link href="/catalog">Ver peças da coleção</Link>
+              </Button>
+              <Button asChild variant="quiet">
+                <ExternalLink href={config.whatsappUrl}>
+                  Falar sobre a coleção
+                </ExternalLink>
+              </Button>
+            </div>
           </div>
           <div className="home-lookbook__images">
             <div className="home-lookbook__image home-lookbook__image--tall">
@@ -258,35 +292,57 @@ export function HomePage({ config }: HomePageProps) {
         <div className="section-heading">
           <p className="eyebrow">Social</p>
           <h2 id="social-title">Acompanhe o ateliê e fale com a loja</h2>
-          <p>Bastidores, peças novas e atendimento direto em canais externos.</p>
+          <p>
+            Bastidores, lançamentos e atendimento direto com apresentação mais comercial.
+          </p>
         </div>
 
         <div className="home-social__grid">
           <div className="home-social__panel" id="atendimento">
+            <div className="home-social__intro">
+              <p className="eyebrow">Canais oficiais</p>
+              <strong>Escolha a peça e siga para o canal que preferir.</strong>
+              <p>
+                Instagram para inspiração, TikTok para movimento e WhatsApp para fechar a
+                compra.
+              </p>
+            </div>
             <ul className="social-list" aria-label="Redes sociais">
-              {config.socialLinks.map((link) => (
-                <li key={link.label}>
-                  <ExternalLink href={link.href}>
-                    {link.label === "Instagram" ? (
-                      <Camera aria-hidden="true" />
-                    ) : (
-                      <MessageCircleMore aria-hidden="true" />
-                    )}
-                    {link.label}
-                  </ExternalLink>
-                </li>
-              ))}
+              <li>
+                <ExternalLink href={config.socialLinks[0]?.href}>
+                  <Camera aria-hidden="true" />
+                  Instagram
+                </ExternalLink>
+              </li>
+              <li>
+                <ExternalLink href={config.socialLinks[1]?.href}>
+                  <Ticket aria-hidden="true" />
+                  TikTok
+                </ExternalLink>
+              </li>
+              <li>
+                <ExternalLink href={config.whatsappUrl}>
+                  <MessageCircleMore aria-hidden="true" />
+                  WhatsApp da loja
+                </ExternalLink>
+              </li>
             </ul>
             <Button asChild>
               <ExternalLink href={config.whatsappUrl}>Comprar pelo WhatsApp</ExternalLink>
             </Button>
           </div>
           <div className="home-social__quote">
-            <p>
-              Do catálogo à conversa final, a experiência foi desenhada para vender como
-              loja.
-            </p>
-            <strong>Escolha a peça, veja os detalhes e finalize com o ateliê.</strong>
+            <div className="home-social__quote-card">
+              <Sparkles aria-hidden="true" />
+              <p>
+                Do catálogo à conversa final, a experiência foi desenhada para vender com
+                clareza e mais presença de marca.
+              </p>
+            </div>
+            <div className="home-social__quote-card">
+              <Camera aria-hidden="true" />
+              <strong>Escolha a peça, veja os detalhes e finalize com o ateliê.</strong>
+            </div>
           </div>
         </div>
       </motion.section>

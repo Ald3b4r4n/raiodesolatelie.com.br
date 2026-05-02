@@ -115,49 +115,58 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
 
           <div className="product-price-panel">
             <Price amountInCents={selectedVariant?.priceOverride ?? product.basePrice} />
-            <span>Atendimento direto para confirmar disponibilidade e acabamento.</span>
+            <span>
+              Atendimento direto para confirmar disponibilidade, acabamento e ajuste da
+              peça.
+            </span>
           </div>
 
           {data.errorMessage ? <ErrorMessage message={data.errorMessage} /> : null}
 
           {(requiresSize || requiresColor) && (
-            <div className="product-variation-grid">
-              {requiresSize ? (
-                <Select
-                  label="Tamanho"
-                  name="size"
-                  placeholder="Selecione um tamanho"
-                  value={size}
-                  onChange={(event) => setSize(event.target.value)}
-                  options={[
-                    { label: "Selecione um tamanho", value: "placeholder-size" },
-                    ...options.sizes.map((option) => ({
-                      label: option.available
-                        ? option.label
-                        : `${option.label} - indisponível`,
-                      value: option.value
-                    }))
-                  ]}
-                />
-              ) : null}
-              {requiresColor ? (
-                <Select
-                  label="Cor"
-                  name="color"
-                  placeholder="Selecione uma cor"
-                  value={color}
-                  onChange={(event) => setColor(event.target.value)}
-                  options={[
-                    { label: "Selecione uma cor", value: "placeholder-color" },
-                    ...options.colors.map((option) => ({
-                      label: option.available
-                        ? option.label
-                        : `${option.label} - esgotada`,
-                      value: option.value
-                    }))
-                  ]}
-                />
-              ) : null}
+            <div className="product-selection-panel">
+              <div className="product-selection-panel__header">
+                <p className="eyebrow">Escolha sua variação</p>
+                <strong>Selecione tamanho e cor para preparar a compra.</strong>
+              </div>
+              <div className="product-variation-grid">
+                {requiresSize ? (
+                  <Select
+                    label="Tamanho"
+                    name="size"
+                    placeholder="Selecione um tamanho"
+                    value={size}
+                    onChange={(event) => setSize(event.target.value)}
+                    options={[
+                      { label: "Selecione um tamanho", value: "placeholder-size" },
+                      ...options.sizes.map((option) => ({
+                        label: option.available
+                          ? option.label
+                          : `${option.label} - indisponível`,
+                        value: option.value
+                      }))
+                    ]}
+                  />
+                ) : null}
+                {requiresColor ? (
+                  <Select
+                    label="Cor"
+                    name="color"
+                    placeholder="Selecione uma cor"
+                    value={color}
+                    onChange={(event) => setColor(event.target.value)}
+                    options={[
+                      { label: "Selecione uma cor", value: "placeholder-color" },
+                      ...options.colors.map((option) => ({
+                        label: option.available
+                          ? option.label
+                          : `${option.label} - esgotada`,
+                        value: option.value
+                      }))
+                    ]}
+                  />
+                ) : null}
+              </div>
             </div>
           )}
 
@@ -209,7 +218,7 @@ export function ProductDetailSection({ data, onAddToCart }: ProductDetailSection
             </div>
             <div>
               <Palette aria-hidden="true" />
-              <span>Cor e detalhes combinados</span>
+              <span>Cor, caimento e detalhes combinados</span>
             </div>
           </div>
 

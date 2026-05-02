@@ -23,7 +23,7 @@ describe("app shell", () => {
     expect(screen.getByRole("contentinfo")).toHaveTextContent(/raio de sol ateliê/i);
     expect(screen.queryByText(/6199663/i)).not.toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /atendimento pelo whatsapp/i })
+      screen.getByRole("link", { name: /atendimento no whatsapp/i })
     ).toHaveAttribute("target", "_blank");
   });
 

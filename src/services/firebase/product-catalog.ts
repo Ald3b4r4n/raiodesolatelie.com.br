@@ -134,9 +134,9 @@ function readOptionalPrice(value: string | undefined, key: string): number | und
 }
 
 function readAvailability(
-  value: ProductAvailability | undefined
+  value: ProductAvailability | "__empty__" | undefined
 ): ProductAvailability | undefined {
-  if (!value) {
+  if (!value || value === "__empty__") {
     return undefined;
   }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import * as RadixSelect from "@radix-ui/react-select";
 import { ChevronDown, Check } from "lucide-react";
@@ -11,6 +13,7 @@ type SelectProps = {
   label: string;
   options: SelectOption[];
   value?: string;
+  defaultValue?: string;
   name?: string;
   onChange?: (event: { target: { value: string; name?: string } }) => void;
   helperText?: string;
@@ -27,6 +30,7 @@ export function Select({
   id,
   label,
   name,
+  defaultValue,
   options,
   onChange,
   placeholder,
@@ -44,8 +48,11 @@ export function Select({
         {label}
       </label>
       <RadixSelect.Root
+        defaultValue={defaultValue === "" ? EMPTY_OPTION_VALUE : defaultValue}
         name={name}
-        value={value}
+        value={
+          value === undefined ? undefined : value === "" ? EMPTY_OPTION_VALUE : value
+        }
         onValueChange={(nextValue) =>
           onChange?.({
             target: { value: nextValue === EMPTY_OPTION_VALUE ? "" : nextValue, name }
@@ -57,6 +64,7 @@ export function Select({
           aria-invalid={error ? true : undefined}
           className="field__control field__control--select"
           id={selectId}
+          type="button"
         >
           <RadixSelect.Value placeholder={placeholder ?? options[0]?.label} />
           <RadixSelect.Icon className="field__icon">

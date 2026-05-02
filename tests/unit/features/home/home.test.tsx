@@ -59,7 +59,7 @@ describe("home", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("region", {
-        name: /textura, delicadeza e acabamento em cada detalhe/i
+        name: /textura, delicadeza e acabamento com olhar editorial/i
       })
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /instagram/i })).toHaveAttribute(

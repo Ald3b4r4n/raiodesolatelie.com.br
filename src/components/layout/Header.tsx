@@ -25,23 +25,30 @@ import { primaryNavigation } from "./navigation";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const config = buildStoreConfig();
+  const instagramLink = config.socialLinks.find((link) => link.label === "Instagram");
+  const tiktokLink = config.socialLinks.find((link) => link.label === "TikTok");
 
   return (
     <header className="site-header">
       <div className="site-header__topline">
         <div className="site-header__promise">
           <Sparkles aria-hidden="true" />
-          <span>Moda artesanal feminina feita à mão</span>
+          <span>Campanha de verão com peças autorais e atendimento da loja</span>
         </div>
         <div className="site-header__topline-links">
           <ExternalLink
-            href={config.socialLinks[0]?.href}
+            className="site-header__social-link"
+            href={instagramLink?.href}
             aria-label="Instagram do ateliê"
           >
             <Camera aria-hidden="true" />
             Instagram
           </ExternalLink>
-          <ExternalLink href={config.socialLinks[1]?.href} aria-label="TikTok do ateliê">
+          <ExternalLink
+            className="site-header__social-link"
+            href={tiktokLink?.href}
+            aria-label="TikTok do ateliê"
+          >
             <Ticket aria-hidden="true" />
             TikTok
           </ExternalLink>
@@ -49,26 +56,34 @@ export function Header() {
       </div>
 
       <div className="site-header__main">
-        <Link className="brand-link" href="/" aria-label="Raio de Sol Ateliê - início">
-          <Image
-            className="brand-link__logo"
-            src="/brand/logo-identidade.jpeg"
-            alt=""
-            width="56"
-            height="56"
-          />
-          <span className="brand-link__text">Raio de Sol Ateliê</span>
-        </Link>
+        <div className="site-header__brand-group">
+          <Link className="brand-link" href="/" aria-label="Raio de Sol Ateliê - início">
+            <Image
+              className="brand-link__logo"
+              src="/brand/logo-identidade.jpeg"
+              alt=""
+              width="56"
+              height="56"
+            />
+            <span className="brand-link__copy">
+              <span className="brand-link__kicker">Loja autoral</span>
+              <span className="brand-link__text">Raio de Sol Ateliê</span>
+            </span>
+          </Link>
+        </div>
 
         <form className="header-search" action="/catalog" role="search">
           <label className="sr-only" htmlFor="header-search-input">
             Buscar no catálogo
           </label>
+          <span className="header-search__icon" aria-hidden="true">
+            <Search />
+          </span>
           <input
             id="header-search-input"
             className="header-search__input"
             name="q"
-            placeholder="Buscar vestidos, conjuntos e crochê"
+            placeholder="Buscar vestidos, saídas e peças em crochê"
             type="search"
           />
           <button
@@ -97,10 +112,10 @@ export function Header() {
             <ShoppingBag aria-hidden="true" />
             Catálogo
           </Link>
-          <Button asChild size="sm">
+          <Button asChild className="header-actions__whatsapp" size="sm">
             <ExternalLink href={config.whatsappUrl}>
               <MessageCircleMore aria-hidden="true" />
-              Atendimento pelo WhatsApp
+              Atendimento no WhatsApp
             </ExternalLink>
           </Button>
         </div>

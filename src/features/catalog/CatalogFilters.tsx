@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, Sparkles } from "lucide-react";
 
 import type { Category } from "@/domain/product/types";
 import { Badge } from "@/components/ui/Badge";
@@ -49,6 +49,9 @@ export function CatalogFilters({
           </div>
           <Badge variant="outline">Busca refinada</Badge>
         </div>
+        <p className="catalog-filters__copy">
+          Refine a vitrine por categoria, faixa de preço e disponibilidade.
+        </p>
 
         <label className="field" htmlFor="catalog-search">
           <span className="field__label">Buscar por nome</span>
@@ -144,6 +147,10 @@ export function CatalogFilters({
           <p className="eyebrow">Catálogo</p>
           <h2>Busca, categorias e disponibilidade</h2>
         </div>
+        <span className="catalog-filters-toolbar__badge">
+          <Sparkles aria-hidden="true" />
+          Loja editada
+        </span>
         <Button
           className="catalog-filters-toolbar__button"
           type="button"
