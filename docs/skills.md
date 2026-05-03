@@ -257,3 +257,11 @@ Diretórios instalados em `.agents/skills/`:
 | `development`                    | Asset PNG copiado para `public/brand/` e referências centralizadas nos pontos públicos. | O arquivo original externo foi preservado e a versão pública ficou estável. |
 | `documentation`                  | README, arquitetura, deployment e skills atualizados com origem/destino da nova logo.   | A logo oficial atual em `.png` ficou documentada para próximas rodadas.     |
 | `verification-before-completion` | Validações obrigatórias da rodada executadas antes de solicitar autorização de commit.  | O encerramento ficou condicionado à evidência real dos comandos.            |
+
+## Uso Registrado: Audio Global na Entrada do Site
+
+| Skill                            | Evidência de uso                                                                                 | Impacto                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `speckit-implement`              | Execução direta do pedido da cliente no layout global da storefront.                              | A mudança ficou isolada no shell do site, sem abrir escopo em backend. |
+| `test-driven-development`        | Teste Red de autoplay e fallback em `tests/unit/components/site-audio-player.test.tsx`.          | O comportamento foi implementado só depois da falha esperada.          |
+| `verification-before-completion` | Teste focado, `typecheck` e `build` após integrar `src/components/layout/SiteAudioPlayer.tsx`. | A entrega ficou condicionada a evidência real de funcionamento.        |

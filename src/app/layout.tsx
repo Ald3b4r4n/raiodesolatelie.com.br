@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { AppShell } from "@/components/layout/AppShell";
+import { SiteAudioPlayer } from "@/components/layout/SiteAudioPlayer";
 import { buildHomeMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
       <body className={`${fontSans.variable} ${fontDisplay.variable}`}>
+        <SiteAudioPlayer />
         <AppShell>{children}</AppShell>
       </body>
     </html>

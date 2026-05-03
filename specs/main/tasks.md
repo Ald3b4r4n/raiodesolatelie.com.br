@@ -27,3 +27,9 @@
 ## Phase 5: Validation
 
 - [X] T010 Rodar lint, typecheck, testes unitarios focados, E2E/a11y focados e build.
+
+## Additional Request: Audio Global
+
+- [X] T011 Criar teste unitario para autoplay global da trilha e fallback manual.
+- [X] T012 Implementar player global com tentativa de autoplay de Moonlight Sonata no layout.
+- [X] T013 Validar teste focado e checks tecnicos apos integrar o audio.

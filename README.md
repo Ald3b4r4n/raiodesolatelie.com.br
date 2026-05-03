@@ -14,6 +14,7 @@ Storefront mobile-first em Next.js para o Ateliê Raios de Sol, com foco em cat�
   - possui testes unitários, E2E e acessibilidade.
 - Página de produto em `/products/[slug]` com galeria, preço, variações e CTA.
 - Botão global de voltar ao topo para melhorar navegação em páginas longas.
+- Player global que tenta iniciar `Moonlight Sonata` ao entrar no site e mostra fallback manual quando o navegador bloqueia autoplay.
 
 Ainda não estão concluídos: carrinho persistente completo, checkout final, login de cliente e painel admin.
 
@@ -131,4 +132,5 @@ tests/
 
 - O catálogo atual ainda usa dados mockados centralizados em `src/services/firebase/catalog-mock-data.ts`.
 - As imagens já são reais, mas nomes, preços e parte das descrições ainda podem ser refinados após validação da cliente.
+- O autoplay de áudio depende da política do navegador; quando a reprodução automática falha, o site exibe um botão fixo para iniciar a trilha manualmente.
 - Commit e push só devem acontecer com autorização explícita do responsável pelo projeto.
