@@ -37,16 +37,16 @@ export function MobileNav({ onNavigate }: MobileNavProps) {
         <div className="mobile-nav__highlight">
           <Sparkles aria-hidden="true" />
           <div>
-            <strong>Curadoria artesanal com clima de loja</strong>
+            <strong>Moda artesanal com atendimento direto</strong>
             <p>Escolha sua peça, veja os detalhes e combine tudo direto com o ateliê.</p>
           </div>
         </div>
 
         <Button asChild width="full">
-          <ExternalLink href={config.whatsappUrl}>
+          <Link href="/atendimento" onClick={onNavigate}>
             <MessageCircleMore aria-hidden="true" />
-            Atendimento no WhatsApp
-          </ExternalLink>
+            Atendimento
+          </Link>
         </Button>
 
         <div className="mobile-nav__socials">

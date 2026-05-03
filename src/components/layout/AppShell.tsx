@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { BackToTopButton } from "./BackToTopButton";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -13,6 +14,7 @@ export function AppShell({ children }: AppShellProps) {
       <Header />
       <main className="app-main">{children}</main>
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }

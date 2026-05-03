@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { metadata } from "@/app/layout";
+import { metadata, viewport } from "@/app/layout";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { buildHomeMetadata } from "@/lib/seo/metadata";
@@ -38,13 +38,23 @@ describe("SEO base da home", () => {
     });
   });
 
+  it("define viewport mobile real para telas pequenas", () => {
+    expect(viewport).toMatchObject({
+      width: "device-width",
+      initialScale: 1,
+      viewportFit: "cover"
+    });
+  });
+
   it("inclui home no sitemap", () => {
-    expect(sitemap()).toEqual([
-      expect.objectContaining({
-        url: "https://raiodesolatelie.com.br",
-        changeFrequency: "weekly",
-        priority: 1
-      })
-    ]);
+    expect(sitemap()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          url: "https://raiodesolatelie.com.br",
+          changeFrequency: "weekly",
+          priority: 1
+        })
+      ])
+    );
   });
 });

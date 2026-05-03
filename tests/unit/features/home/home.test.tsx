@@ -96,7 +96,7 @@ describe("home", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("region", {
-        name: /textura, delicadeza e acabamento com olhar editorial/i
+        name: /inspirações reais com acabamento em destaque/i
       })
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /instagram/i })).toHaveAttribute(

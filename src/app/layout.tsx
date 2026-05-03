@@ -1,12 +1,17 @@
-import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Outfit, Playfair_Display } from "next/font/google";
 import { AppShell } from "@/components/layout/AppShell";
 import { buildHomeMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
 export const metadata: Metadata = buildHomeMetadata();
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover"
+};
 
-const fontSans = Inter({
+const fontSans = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans"

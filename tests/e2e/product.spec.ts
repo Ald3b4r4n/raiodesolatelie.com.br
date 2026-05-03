@@ -25,3 +25,20 @@ test("produto mobile permite selecionar variação válida e aciona WhatsApp rea
     page.getByRole("link", { name: /comprar pelo whatsapp/i })
   ).toHaveAttribute("href", /wa\.me\/5561996632269/i);
 });
+
+test("galeria do vestido dune alterna entre duas fotos sem quebrar", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  await page.goto("/products/vestido-dune-croche");
+
+  const first = page.getByRole("img", { name: /vestido dune.*foto 1/i });
+  await expect(first).toBeVisible();
+
+  await page.getByRole("button", { name: /próxima foto/i }).click();
+
+  const second = page.getByRole("img", { name: /vestido dune.*foto 2/i });
+  await expect(second).toBeVisible();
+
+  await page.getByRole("button", { name: /ver foto 1/i }).click();
+  await expect(first).toBeVisible();
+});

@@ -6,24 +6,22 @@ import { CatalogSection } from "@/features/catalog/CatalogSection";
 import { createCatalogPageData } from "@/test/fixtures/catalog";
 
 describe("UI de catálogo", () => {
-  it("renderiza card de produto, filtros e categorias", () => {
+  it("renderiza lista comercial de produtos e CTA de WhatsApp", () => {
     const data = createCatalogPageData();
 
     render(<CatalogSection data={data} />);
 
     expect(
-      screen.getByRole("heading", { name: /coleção em destaque/i })
+      screen.getByRole("region", { name: /listagem de produtos/i })
     ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /filtrar/i })).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /vestidos e saídas/i })
+      screen.getByRole("link", { name: /comprar pelo whatsapp/i })
     ).toBeInTheDocument();
     expect(screen.getByText("Bolsa Estrela Marina")).toBeInTheDocument();
-    expect(screen.getByText(/encontre sua peça favorita/i)).toBeInTheDocument();
-    expect(screen.getByAltText(/vitrine principal/i)).toHaveAttribute(
-      "sizes",
-      "(max-width: 719px) 100vw, 50vw"
-    );
+    expect(screen.getByText(/todas as peças/i)).toBeInTheDocument();
+    expect(screen.queryByText(/encontre sua peça ideal/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^filtros$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/curadoria da loja/i)).not.toBeInTheDocument();
     expect(screen.getByAltText("Bolsa Estrela Marina")).toHaveAttribute(
       "sizes",
       "(max-width: 719px) 85vw, (max-width: 1039px) 46vw, 32vw"

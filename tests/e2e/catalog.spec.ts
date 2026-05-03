@@ -5,7 +5,7 @@ test("catálogo mobile permite busca e filtros em até 3,5 segundos", async ({ p
 
   await page.goto("/catalog");
 
-  await expect(page.getByRole("heading", { name: /coleção em destaque/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /todas as peças/i })).toBeVisible();
   await expect(page.getByText("Bolsa Estrela Marina")).toBeVisible();
 
   await page.getByLabel(/buscar por nome/i).fill("infantil");

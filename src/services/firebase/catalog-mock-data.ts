@@ -52,7 +52,7 @@ export const storefrontCollections = [
 export const storefrontHighlights = [
   "Peças feitas à mão com cuidado",
   "Atendimento direto pelo WhatsApp",
-  "Curadoria de novidades do ateliê"
+  "Novidades do ateliê toda semana"
 ] as const;
 
 export const mockCatalogProductDetails: Record<
@@ -78,7 +78,7 @@ export const mockCatalogProductDetails: Record<
       sortOrder: 1,
       imageUrls: [
         "/editorial/vestido-laranja-modelo.jpeg",
-        "/editorial/conjunto-amarelo-modelo.jpeg"
+        "/editorial/vestido-lilas-bolsa-modelo.jpeg"
       ],
       seoTitle: "Vestido Dune em crochê | Ateliê Raios de Sol",
       seoDescription:
@@ -125,6 +125,7 @@ export const mockCatalogProductDetails: Record<
       imageUrls: [
         "/editorial/conjunto-amarelo-modelo.jpeg",
         "/editorial/cropped-listrado-frente-modelo.jpeg",
+        "/editorial/cropped-listrado-costas-modelo.jpeg",
         "/editorial/vestido-lilas-bolsa-modelo.jpeg"
       ],
       seoTitle: "Conjunto praia em crochê | Ateliê Raios de Sol",
@@ -214,6 +215,186 @@ export const mockCatalogProductDetails: Record<
         color: "Lilás pérola"
       })
     ]
+  },
+  "conjunto-listrado-azul": {
+    product: createMockProduct({
+      id: "product-6",
+      slug: "conjunto-listrado-azul",
+      name: "Conjunto Cropped Listrado Azul",
+      description: "Conjunto cropped e saia em crochê, perfeito para dias de sol.",
+      basePrice: 18990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 5,
+      imageUrls: ["/lookbook/1.jpeg", "/lookbook/2.jpeg"],
+      seoTitle: "Conjunto Listrado Azul | Ateliê Raios de Sol",
+      seoDescription: "Conjunto em crochê azul e branco."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "conjunto-amarelo": {
+    product: createMockProduct({
+      id: "product-7",
+      slug: "conjunto-amarelo",
+      name: "Conjunto Amarelo Ouro",
+      description: "Conjunto em crochê com top e saia amarela.",
+      basePrice: 20990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 6,
+      imageUrls: ["/lookbook/3.jpeg"],
+      seoTitle: "Conjunto Amarelo | Ateliê Raios de Sol",
+      seoDescription: "Conjunto amarelo em crochê."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "vestido-laranja-sol": {
+    product: createMockProduct({
+      id: "product-8",
+      slug: "vestido-laranja-sol",
+      name: "Vestido Laranja Sol",
+      description: "Vestido de crochê na cor laranja com detalhes rústicos.",
+      basePrice: 25990,
+      categoryId: "vestidos-e-saidas",
+      availability: "made_to_order",
+      salesMode: "both",
+      sortOrder: 7,
+      imageUrls: ["/lookbook/4.jpeg"],
+      seoTitle: "Vestido Laranja | Ateliê Raios de Sol",
+      seoDescription: "Vestido laranja exclusivo."
+    }),
+    category: mockCatalogCategories[0],
+    variants: []
+  },
+  "vestido-lilas-lavanda": {
+    product: createMockProduct({
+      id: "product-9",
+      slug: "vestido-lilas-lavanda",
+      name: "Vestido Lilás Lavanda",
+      description: "Vestido curto em crochê na cor lilás.",
+      basePrice: 24990,
+      categoryId: "vestidos-e-saidas",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 8,
+      imageUrls: ["/lookbook/5.jpeg"],
+      seoTitle: "Vestido Lilás | Ateliê Raios de Sol",
+      seoDescription: "Vestido lilás em crochê."
+    }),
+    category: mockCatalogCategories[0],
+    variants: []
+  },
+  "maio-verde-amarelo": {
+    product: createMockProduct({
+      id: "product-10",
+      slug: "maio-verde-amarelo",
+      name: "Maiô Brasil",
+      description: "Maiô em crochê com as cores verde e amarelo.",
+      basePrice: 15990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 9,
+      imageUrls: ["/lookbook/6.png"],
+      seoTitle: "Maiô Brasil | Ateliê Raios de Sol",
+      seoDescription: "Maiô verde e amarelo em crochê."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "vestido-verde-folha": {
+    product: createMockProduct({
+      id: "product-11",
+      slug: "vestido-verde-folha",
+      name: "Vestido Verde Folha",
+      description: "Vestido em crochê na cor verde.",
+      basePrice: 26990,
+      categoryId: "vestidos-e-saidas",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 10,
+      imageUrls: ["/lookbook/7.png"],
+      seoTitle: "Vestido Verde Folha | Ateliê Raios de Sol",
+      seoDescription: "Vestido verde em crochê."
+    }),
+    category: mockCatalogCategories[0],
+    variants: []
+  },
+  "cropped-lilas-franjas": {
+    product: createMockProduct({
+      id: "product-12",
+      slug: "cropped-lilas-franjas",
+      name: "Conjunto Lilás com Franjas",
+      description: "Conjunto em crochê com franjas e detalhes delicados.",
+      basePrice: 19990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 11,
+      imageUrls: ["/lookbook/8.png"],
+      seoTitle: "Conjunto Lilás | Ateliê Raios de Sol",
+      seoDescription: "Conjunto lilás com franjas."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "body-verde-esmeralda": {
+    product: createMockProduct({
+      id: "product-13",
+      slug: "body-verde-esmeralda",
+      name: "Body Verde Esmeralda",
+      description: "Body cavado em crochê na cor verde esmeralda.",
+      basePrice: 13990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 12,
+      imageUrls: ["/lookbook/9.png"],
+      seoTitle: "Body Verde | Ateliê Raios de Sol",
+      seoDescription: "Body verde em crochê."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "cropped-branco-franjas": {
+    product: createMockProduct({
+      id: "product-14",
+      slug: "cropped-branco-franjas",
+      name: "Cropped Branco com Franjas",
+      description: "Cropped branco em crochê ideal para saídas noturnas e festivais.",
+      basePrice: 14990,
+      categoryId: "conjuntos-e-tops",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 13,
+      imageUrls: ["/lookbook/10.png"],
+      seoTitle: "Cropped Branco | Ateliê Raios de Sol",
+      seoDescription: "Cropped branco com franjas."
+    }),
+    category: mockCatalogCategories[1],
+    variants: []
+  },
+  "sousplat-verde-menta": {
+    product: createMockProduct({
+      id: "product-15",
+      slug: "sousplat-verde-menta",
+      name: "Sousplat Verde Menta",
+      description: "Sousplat em crochê para compor mesas postas com elegância.",
+      basePrice: 4590,
+      categoryId: "bolsas-e-acessorios",
+      availability: "available",
+      salesMode: "both",
+      sortOrder: 14,
+      imageUrls: ["/lookbook/sousplat-1.jpeg", "/lookbook/sousplat-2.jpeg"],
+      seoTitle: "Sousplat Verde | Ateliê Raios de Sol",
+      seoDescription: "Sousplat verde em crochê."
+    }),
+    category: mockCatalogCategories[2],
+    variants: []
   },
   "produto-rascunho": {
     product: createMockProduct({

@@ -15,6 +15,9 @@ import { buildStoreConfig } from "@/lib/config/store";
 
 type ProductCardProps = {
   imageLoading?: "eager" | "lazy";
+  imageAlt?: string;
+  imageFit?: "cover" | "contain";
+  imageUrl?: string;
   product: Product;
 };
 
@@ -30,7 +33,13 @@ const salesModeLabels: Record<Product["salesMode"], string> = {
   both: "Venda direta e encomenda"
 };
 
-export function ProductCard({ imageLoading = "lazy", product }: ProductCardProps) {
+export function ProductCard({
+  imageAlt,
+  imageFit = "cover",
+  imageLoading = "lazy",
+  imageUrl,
+  product
+}: ProductCardProps) {
   const reduceMotion = useReducedMotion();
   const config = buildStoreConfig();
 
@@ -43,15 +52,15 @@ export function ProductCard({ imageLoading = "lazy", product }: ProductCardProps
       <Card className="product-card" variant="editorial">
         <Link className="product-card__image" href={`/products/${product.slug}`}>
           <Image
-            alt={product.name}
+            alt={imageAlt ?? product.name}
             className="product-card__image-element"
+            data-fit={imageFit}
             height={960}
             loading={imageLoading}
             sizes="(max-width: 719px) 85vw, (max-width: 1039px) 46vw, 32vw"
-            src={product.imageUrls?.[0] ?? "/brand/logo-identidade.png"}
+            src={imageUrl ?? product.imageUrls?.[0] ?? "/brand/logo-identidade.png"}
             width={960}
           />
-          <span className="product-card__image-badge">Curadoria da loja</span>
         </Link>
         <div className="product-card__content">
           <div className="product-card__header">

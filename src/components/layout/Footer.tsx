@@ -22,13 +22,13 @@ export function Footer() {
             />
             <p className="site-footer__eyebrow">{config.brandName}</p>
           </div>
-          <h2>Loja de crochê artesanal com curadoria feminina e atendimento direto.</h2>
-          <p>Peças feitas à mão, pronta entrega e encomendas combinadas com o ateliê.</p>
+          <h2>Peças autorais em crochê com acabamento artesanal.</h2>
+          <p>Catálogo completo, fotos reais e atendimento preparado antes do WhatsApp.</p>
           <Button asChild>
-            <ExternalLink href={config.whatsappUrl}>
+            <Link href="/atendimento">
               <MessageCircleMore aria-hidden="true" />
               Falar com o ateliê
-            </ExternalLink>
+            </Link>
           </Button>
         </div>
 
@@ -36,8 +36,14 @@ export function Footer() {
           <div>
             <strong>Loja</strong>
             <Link href="/catalog">Catálogo</Link>
-            <Link href="/#novidades">Novidades</Link>
-            <Link href="/#lookbook">Lookbook</Link>
+            <Link href="/novidades">Novidades</Link>
+            <Link href="/atendimento">Atendimento</Link>
+          </div>
+          <div>
+            <strong>Ateliê</strong>
+            <span>Peças feitas à mão</span>
+            <span>Pronta entrega e encomendas</span>
+            <span>Fotos reais com textura visível</span>
           </div>
           <div>
             <strong>Atendimento</strong>

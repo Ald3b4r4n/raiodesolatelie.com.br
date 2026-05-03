@@ -39,6 +39,21 @@ const categoryLinks = [
   { label: "Infantil", href: "/catalog?category=infantil" }
 ] as const;
 
+const lookbookImages = [
+  { src: "/lookbook/1.jpeg", alt: "Peça em crochê com acabamento visível." },
+  { src: "/lookbook/2.jpeg", alt: "Caimento real de peça artesanal." },
+  { src: "/lookbook/3.jpeg", alt: "Detalhe de textura do crochê." },
+  { src: "/lookbook/4.jpeg", alt: "Composição de look em crochê." },
+  { src: "/lookbook/5.jpeg", alt: "Trama manual com pontos aparentes." },
+  { src: "/lookbook/6.png", alt: "Close da trama em crochê." },
+  { src: "/lookbook/7.png", alt: "Detalhe de modelagem artesanal." },
+  { src: "/lookbook/8.png", alt: "Acabamento e textura em foco." },
+  { src: "/lookbook/9.png", alt: "Vista frontal da peça em crochê." },
+  { src: "/lookbook/10.png", alt: "Vista lateral da peça em crochê." },
+  { src: "/lookbook/sousplat-1.jpeg", alt: "Peça artesanal em ambiente real." },
+  { src: "/lookbook/sousplat-2.jpeg", alt: "Detalhe de acabamento artesanal." }
+];
+
 export function HomePage({ config }: HomePageProps) {
   const reduceMotion = useReducedMotion();
   const productSlides = featuredProducts.map((product, index) => (
@@ -96,6 +111,32 @@ export function HomePage({ config }: HomePageProps) {
         </div>
       </section>
 
+      <section
+        className="home-lookbook home-shell"
+        aria-labelledby="lookbook-title"
+        id="lookbook"
+      >
+        <div className="section-heading">
+          <p className="eyebrow">Editorial da coleção</p>
+          <h2 id="lookbook-title">Textura e caimento das peças</h2>
+          <p>
+            Veja os detalhes, o caimento e as combinações das peças em fotos reais. Escolha sua favorita e fale com o ateliê para combinar tamanho, cor e disponibilidade.
+          </p>
+        </div>
+        <div className="lookbook-grid" role="list">
+          {lookbookImages.map((image) => (
+            <div key={image.src} className="lookbook-card" role="listitem">
+              <Image
+                alt={image.alt}
+                fill
+                sizes="(max-width: 719px) 100vw, 32vw"
+                src={image.src}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
       <motion.section
         className="home-showcase home-shell"
         aria-labelledby="novidades-title"
@@ -108,8 +149,7 @@ export function HomePage({ config }: HomePageProps) {
           <p className="eyebrow">Novidades</p>
           <h2 id="novidades-title">Novidades do ateliê</h2>
           <p>
-            Peças com caimento real, textura visível e leitura comercial para escolher sem
-            pressa.
+            Veja o caimento, a textura e os detalhes das peças para escolher o modelo que combina com você.
           </p>
         </div>
         <EmblaCarousel
@@ -171,24 +211,22 @@ export function HomePage({ config }: HomePageProps) {
       </motion.section>
 
       <motion.section
-        className="home-lookbook"
-        aria-labelledby="lookbook-title"
-        id="lookbook"
+        className="home-editorial"
+        aria-labelledby="editorial-title"
+        id="editorial"
         initial={reduceMotion ? undefined : { opacity: 0, y: 18 }}
         whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="home-shell home-lookbook__grid">
+        <div className="home-shell home-editorial__grid">
           <div className="section-heading">
-            <p className="eyebrow">Lookbook</p>
-            <h2 id="lookbook-title">
-              Textura, delicadeza e acabamento com olhar editorial
-            </h2>
+            <p className="eyebrow">Editorial</p>
+            <h2 id="editorial-title">Inspirações reais com acabamento em destaque</h2>
             <p>
               Fotos reais aproximam textura, caimento e cor antes da conversa com o
               ateliê.
             </p>
-            <div className="home-lookbook__actions">
+            <div className="home-editorial__actions">
               <Button asChild variant="secondary">
                 <Link href="/catalog">Ver peças da coleção</Link>
               </Button>
@@ -199,8 +237,8 @@ export function HomePage({ config }: HomePageProps) {
               </Button>
             </div>
           </div>
-          <div className="home-lookbook__images">
-            <div className="home-lookbook__image home-lookbook__image--tall">
+          <div className="home-editorial__images">
+            <div className="home-editorial__image home-editorial__image--tall">
               <Image
                 alt="Modelo usando vestido lilás e bolsa azul em crochê"
                 fill
@@ -209,7 +247,7 @@ export function HomePage({ config }: HomePageProps) {
                 src="/editorial/vestido-lilas-bolsa-modelo.jpeg"
               />
             </div>
-            <div className="home-lookbook__image">
+            <div className="home-editorial__image">
               <Image
                 alt="Modelo usando cropped listrado em crochê"
                 fill
@@ -217,12 +255,20 @@ export function HomePage({ config }: HomePageProps) {
                 src="/editorial/cropped-listrado-frente-modelo.jpeg"
               />
             </div>
-            <div className="home-lookbook__image">
+            <div className="home-editorial__image">
               <Image
                 alt="Modelo usando conjunto amarelo em crochê"
                 fill
                 sizes="(max-width: 719px) 100vw, 20vw"
                 src="/editorial/conjunto-amarelo-modelo.jpeg"
+              />
+            </div>
+            <div className="home-editorial__image">
+              <Image
+                alt="Modelo usando cropped listrado visto por trás em crochê"
+                fill
+                sizes="(max-width: 719px) 100vw, 20vw"
+                src="/editorial/cropped-listrado-costas-modelo.jpeg"
               />
             </div>
           </div>

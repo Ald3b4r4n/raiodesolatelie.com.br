@@ -1,6 +1,6 @@
-# raiodesolatelie.com.br Development Guidelines
+﻿# raiodesolatelie.com.br Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-04-30
+Auto-generated from all feature plans. Last updated: 2026-05-02
 
 ## Constitution Summary
 
@@ -17,6 +17,8 @@ This project follows `.specify/memory/constitution.md`. The active defaults are:
 - Never commit automatically; ask the user for explicit authorization first.
 
 ## Active Technologies
+- TypeScript strict no Next.js App Router existente. + Next.js 16, React 19, Embla Carousel, lucide-react, motion/react, Firebase SDK conforme catalogo. (main)
+- Cloud Firestore planejado para catalogo real; nesta revisao, a pagina pode continuar usando dados mockados centralizados em `services/firebase/catalog-mock-data` ate haver seed/admin definitivo. (main)
 
 - TypeScript strict on Next.js App Router with React. (001-mvp-ecommerce)
 - Firebase Authentication, Cloud Firestore, Firebase Security Rules, Firebase Emulator Suite, and Firebase Storage only if product image uploads require it. (001-mvp-ecommerce)
@@ -79,6 +81,7 @@ firebase emulators:exec "pnpm test:integration && pnpm test:rules"
 - Keep user-facing text in Brazilian Portuguese.
 
 ## Recent Changes
+- main: Added TypeScript strict no Next.js App Router existente. + Next.js 16, React 19, Embla Carousel, lucide-react, motion/react, Firebase SDK conforme catalogo.
 
 - 001-mvp-ecommerce: Added technical plan for the initial mobile-first own-product e-commerce MVP.
 

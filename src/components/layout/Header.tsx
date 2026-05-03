@@ -62,7 +62,6 @@ export function Header() {
               height="128"
             />
             <span className="brand-link__copy">
-              <span className="brand-link__kicker">Loja autoral</span>
               <span className="brand-link__text">{config.brandName}</span>
             </span>
           </Link>
@@ -72,9 +71,6 @@ export function Header() {
           <label className="sr-only" htmlFor="header-search-input">
             Buscar no catálogo
           </label>
-          <span className="header-search__icon" aria-hidden="true">
-            <Search />
-          </span>
           <input
             id="header-search-input"
             className="header-search__input"
@@ -105,10 +101,10 @@ export function Header() {
 
         <div className="header-actions">
           <Button asChild className="header-actions__whatsapp" size="sm">
-            <ExternalLink href={config.whatsappUrl}>
+            <Link href="/atendimento">
               <MessageCircleMore aria-hidden="true" />
-              Atendimento no WhatsApp
-            </ExternalLink>
+              Atendimento
+            </Link>
           </Button>
         </div>
 

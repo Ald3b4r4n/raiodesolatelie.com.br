@@ -10,7 +10,13 @@ type CatalogPageProps = {
 
 export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const params = await searchParams;
-  const query = readCatalogQuery(params);
+  let query: CatalogQueryInput = {};
+
+  try {
+    query = readCatalogQuery(params);
+  } catch {
+    query = {};
+  }
   const service = new ProductCatalogService();
   let data;
   let errorMessage: string | undefined;
@@ -25,8 +31,8 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   return (
     <CatalogSection
       data={{
-        title: data.title,
-        description: data.description,
+        title: "Todas as peças",
+        description: "Escolha sua peça favorita e fale direto com o ateliê.",
         products: data.products,
         categories: data.categories,
         currentFilters: errorMessage

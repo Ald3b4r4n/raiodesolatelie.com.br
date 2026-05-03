@@ -30,3 +30,34 @@ export function buildHomeMetadata(): Metadata {
     }
   };
 }
+
+export function buildNovidadesMetadata(): Metadata {
+  const title = `Novidades | ${PUBLIC_BRAND_NAME}`;
+  const description = `Lançamentos e peças recentes do ${PUBLIC_BRAND_NAME}, com produtos artesanais, catálogo mobile-first e atendimento direto pelo WhatsApp.`;
+  const url = `${siteUrl}/novidades`;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    alternates: {
+      canonical: "/novidades"
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: PUBLIC_BRAND_NAME,
+      locale: "pt_BR",
+      type: "website",
+      images: [
+        {
+          url: "/brand/logo-identidade.png",
+          width: 512,
+          height: 512,
+          alt: `Logo do ${PUBLIC_BRAND_NAME}`
+        }
+      ]
+    }
+  };
+}

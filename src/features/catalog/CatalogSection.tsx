@@ -1,107 +1,41 @@
 "use client";
 
-import type { ReactNode } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, MessageCircleMore, Sparkles } from "lucide-react";
+import { MessageCircleMore } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+
+import { ExternalLink } from "@/components/links/ExternalLink";
 
 import { EmptyState } from "@/components/ui/EmptyState";
 import { ErrorMessage } from "@/components/ui/ErrorMessage";
 import { ProductCard } from "@/components/product/ProductCard";
-import { ExternalLink } from "@/components/links/ExternalLink";
 import { buildStoreConfig } from "@/lib/config/store";
 import { Button } from "@/components/ui/Button";
 
-import { CatalogFilters } from "./CatalogFilters";
 import type { CatalogViewData } from "./types";
 
 type CatalogSectionProps = {
   data: CatalogViewData;
-  filtersSlot?: ReactNode;
 };
 
-export function CatalogSection({ data, filtersSlot }: CatalogSectionProps) {
+export function CatalogSection({ data }: CatalogSectionProps) {
   const config = buildStoreConfig();
   const reduceMotion = useReducedMotion();
 
   return (
     <div className="catalog-page">
-      <section className="catalog-hero" aria-labelledby="catalog-title">
-        <div className="catalog-hero__copy">
-          <p className="eyebrow">Catálogo</p>
-          <h1 id="catalog-title">{data.title}</h1>
-          <p>{data.description}</p>
-          <div className="catalog-hero__chips" aria-label="Leituras da coleção">
-            <span>Pronta entrega e encomendas</span>
-            <span>Feito à mão com cuidado</span>
-            <span>Atendimento pelo WhatsApp</span>
-          </div>
-          <div className="catalog-hero__summary">
-            <div>
-              <span>{data.products.length}</span>
-              <p>peças em destaque</p>
-            </div>
-            <div>
-              <span>{data.categories.length}</span>
-              <p>categorias selecionadas</p>
-            </div>
-          </div>
-          <div className="catalog-hero__actions">
-            <Button asChild>
-              <ExternalLink href={config.whatsappUrl}>
-                <MessageCircleMore aria-hidden="true" />
-                Comprar pelo WhatsApp
-              </ExternalLink>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/#lookbook">
-                Ver inspiração
-                <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="catalog-hero__banner">
-          <Image
-            alt="Vitrine principal da coleção em crochê"
-            fill
-            sizes="(max-width: 719px) 100vw, 50vw"
-            src="/banners/hero-conjunto-praia.jpeg"
-          />
-        </div>
-      </section>
-
-      {filtersSlot ?? (
-        <CatalogFilters
-          categories={data.categories}
-          currentFilters={data.currentFilters}
-        />
-      )}
-
       {data.errorMessage ? <ErrorMessage message={data.errorMessage} /> : null}
 
       {data.products.length > 0 ? (
         <section className="catalog-grid" aria-label="Listagem de produtos">
           <div className="catalog-grid__intro">
-            <div className="catalog-grid__intro-kicker">
-              <Sparkles aria-hidden="true" />
-              Curadoria da semana
-            </div>
-            <strong>Encontre sua peça favorita</strong>
-            <p>
-              Escolha no catálogo e fale direto com o ateliê para confirmar detalhes,
-              acabamento e disponibilidade.
-            </p>
+            <strong>Todas as peças</strong>
+            <p>Escolha sua peça favorita e fale direto com o ateliê.</p>
             <div className="catalog-grid__intro-actions" aria-label="Ações do catálogo">
               <Button asChild>
                 <ExternalLink href={config.whatsappUrl}>
                   <MessageCircleMore aria-hidden="true" />
                   Comprar pelo WhatsApp
                 </ExternalLink>
-              </Button>
-              <Button asChild variant="ghost">
-                <Link href="/#atendimento">Atendimento</Link>
               </Button>
             </div>
           </div>

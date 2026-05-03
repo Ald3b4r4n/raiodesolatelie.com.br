@@ -13,6 +13,7 @@ vi.mock("next/font/google", () => {
 
   return {
     Inter: fontMock,
+    Outfit: fontMock,
     Playfair_Display: fontMock
   };
 });

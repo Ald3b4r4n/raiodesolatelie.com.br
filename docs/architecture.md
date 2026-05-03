@@ -124,8 +124,8 @@ provider `mock` e rejeita dados de cartão no payload.
   - `public/products/cropped-listrado-costa.jpeg`
   - `public/products/bolsa-estrela-marina.jpeg`
   - `public/products/saidinha-praia-infantil-perola-oceano.jpeg`
-  - `public/lookbook/sousplat-1.jpeg`
-  - `public/lookbook/sousplat-2.jpeg`
+  - `public/editorial/vestido-laranja-modelo.jpeg`
+  - `public/editorial/vestido-lilas-bolsa-modelo.jpeg`
 - O visual deve permanecer simples, leve e prático, com foco visível, contraste
   adequado e navegação mobile por teclado.
 - Componentes de UI não carregam regras de negócio; eles recebem texto, estado e

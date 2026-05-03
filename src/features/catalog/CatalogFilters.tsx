@@ -44,13 +44,13 @@ export function CatalogFilters({
       <>
         <div className="catalog-filters__header">
           <div>
-            <p className="eyebrow">Filtros</p>
-            <h2>Encontre sua peça ideal</h2>
+            <p className="eyebrow">Catálogo</p>
+            <h2>Refinar resultados</h2>
           </div>
-          <Badge variant="outline">Busca refinada</Badge>
+          <Badge variant="outline">Categoria e preço</Badge>
         </div>
         <p className="catalog-filters__copy">
-          Refine a vitrine por categoria, faixa de preço e disponibilidade.
+          Use categoria, preço e disponibilidade para encontrar mais rápido.
         </p>
 
         <label className="field" htmlFor="catalog-search">
@@ -164,7 +164,7 @@ export function CatalogFilters({
 
       <form
         className="catalog-filters catalog-filters--desktop"
-        aria-label="Filtros do catálogo"
+        aria-label="Refinar catálogo"
         action="/catalog"
       >
         {renderFormContent()}
@@ -173,7 +173,7 @@ export function CatalogFilters({
       <Drawer
         description="Use os filtros para refinar a vitrine no mobile."
         isOpen={isMobileFiltersOpen}
-        title="Filtros do catálogo"
+        title="Refinar catálogo"
         onClose={() => setIsMobileFiltersOpen(false)}
       >
         <form className="catalog-filters catalog-filters--drawer" action="/catalog">

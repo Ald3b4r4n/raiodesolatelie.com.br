@@ -238,6 +238,15 @@ Diretórios instalados em `.agents/skills/`:
 | `tailwindcss-animate`                    | Não se aplica nesta fase porque Tailwind não foi adotado.              |
 | `tailwindcss`, `@tailwindcss/postcss`    | Não instalados pela mesma decisão técnica acima.                       |
 
+## Uso Registrado: Revisão da Página de Novidades
+
+| Skill                            | Evidência de uso                                                                            | Impacto                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `speckit-implement`              | Execução a partir de `specs/main/plan.md`, com `tasks.md` criado e marcado por tarefa.      | Transformou o plano da rota `/novidades` em testes, UI, metadata e docs.     |
+| `test-driven-development`        | Testes Red em `tests/unit/features/novidades`, E2E e acessibilidade antes da implementação. | Helper de curadoria, estado vazio e metadata foram guiados por contrato.     |
+| `design-taste-frontend`          | Estado vazio, CTAs empilháveis no mobile e vitrine sem elementos sobrepostos.               | A página ganhou comportamento mais claro sem abrir escopo de CMS/blog.       |
+| `verification-before-completion` | Validações focadas e checks finais planejados antes do fechamento da tarefa.                | O encerramento depende de evidência real de lint, tipos, testes e build.     |
+
 ## Uso Registrado: Rodada Curta da Nova Logomarca
 
 | Skill                            | Evidência de uso                                                                        | Impacto                                                                     |

@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("2026-05-01"),
       changeFrequency: "weekly",
       priority: 1
+    },
+    {
+      url: `${siteUrl}/novidades`,
+      lastModified: new Date("2026-05-02"),
+      changeFrequency: "weekly",
+      priority: 0.8
     }
   ];
 }

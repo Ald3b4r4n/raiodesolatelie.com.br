@@ -20,6 +20,8 @@ export function ProductGalleryCarousel({
     dragFree: true
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   const galleryId = useMemo(
     () => `gallery-${productName.toLowerCase().replace(/\s+/g, "-")}`,
@@ -33,6 +35,8 @@ export function ProductGalleryCarousel({
     const index = mainApi.selectedScrollSnap();
     setSelectedIndex(index);
     thumbApi?.scrollTo(index);
+    setCanScrollPrev(mainApi.canScrollPrev());
+    setCanScrollNext(mainApi.canScrollNext());
   }, [mainApi, thumbApi]);
 
   useEffect(() => {
@@ -42,11 +46,13 @@ export function ProductGalleryCarousel({
     mainApi.on("select", onSelect);
     mainApi.on("reInit", onSelect);
 
-    // Inicializacao via callback async para satisfazer react-hooks/set-state-in-effect.
+    // Garantir estado inicial com layout pronto.
     const timer = window.setTimeout(onSelect, 0);
 
     return () => {
       window.clearTimeout(timer);
+      mainApi.off("select", onSelect);
+      mainApi.off("reInit", onSelect);
     };
   }, [mainApi, onSelect]);
 
@@ -56,8 +62,9 @@ export function ProductGalleryCarousel({
   const scrollTo = useCallback(
     (index: number) => {
       mainApi?.scrollTo(index);
+      thumbApi?.scrollTo(index);
     },
-    [mainApi]
+    [mainApi, thumbApi]
   );
 
   if (imageUrls.length === 0) {
@@ -97,6 +104,7 @@ export function ProductGalleryCarousel({
           className="gallery__arrow gallery__arrow--prev"
           aria-controls={galleryId}
           aria-label="Foto anterior"
+          disabled={!canScrollPrev}
           onClick={scrollPrev}
         >
           <ChevronLeft aria-hidden="true" focusable="false" />
@@ -106,6 +114,7 @@ export function ProductGalleryCarousel({
           className="gallery__arrow gallery__arrow--next"
           aria-controls={galleryId}
           aria-label="Próxima foto"
+          disabled={!canScrollNext}
           onClick={scrollNext}
         >
           <ChevronRight aria-hidden="true" focusable="false" />

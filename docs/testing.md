@@ -161,7 +161,7 @@ Firestore e Storage com `firebase emulators:exec`.
 - Testes unitários atualizados cobrem:
   - links externos com `target="_blank"` e `rel="noopener noreferrer"`;
   - ausência do número cru de WhatsApp no header;
-  - renderização de hero, vitrine, lookbook e bloco social;
+  - renderização de hero, vitrine, editorial e bloco social;
   - interação básica de select com Radix;
   - tabs comerciais da página de produto.
 
