@@ -1,26 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const MOONLIGHT_SONATA_SRC = "/audio/moonlight-sonata.mp3";
 
 export function SiteAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [showFallback, setShowFallback] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [showBlockedHint, setShowBlockedHint] = useState(false);
 
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    if (!audio) {
-      return;
-    }
-
-    audio.play().catch(() => {
-      setShowFallback(true);
-    });
-  }, []);
-
-  async function handleManualPlay() {
+  async function handleEntry() {
     const audio = audioRef.current;
 
     if (!audio) {
@@ -29,9 +18,10 @@ export function SiteAudioPlayer() {
 
     try {
       await audio.play();
-      setShowFallback(false);
+      setShowBlockedHint(false);
+      setIsVisible(false);
     } catch {
-      setShowFallback(true);
+      setShowBlockedHint(true);
     }
   }
 
@@ -45,14 +35,28 @@ export function SiteAudioPlayer() {
         preload="none"
         src={MOONLIGHT_SONATA_SRC}
       />
-      {showFallback ? (
-        <button
-          className="site-audio-player__fallback"
-          onClick={handleManualPlay}
-          type="button"
+      {isVisible ? (
+        <section
+          aria-labelledby="site-audio-player-title"
+          aria-modal="false"
+          className="site-audio-player__welcome"
+          role="dialog"
         >
-          Tocar Moonlight Sonata
-        </button>
+          <div className="site-audio-player__accent" aria-hidden="true" />
+          <p className="site-audio-player__eyebrow">Ateliê Raios de Sol</p>
+          <h2 id="site-audio-player-title">Bem-vinda ao Ateliê Raios de Sol</h2>
+          <p className="site-audio-player__copy">
+            Preparamos uma chegada delicada para acompanhar sua entrada na coleção.
+          </p>
+          {showBlockedHint ? (
+            <p className="site-audio-player__hint">
+              Se algo impedir sua entrada agora, toque novamente para continuar.
+            </p>
+          ) : null}
+          <button className="site-audio-player__action" onClick={handleEntry} type="button">
+            Entrar no ateliê
+          </button>
+        </section>
       ) : null}
     </>
   );
