@@ -9,6 +9,7 @@ Storefront mobile-first em Next.js para o Ateliê Raios de Sol, com foco em cat�
 - Página `/novidades` revisada como vitrine editorial:
   - mostra todas as fotos disponíveis dos produtos ativos;
   - usa enquadramento ajustado, sem corte nas imagens da vitrine;
+  - mantém vitrine centralizada no desktop e controles completos no mobile;
   - mantém CTA para catálogo e WhatsApp;
   - possui testes unitários, E2E e acessibilidade.
 - Página de produto em `/products/[slug]` com galeria, preço, variações e CTA.
@@ -53,6 +54,19 @@ App local:
 ```text
 http://localhost:3000
 ```
+
+## Deploy na Vercel
+
+O projeto usa o fluxo padrão de Next.js na Vercel, sem `vercel.json`.
+
+Se a build terminar com sucesso e a Vercel ainda mostrar `404: NOT_FOUND` no domínio principal, o problema tende a estar fora do código da aplicação, normalmente em um destes pontos:
+
+- domínio/alias conectado ao projeto errado;
+- domínio de produção ainda não atribuído ao deployment mais recente;
+- acesso por uma URL antiga de outro projeto;
+- configuração de ambiente da Vercel apontando para outro repositório/projeto.
+
+Sinal importante: quando o log de build lista rotas como `/`, `/novidades` e `/catalog`, o app foi compilado corretamente e o erro costuma ser de roteamento da própria Vercel, não de ausência da página no Next.js.
 
 ## Comandos principais
 

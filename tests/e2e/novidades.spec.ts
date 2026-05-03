@@ -77,3 +77,39 @@ test("novidades desktop mantÃ©m cards compactos e legÃ­veis", async ({ page 
   expect(cardBox?.height).toBeLessThanOrEqual(500);
   expect(imageBox?.height).toBeLessThanOrEqual(260);
 });
+
+test("novidades mantem vitrine centralizada no desktop e setas visiveis no mobile", async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/novidades");
+
+  const desktopWidths = await page.evaluate(() => {
+    const pageBox = document.querySelector(".novidades-page")?.getBoundingClientRect();
+    const showcaseBox = document.querySelector(".novidades-showcase")?.getBoundingClientRect();
+
+    return {
+      pageLeft: pageBox?.left ?? null,
+      showcaseLeft: showcaseBox?.left ?? null,
+      pageWidth: pageBox?.width ?? null,
+      showcaseWidth: showcaseBox?.width ?? null
+    };
+  });
+
+  expect(desktopWidths.pageLeft).not.toBeNull();
+  expect(desktopWidths.showcaseLeft).not.toBeNull();
+  expect(desktopWidths.pageWidth).not.toBeNull();
+  expect(desktopWidths.showcaseWidth).not.toBeNull();
+  expect(desktopWidths.pageLeft!).toBeGreaterThan(40);
+  expect(desktopWidths.showcaseLeft!).toBeGreaterThan(40);
+  expect(desktopWidths.showcaseWidth!).toBeLessThanOrEqual(desktopWidths.pageWidth!);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/novidades");
+
+  const arrows = page.locator(".novidades-carousel .embla__arrow");
+
+  await expect(arrows).toHaveCount(2);
+  await expect(arrows.nth(0)).toBeVisible();
+  await expect(arrows.nth(1)).toBeVisible();
+});
